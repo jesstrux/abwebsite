@@ -18,9 +18,15 @@
 		<div class="section-wrapper">
 			<h2>BE INSPIRED</h2>
 			<div class="grid">
-				<img src="{{asset('images/image1.jpg')}}" alt="">
-				<h3>Nafsi Show</h3>
-				<p>Jinsi ya kuishi maisha huru na kuacha kuridhisha watu.</p>
+				@for($i = 0; $i < 3; $i++)
+					<div class="video">
+						<div class="image">
+							<img src="{{asset('images/image1.jpg')}}" alt="">
+						</div>
+						<h3>Nafsi Show</h3>
+						<p>Jinsi ya kuishi maisha huru na kuacha kuridhisha watu.</p>
+					</div>
+				@endfor
 			</div>
 		</div>
 	</div>
@@ -28,6 +34,17 @@
 	<div class="video-section">
 		<div class="section-wrapper">
 			<h2>TV SHOWS</h2>
+			<div class="grid">
+				@for($i = 0; $i < 3; $i++)
+					<div class="video">
+						<div class="image">
+							<img src="{{asset('images/image1.jpg')}}" alt="">
+						</div>
+						<h3>Nafsi Show</h3>
+						<p>Jinsi ya kuishi maisha huru na kuacha kuridhisha watu.</p>
+					</div>
+				@endfor
+			</div>
 		</div>
 	</div>
 
@@ -39,6 +56,18 @@
 	<div class="video-section">
 		<div class="section-wrapper">
 			<h2>RECENT BLOGS</h2>
+
+			<div class="grid">
+				@for($i = 0; $i < 3; $i++)
+					<div class="video">
+						<div class="image">
+							<img src="{{asset('images/image1.jpg')}}" alt="">
+						</div>
+						<h3>Nafsi Show</h3>
+						<p>Jinsi ya kuishi maisha huru na kuacha kuridhisha watu.</p>
+					</div>
+				@endfor
+			</div>
 		</div>
 	</div>
 @endsection
