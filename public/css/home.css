@@ -2,12 +2,12 @@
 #sectionBanner{
     padding: 0;
     overflow: hidden;
-    height: 180px;
+    height: 220px;
     background: #f5f5f5;
     border-bottom: 4px solid #f00;
 }
 
-#sectionBanner img{
+#sectionBanner imgs{
     position: absolute;
     left: 0;
     top: 0;
@@ -29,8 +29,22 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.video-section .grid > div{
+    min-width: 0
+}
+
+#blogsRadio .section-wrapper > div:first-child .grid{
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#blogsRadio .section-wrapper > div:last-child{
+    grid-template-columns: repeat(2, 1fr);min-width: 30%;
+    margin-left: 1em;
+}
+
 .video{
     /*padding: 1.2em 0;*/
+    position: relative;
 }
 
 .video-section h2{
@@ -58,6 +72,11 @@
     background: #f5f5f5;
     border-radius: 8px;
     overflow: hidden;
+    width: inherit;
+}
+
+.video-section .image img{
+    height: 100%;
 }
 
 #cta{

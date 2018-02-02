@@ -386,7 +386,7 @@ footer #copyright{
     /*max-width: 800px;*/
     font-size: 12px;
     color: #aaa;
-    border-top: 1px solid #555;
+    border-top: 1px solid #333;
     font-family: "FiraSans", sans-serif;
     padding: 2.4em 0;
 }
@@ -412,24 +412,79 @@ footer #subscribe h3{
     margin-bottom: 25px;
 }
 
-#footerNav h5{
-    font-family: "FiraSans", sans-serif;
-    font-size: 20px;
-    margin-bottom: 12px;
+#footerNav .flex{
+    max-width: 30%;
 }
 
-#footerNav a{
+#footerNav .fle{
+    min-width: 25%;
+    margin: 0 8px;
+    align-items: flex-start;
+}
+
+
+#footerNav h5{
+    position: relative;
+    font-family: "Bold", sans-serif;
+    font-weight: bold;
+    font-size: 0.98em;
+    margin-bottom: 2em;
+    color: #fff;
+    display: inline-block;
+}
+
+#footerNav h5:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background-color: #fff;
+    bottom: -0.76em;
+}
+
+#footerNav a:not(.social-icon){
     font-family: "FiraSans", sans-serif;
     display: inline-block;
     font-size: 15px;
     margin-bottom: 8px;
 }
 
-footer #socialMediaLinks a{
-    font-size: 30px;
-    margin: 12px;
-    margin-top: 0;
-    margin-left: 0;
+/*footer #socialMediaLinks a{*/
+    /*font-size: 30px;*/
+    /*margin: 12px;*/
+    /*margin-top: 0;*/
+    /*margin-left: 0;*/
+/*}*/
+
+#socialMediaLinks{
+    /*margin-top: 18px;*/
+}
+
+#socialMediaLinks .social-icon{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    padding: 0;
+    margin-right: 6px;
+    background-color: #555;
+}
+
+#socialMediaLinks .social-icon.facebook{
+    background-color: #3b5998;
+}
+
+#socialMediaLinks .social-icon.twitter{
+    background-color: #55acee;
+}
+
+#socialMediaLinks .social-icon.instagram{
+    background: -webkit-radial-gradient(circle farthest-corner at 35% 90%, #fec564, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(circle farthest-corner at 0 140%, #fec564, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, rgba(0, 0, 0, 0)), -webkit-linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, rgba(0, 0, 0, 0) 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, rgba(0, 0, 0, 0)), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+}
+
+#socialMediaLinks .social-icon.youtube{
+    background-color: #f00;
 }
 
 @media screen and (min-width: 681px){
