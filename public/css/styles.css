@@ -86,6 +86,32 @@ body.locked{
     animation-name: slideOutUp;
 }
 
+q{
+    quotes: "“" "”" "‘" "’";
+}
+
+q:before{
+    content: open-quote;
+}
+
+q:after{
+    content: close-quote;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-bold{
+    font-family: Bold, sans-serif;
+    font-weight: bold;
+}
+
+.text-light{
+    font-family: Light, sans-serif;
+    font-weight: 100;
+}
+
 
 .section-wrapper{
     max-width: 1100px;
@@ -233,7 +259,7 @@ body.locked{
 #navLinks .dropdown{
     position: absolute;
     left: 0;
-    top: 120%;
+    top: 110%;
     display: inline-block;
     font-size: 1.1em;
     font-family: "PT Bold", sans-serif;

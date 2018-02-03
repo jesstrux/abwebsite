@@ -1,55 +1,66 @@
-<nav id="mainNav" class="for-lg">
-    <div id="navLinks" class="section-wrapper layout center justified">
-        <a href="{{url('/')}}">
-            Home
-        </a>
-
-        <a href="{{url('/')}}">
-            About Us
-        </a>
-
-        <div class="dropdown-menu">
+<?php
+    $for_home = strtolower($page) == "home";
+?>
+<nav id="mainNav" class="for-lg {{$for_home ? 'for-home' : ''}}" style="position: relative;">
+    <div class="center justified {{!$for_home ? 'layout section-wrapper' : ''}}">
+        @if(!$for_home)
+            <a id="mainLogo" href="{{url('/')}}">
+                <img src="{{asset('images/logo.png')}}" alt="" height="90%">
+            </a>
+            <span class="flex"></span>
+        @endif
+        <div id="navLinks" class="section-wrapper layout center justified">
             <a href="{{url('/')}}">
-                TV Shows
+                Home
             </a>
 
-            <div class="dropdown">
-                <a href="{{url('/')}}">
-                    Tv Show 1
-                </a>
-                <a href="{{url('/')}}">
-                    Tv Show 2
-                </a>
-                <a href="{{url('/')}}">
-                    Tv Show 3
-                </a>
-            </div>
-        </div>
-
-        <div class="dropdown-menu">
-            <a href="{{url('/')}}">
-                Feel Me
+            <a href="{{url('/about')}}">
+                About Me
             </a>
 
-            <div class="dropdown">
+            <div class="dropdown-menu">
                 <a href="{{url('/')}}">
-                    My piece of mind
+                    TV Shows
                 </a>
-                <a href="{{url('/')}}">
-                    Spoken Word
-                </a>
-                <a href="{{url('/')}}">
-                    Moment of wisdom
-                </a>
+
+                <div class="dropdown">
+                    <a href="{{url('/')}}">
+                        Tv Show 1
+                    </a>
+                    <a href="{{url('/')}}">
+                        Tv Show 2
+                    </a>
+                    <a href="{{url('/')}}">
+                        Tv Show 3
+                    </a>
+                </div>
             </div>
+
+            <div class="dropdown-menu">
+                <a href="{{url('/')}}">
+                    Feel Me
+                </a>
+
+                <div class="dropdown">
+                    <a href="{{url('/')}}">
+                        My piece of mind
+                    </a>
+                    <a href="{{url('/')}}">
+                        Spoken Word
+                    </a>
+                    <a href="{{url('/')}}">
+                        Moment of wisdom
+                    </a>
+                </div>
+            </div>
+
+            <a href="{{url('/')}}">
+                Blogs
+            </a>
+
+            <a href="{{url('/')}}">
+                Ask Abella
+            </a>
         </div>
-
-        <a href="{{url('/')}}">
-            Blogs
-        </a>
-
-        <a href="{{url('/')}}">
-            Ask Abella
-        </a>
     </div>
 </nav>

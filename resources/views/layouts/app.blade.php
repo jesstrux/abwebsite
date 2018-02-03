@@ -14,7 +14,7 @@
     <meta name="author" content="iPF Softwares ">
     <meta charset="UTF-8">
     <link href="{{asset('images/fav.png')}}" rel="shortcut icon" type="image">
-    <title>Abella Bateyunga</title>
+    <title>Abella Bateyunga | {{$page}}</title>
 
     <!-- Styles -->
     <link href="{{asset('css/reset.css')}}" rel="stylesheet">

@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $page = "Home";
+
         $inspirations = [
             [
                 "title" => "Forward afro fashion",
@@ -55,6 +57,42 @@ class HomeController extends Controller
 
         $blogs = ["The Art of cooking brings back the family.", "It’s our minds that are poor,never mind I am a dummy text"];
 
-        return view('index', compact('inspirations', 'shows', 'blogs'));
+        return view('index', compact('page','inspirations', 'shows', 'blogs'));
+    }
+
+    public function about()
+    {
+        $page = "About";
+        $lds = collect([
+            [
+                "title" => "EMPOW ER TO INSPIRE",
+                "subtitle" => "Hosted every tuesday and thursday, Nafsi show talks about..."
+            ],
+            [
+                "title" => "POSTIVITY",
+                "subtitle" => "Who is he, and who exactly is she is what we're trying to find..."
+            ],
+            [
+                "title" => "ADVERSITY",
+                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+            ],
+            [
+                "title" => "SMILE",
+                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+            ],
+            [
+                "title" => "SELF LOVE",
+                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+            ],
+            [
+                "title" => "PASSION AND GROWTH",
+                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+            ],
+            [
+                "title" => "PRODUCTIVITY",
+                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+            ]
+        ]);
+        return view('about', compact('page', 'lds'));
     }
 }
