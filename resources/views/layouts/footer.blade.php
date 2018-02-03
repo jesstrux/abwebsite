@@ -24,9 +24,13 @@
                 <div class="fle layout inline vertical center">
                     <h5>TV SHOWS</h5>
                     <ul>
-                        <li><a href="#">Abella's Life Class</a></li>
-                        <li><a href="#">Nafsi Show</a></li>
-                        <li><a href="#">His &amp; Hers</a></li>
+                        @foreach($shows as $show)
+                            <li>
+                                <a href="{{url('/show/'.$loop->index)}}">
+                                    {{$show}}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 

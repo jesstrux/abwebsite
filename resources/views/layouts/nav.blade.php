@@ -1,7 +1,3 @@
-<?php
-    $for_home = strtolower($page) == "home";
-    $shows = ["Nafsi Show", "His & Hers", "Abella's Life Class", "Uongozi 101"];
-?>
 <nav id="mainNav" class="for-lg {{$for_home ? 'for-home' : ''}}" style="position: relative;">
     <div class="center justified {{!$for_home ? 'layout section-wrapper' : ''}}">
         @if(!$for_home)

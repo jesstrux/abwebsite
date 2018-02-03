@@ -68,6 +68,10 @@
     @yield('styles')
 </head>
 <body style="padding-top: 0;">
+    <?php
+        $for_home = strtolower($page) == "home" || $for_home = strtolower($page) == "tv show";
+        $shows = ["Nafsi Show", "His & Hers", "Abella's Life Class", "Uongozi 101"];
+    ?>
     <div id="alertMessage" class="animated">
         <i class="fa fa-check-circle"></i>
         <span id="alertMessageText">
