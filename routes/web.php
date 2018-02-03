@@ -14,3 +14,4 @@
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/ask', 'HomeController@ask');
+Route::get('/show/{id}', 'HomeController@show');

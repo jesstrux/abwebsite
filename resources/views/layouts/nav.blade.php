@@ -1,5 +1,6 @@
 <?php
     $for_home = strtolower($page) == "home";
+    $shows = ["Nafsi Show", "His & Hers", "Abella's Life Class", "Uongozi 101"];
 ?>
 <nav id="mainNav" class="for-lg {{$for_home ? 'for-home' : ''}}" style="position: relative;">
     <div class="center justified {{!$for_home ? 'layout section-wrapper' : ''}}">
@@ -24,15 +25,11 @@
                 </a>
 
                 <div class="dropdown">
-                    <a href="{{url('/')}}">
-                        Tv Show 1
-                    </a>
-                    <a href="{{url('/')}}">
-                        Tv Show 2
-                    </a>
-                    <a href="{{url('/')}}">
-                        Tv Show 3
-                    </a>
+                    @foreach($shows as $show)
+                        <a href="{{url('/show/'.$loop->index)}}">
+                            {{$show}}
+                        </a>
+                    @endforeach
                 </div>
             </div>
 

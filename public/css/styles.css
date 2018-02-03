@@ -127,6 +127,20 @@ q:after{
     padding: 0 2em;
 }
 
+.grid{
+    display: grid;
+    grid-gap: 1.1em;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid > div{
+    min-width:0;
+}
+
+.grid > .image{
+    overflow: hidden;
+}
+
 #topNav{
     padding: 8px 0;
 }

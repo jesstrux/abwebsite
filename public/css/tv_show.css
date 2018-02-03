@@ -1,0 +1,103 @@
+body{
+    background: #000;
+}
+nav{
+    background-color: #fff;
+}
+/*SECTION BANNER*/
+#sectionBanner{
+    padding: 0;
+    overflow: hidden;
+    height: 220px;
+    background: #f5f5f5;
+    border-bottom: 4px solid #f00;
+}
+
+#sectionAbout{
+    padding: 4.5em 0;
+    color: #ddd;
+}
+
+#sectionAbout h2{
+    font-size: 1.15em;
+    display: inline-block;
+    padding-bottom: 0.7em;
+    margin-bottom: 1.3em;
+    color: #fff;
+    border-bottom: 1px solid #444;
+}
+
+#sectionAbout p{
+    font-size: 1em;
+    line-height: 1.4em;
+    margin-bottom: 2em;
+}
+
+.bubble{
+    display: inline-block;
+    padding: 0.7em 1em;
+    background: #f00;
+    color: #fff;
+    font-size: 0.75em;
+    border-radius: 0.5em;
+    margin-right: 0.6em;
+}
+
+.grid{
+    grid-gap: 0;
+}
+
+.grid .image{
+    position: relative;
+    height: 280px;
+    background: #333;
+    overflow: hidden;
+}
+
+.grid .image img{
+    width: 100%;
+}
+
+.grid .text{
+    padding: 1em 1.6em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1));
+    background-image: -o-linear-gradient(rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1));
+
+    height: 73px;
+    overflow: hidden;
+    justify-content: flex-start;
+}
+
+.grid > div:hover .text{
+    justify-content: flex-end;
+    height: 100%;
+    transition: all 0.1s ease-out;
+}
+
+.grid .text h3{
+    max-width: 90%;
+    font-size: 1em;
+    line-height: 1.3em;
+}
+
+.grid .text p{
+    text-transform: uppercase;
+    font-size: 0.6em;
+    padding: 0.8em 0;
+    color: #f00;
+    opacity: 0;
+}
+
+.grid > div:hover .text p{
+    opacity: 1;
+}
+
+.grid .text p span{
+    color: #ddd;
+}
