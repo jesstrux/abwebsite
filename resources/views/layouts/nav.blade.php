@@ -58,7 +58,7 @@
                 Blogs
             </a>
 
-            <a href="{{url('/')}}">
+            <a href="{{url('/ask')}}">
                 Ask Abella
             </a>
         </div>

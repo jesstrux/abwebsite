@@ -95,4 +95,27 @@ class HomeController extends Controller
         ]);
         return view('about', compact('page', 'lds'));
     }
+
+    public function ask()
+    {
+        $page = "Ask";
+        $categories = [
+            "Fashion",
+            "Love and Relationship",
+            "Finance",
+            "Business",
+            "Leadership",
+            "Family",
+            "About Abella"
+        ];
+
+        $answers = [
+            ["category" => "Family", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["category" => "Love and Relationships", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["category" => "Finance", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["category" => "Fashion", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["category" => "Leadership", "answer" => "Life isn't just earning your first salary or even putting your kids..."]
+        ];
+        return view('ask', compact('page', 'categories', 'answers'));
+    }
 }

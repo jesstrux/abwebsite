@@ -1,0 +1,147 @@
+body{
+    background: #f0f0f0;
+}
+
+nav{
+    background-color: #fff;
+}
+#sectionBanner{
+    background: #000;
+    margin-bottom: 3em;
+    background-size: cover;
+    background-position: top left;
+    background-image: url(../images/ask-image.png);
+}
+
+#sectionBanner #askForm{
+    margin: 2em 0;
+    width: 350px;
+    position: relative;
+    overflow: hidden;
+    padding: 2em 1.7em;
+}
+
+#sectionBanner #askForm:before{
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background: rgba(255, 255, 255, 0.6);
+    filter: blur(1px);
+}
+
+#askForm p{
+    padding: 0.5em 0;
+}
+
+#askForm label{
+    display: block;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+}
+
+#askForm input,
+#askForm textarea,
+#askForm select{
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    padding: 0.4em;
+    border: none;
+    outline-color: #aaa;
+}
+
+#askForm .btn{
+    height: auto;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    background: #000;
+}
+
+#sectionAnswers{
+    padding-bottom: 3em;
+}
+
+#sectionAnswers #text{
+    max-width: 900px;
+    margin: auto;
+}
+
+#sectionAnswers #text h2{
+    font-size: 2em;
+    margin-bottom: 0.8em;
+}
+
+#sectionAnswers #text p{
+    font-size: 0.9em;
+    line-height: 1.6em;
+    margin-bottom: 2em;
+}
+
+#sectionAnswers menu{
+    padding: 1em 0;
+}
+
+#sectionAnswers menu a{
+    padding: 0.2em 0;
+    margin: 0 1em;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    border-bottom: 2.5px solid transparent;
+}
+
+#sectionAnswers menu a.active{
+    border-bottom-color: #000;
+}
+
+#answers{
+    margin-top: 2em;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    grid-gap: 2em;
+}
+
+.answer{
+    min-width: 0;
+    background: #fff;
+}
+
+.answer .image{
+    background: #ddd;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.answer .scrim{
+    background: rgba(0,0,0,0.3);
+    color: #eee;
+    font-size: 3.5em;
+}
+
+
+.answer .text{
+    padding: 1.3em;
+}
+
+.answer .text h5{
+    font-size: 1em;
+    line-height: 1.4em;
+}
+
+.answer .text p{
+    font-size: 0.75em;
+    line-height: 1.4em;
+    text-transform: uppercase;
+    margin-bottom: 0.3em;
+}
+
+.answer .text p span{
+    font-size: 1em;
+    line-height: 1.4em;
+}
