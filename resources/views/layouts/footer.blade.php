@@ -6,16 +6,16 @@
                     <h5>LET'S GET IN TOUCH</h5>
                     <p>Email: info@abellabateyunga.com</p><br>
                     <div id="socialMediaLinks">
-                        <a href="#" class="social-icon facebook layout inline center-center">
+                        <a href="https://www.facebook.com/abellapaul.bateyunga" target="_blank" class="social-icon facebook layout inline center-center">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <a href="#" class="social-icon twitter layout inline center-center">
+                        <a href="https://twitter.com/abellabateyunga" target="_blank" class="social-icon twitter layout inline center-center">
                             <i class="fa fa-twitter"></i>
                         </a>
-                        <a href="#" class="social-icon instagram layout inline center-center">
+                        <a href="https://www.instagram.com/abellabateyunga/" target="_blank" class="social-icon instagram layout inline center-center">
                             <i class="fa fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-icon youtube layout inline center-center">
+                        <a href="https://www.youtube.com/channel/UCucKmNIv-Vll9W1Cf8y81jA" target="_blank" class="social-icon youtube layout inline center-center">
                             <i class="fa fa-youtube-play"></i>
                         </a>
                     </div>
@@ -26,7 +26,7 @@
                     <ul>
                         @foreach($shows as $show)
                             <li>
-                                <a href="{{url('/show/'.$loop->index)}}">
+                                <a href="{{url('/show/'.$loop->iteration)}}">
                                     {{$show}}
                                 </a>
                             </li>
@@ -37,9 +37,13 @@
                 <div  class="fle layout inline vertical center">
                     <h5>FEEL ME IN</h5>
                     <ul>
-                        <li><a href="#">My piece of mind</a></li>
-                        <li><a href="#">Spoken Word</a></li>
-                        <li><a href="#">Moment of wisdom</a></li>
+                        @foreach($feel_me as $show)
+                            <li>
+                                <a href="{{url('/feel_me/'.$loop->iteration)}}">
+                                    {{$show}}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

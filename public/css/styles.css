@@ -265,23 +265,27 @@ q:after{
 }
 
 #navLinks > a,
-#navLinks .dropdown-menu > a{
+#navLinks .dropdown-menu{
     text-transform: uppercase;
     position: relative;
     display: inline-block;
-    padding: 16px 20px;
     font-size: 0.8em;
     font-family: "PT Bold", sans-serif;
+    margin: 0 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
 }
 
-#navLinks > a.active{
+#navLinks a.active,
+#navLinks .dropdown-menu.active{
     border-left:none;
+    border-bottom: 1px solid #f00;
 }
 
 #navLinks .dropdown{
     position: absolute;
     left: 0;
-    top: 110%;
+    top: 100%;
     display: inline-block;
     font-size: 1.1em;
     font-family: "PT Bold", sans-serif;
@@ -293,14 +297,15 @@ q:after{
     padding: 8px 0;
 }
 
-#navLinks .dropdown-menu > a:not(:hover) + .dropdown:not(:hover){
+#navLinks .dropdown-menu:not(:hover) .dropdown:not(:hover){
     opacity: 0;
     pointer-events: none;
     transform: translateY(10%);
 }
 
-#navLinks .dropdown-menu > a{
-    padding: 0 28px 0 15px !important;
+#navLinks .dropdown-menu{
+    padding-left: 8px;
+    padding-right: 28px;
     background: url(../images/arrow_down.svg) right center/33px 7px no-repeat;
 }
 
@@ -308,9 +313,10 @@ q:after{
     display: block;
     position: relative;
     padding: 8px 12px;
-    font-size: 0.7em;
+    font-size: 0.9em;
+    line-height: 1.4em;
     font-family: PT, sans-serif;
-    min-width: 150px;
+    min-width: 180px;
 }
 
 #navLinks .dropdown a:hover{

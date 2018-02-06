@@ -16,6 +16,41 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
+    private function getEpisodes(){
+        return collect([
+            [
+                "yt_id" => "_pan5xdHb54",
+                "title" => "Jinsi ya kuthamini mambo yote na sio unayoyapenda tu...",
+                "date" => "Dec 5th"
+            ],
+            [
+                "yt_id" => "MgHlWr_13kY",
+                "title" => "Why always me you ask? And to that I say why not always you?",
+                "date" => "Dec 12th"
+            ],
+            [
+                "yt_id" => "vNcxEAe09kA",
+                "title" => "Wisest man that ever lived(My father), told me do you see the way th...",
+                "date" => "Dec 19th"
+            ],
+            [
+                "yt_id" => "rHStL6-XHYs",
+                "title" => "Life isn't just earning your first salary or even putting your kids through private...",
+                "date" => "Dec 26th"
+            ],
+            [
+                "yt_id" => "3HsLli1RmHI",
+                "title" => "If you're life's a collection of ups, expect a major downfall coming your way...",
+                "date" => "Jan 7th"
+            ],
+            [
+                "yt_id" => "3HsLli1RmHI",
+                "title" => "Starting over can be hard, but sometimes it just can't be helped, so how does one...",
+                "date" => "Jan 12th"
+            ]
+        ])->reverse();
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -65,32 +100,35 @@ class HomeController extends Controller
         $page = "About";
         $lds = collect([
             [
-                "title" => "EMPOW ER TO INSPIRE",
+                "title" => "BELEIVE IN GOD",
                 "subtitle" => "Hosted every tuesday and thursday, Nafsi show talks about..."
             ],
             [
-                "title" => "POSTIVITY",
-                "subtitle" => "Who is he, and who exactly is she is what we're trying to find..."
+                "title" => "SELF LOVE"
             ],
             [
-                "title" => "ADVERSITY",
-                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+                "title" => "AUTHENTICITY"
             ],
             [
-                "title" => "SMILE",
-                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+                "title" => "PASSION AND GROWTH"
             ],
             [
-                "title" => "SELF LOVE",
-                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+                "title" => "GIVING"
             ],
             [
-                "title" => "PASSION AND GROWTH",
-                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+                "title" => "LEADERSHIP"
             ],
             [
-                "title" => "PRODUCTIVITY",
-                "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
+                "title" => "SMILE AND FUN"
+            ],
+            [
+                "title" => "MENTORING AND NURTURING"
+            ],
+            [
+                "title" => "INNER BEAUTY"
+            ],
+            [
+                "title" => "POWER"
             ]
         ]);
         return view('about', compact('page', 'lds'));
@@ -110,16 +148,16 @@ class HomeController extends Controller
         ];
 
         $answers = [
-            ["category" => "Family", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
-            ["category" => "Love and Relationships", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
-            ["category" => "Finance", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
-            ["category" => "Fashion", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
-            ["category" => "Leadership", "answer" => "Life isn't just earning your first salary or even putting your kids..."]
+            ["yt_id" => "_pan5xdHb54","category" => "Family", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["yt_id" => "MgHlWr_13kY","category" => "Love and Relationships", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["yt_id" => "vNcxEAe09kA","category" => "Finance", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["yt_id" => "rHStL6-XHYs","category" => "Fashion", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
+            ["yt_id" => "j6KXXmE5Kbk","category" => "Leadership", "answer" => "Life isn't just earning your first salary or even putting your kids..."]
         ];
         return view('ask', compact('page', 'categories', 'answers'));
     }
 
-    public function show($id = 0)
+    public function show($id = 0, $episode_id = null)
     {
         $page = "Tv Show";
         $shows = [
@@ -128,35 +166,42 @@ class HomeController extends Controller
             ["title" => "Abella's Life Class", "tv" => "TV ONE", "day" => "Friday", "time" => "03:30 PM"],
             ["title" => "Uongozi 101", "tv" => "TBC", "day" => "Sunday", "time" => "09:30 PM"]
         ];
-        $show = $shows[$id];
+        $show = $shows[$id - 1];
+        $show['id'] = $id;
 
-        $episodes = collect([
-            [
-                "title" => "Jinsi ya kuthamini mambo yote na sio unayoyapenda tu...",
-                "date" => "Dec 5th"
-            ],
-            [
-                "title" => "Why always me you ask? And to that I say why not always you?",
-                "date" => "Dec 12th"
-            ],
-            [
-                "title" => "Wisest man that ever lived(My father), told me do you see the way th...",
-                "date" => "Dec 19th"
-            ],
-            [
-                "title" => "Life isn't just earning your first salary or even putting your kids through private...",
-                "date" => "Dec 26th"
-            ],
-            [
-                "title" => "If you're life's a collection of ups, expect a major downfall coming your way...",
-                "date" => "Jan 7th"
-            ],
-            [
-                "title" => "Starting over can be hard, but sometimes it just can't be helped, so how does one...",
-                "date" => "Jan 12th"
-            ],
-        ])->reverse();
+        $episodes = $this->getEpisodes();
+
+        if($episode_id != null){
+            $episode = $episodes[$episode_id%5];
+            $episode['id'] = $episode_id;
+            $other_episodes = $episodes;
+            return view('tv_show_single', compact('page', 'show', 'episode', 'other_episodes'));
+        }
 
         return view('tv_show', compact('page', 'show', 'episodes'));
+    }
+
+    public function feel_me($id = 0, $episode_id = null)
+    {
+        $page = "Feel Me";
+        $shows = [
+            ["title" => "My piece of mind", "tv" => "AZAM TV", "day" => "Monday", "time" => "07:30 PM"],
+            ["title" => "Spoken Word", "tv" => "CLOUDS TV", "day" => "Wednesday", "time" => "10:30 PM"],
+            ["title" => "Moment of wisdom", "tv" => "TV ONE", "day" => "Friday", "time" => "03:30 PM"]
+        ];
+        $show = $shows[$id - 1];
+        $show['id'] = $id;
+
+        $episodes = $this->getEpisodes();
+
+        if($episode_id != null){
+            $episode = $episodes[$episode_id%5];
+            $episode['id'] = $episode_id;
+            $other_episodes = $episodes;
+            return view('feel_me_single', compact('page', 'show', 'episode', 'other_episodes'));
+        }
+
+
+        return view('feel_me', compact('page', 'show', 'episodes'));
     }
 }

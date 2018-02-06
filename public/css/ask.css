@@ -10,7 +10,7 @@ nav{
     margin-bottom: 3em;
     background-size: cover;
     background-position: top left;
-    background-image: url(../images/ask-image.png);
+    background-image: url(../images/ask-banner.jpg);
 }
 
 #sectionBanner #askForm{
@@ -84,15 +84,18 @@ nav{
     padding: 1em 0;
 }
 
-#sectionAnswers menu a{
+#sectionAnswers menu button{
+    background-color: transparent;
+    border: none;
     padding: 0.2em 0;
     margin: 0 1em;
     font-size: 0.9em;
     text-transform: uppercase;
     border-bottom: 2.5px solid transparent;
+    outline: none;
 }
 
-#sectionAnswers menu a.active{
+#sectionAnswers menu button.active{
     border-bottom-color: #000;
 }
 
@@ -102,7 +105,7 @@ nav{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
-    grid-gap: 2em;
+    grid-gap: 1em;
 }
 
 .answer{
@@ -111,19 +114,11 @@ nav{
 }
 
 .answer .image{
-    background: #ddd;
+    background: #000;
     height: 200px;
     overflow: hidden;
     position: relative;
 }
-
-
-.answer .scrim{
-    background: rgba(0,0,0,0.3);
-    color: #eee;
-    font-size: 3.5em;
-}
-
 
 .answer .text{
     padding: 1.3em;
@@ -144,4 +139,8 @@ nav{
 .answer .text p span{
     font-size: 1em;
     line-height: 1.4em;
+}
+
+#answers:not(.all) .answer .text p{
+    display: none;
 }

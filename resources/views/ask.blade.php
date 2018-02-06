@@ -45,19 +45,17 @@
 			</div>
 
 			<menu class="layout center-justified">
-				<a href="#categoryAll" class="text-bold active">ALL</a>
+				<button onclick="changeCategory(event, 0)" class="text-bold cat-switcher active">ALL</button>
 				@foreach($categories as $category)
-					<a href="#category{{$category}}" class="text-bold">{{$category}}</a>
+					<button onclick="changeCategory(event, {{$loop->iteration}})" class="cat-switcher text-bold">{{$category}}</button>
 				@endforeach
 			</menu>
 
-			<div id="answers">
+			<div id="answers" class="all">
 				@foreach($answers as $answer)
-					<div class="answer">
+					<a href="{{url('answer/'.$answer['yt_id'])}}" class="answer">
 						<div class="image">
-							<div class="scrim layout center-center">
-								<i class="fa fa-youtube-play"></i>
-							</div>
+							<iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{$answer['yt_id']}}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						</div>
 						<div class="text">
 							<p class="text-bold">
@@ -67,9 +65,23 @@
 								Why do we make a big deal out of everything we do in the field of technology, why not just base it all on a whim?
 							</h5>
 						</div>
-					</div>
+					</a>
 				@endforeach
 			</div>
 		</div>
 	</div>
+
+	<script>
+		var answers = document.querySelector("#answers");
+		function changeCategory(e, cat) {
+			if(cat === 0){
+			    answers.classList.add('all');
+			}else{
+                answers.classList.remove('all');
+			}
+
+			document.querySelector('.cat-switcher.active').classList.remove('active');
+			e.target.classList.add('active');
+        }
+	</script>
 @endsection

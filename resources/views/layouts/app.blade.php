@@ -69,8 +69,10 @@
 </head>
 <body style="padding-top: 0;">
     <?php
-        $for_home = strtolower($page) == "home" || $for_home = strtolower($page) == "tv show";
+        $page_name = strtolower($page);
+        $for_home = $page_name == "home" || $page_name == "tv show" || $page_name == "feel me";
         $shows = ["Nafsi Show", "His & Hers", "Abella's Life Class", "Uongozi 101"];
+        $feel_me = ["My piece of mind", "Spoken Word", "Moment of wisdom"];
     ?>
     <div id="alertMessage" class="animated">
         <i class="fa fa-check-circle"></i>

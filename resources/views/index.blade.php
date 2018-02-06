@@ -55,7 +55,7 @@
 
 	<div id="cta" class="layout vertical center-center">
 		<h3>DO YOU HAVE ANY QUESTION?</h3>
-		<button class="btn">ASK ABELLA</button>
+		<a href="{{url('/ask')}}" class="btn">ASK ABELLA</a>
 	</div>
 
 	<div id="blogsRadio" class="video-section">

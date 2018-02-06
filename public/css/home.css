@@ -83,9 +83,10 @@
     min-height: 350px;
     position: relative;
     color: #fff;
+    background-position: center;
     -webkit-background-size: cover;
     background-size: cover;
-    background-image: url(../images/ask-image.png);
+    background-image: url(../images/ask-banner.jpg);
     background-attachment: fixed;
 }
 
@@ -106,7 +107,7 @@
     margin-bottom: 1em;
 }
 
-#cta button{
+#cta .btn{
     padding: 0.4em 2em;
     border-radius: 5px;
     height: auto;

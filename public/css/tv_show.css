@@ -19,7 +19,6 @@ nav{
 }
 
 #sectionAbout h2{
-    font-size: 1.15em;
     display: inline-block;
     padding-bottom: 0.7em;
     margin-bottom: 1.3em;
@@ -41,6 +40,15 @@ nav{
     font-size: 0.75em;
     border-radius: 0.5em;
     margin-right: 0.6em;
+}
+
+#episodesPointer{
+    color: #fff; margin-bottom: 2em; font-size: 1.12em
+}
+
+#episodesPointer i{
+    display: block;
+    padding: 0.3em 0;
 }
 
 .grid{
@@ -69,15 +77,8 @@ nav{
     background-image: -o-linear-gradient(rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1));
     background-image: linear-gradient(rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1));
 
-    height: 73px;
-    overflow: hidden;
-    justify-content: flex-start;
-}
-
-.grid > div:hover .text{
-    justify-content: flex-end;
     height: 100%;
-    transition: all 0.1s ease-out;
+    overflow: hidden;
 }
 
 .grid .text h3{
@@ -91,13 +92,19 @@ nav{
     font-size: 0.6em;
     padding: 0.8em 0;
     color: #f00;
-    opacity: 0;
-}
-
-.grid > div:hover .text p{
-    opacity: 1;
 }
 
 .grid .text p span{
     color: #ddd;
+}
+
+.episode .scrim{
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    font-size: 3.5em;
+    padding-bottom: 60px;
+}
+
+.episode:not(:hover) .scrim{
+    opacity: 0;
 }
