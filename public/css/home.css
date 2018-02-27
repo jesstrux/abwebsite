@@ -24,21 +24,23 @@
 }
 
 .video-section .grid{
-    display: grid;
-    grid-gap: 1.1em;
-    grid-template-columns: repeat(3, 1fr);
+    /*display: grid;*/
+    /*grid-gap: 1.1em;*/
+    /*grid-template-columns: repeat(3, 1fr);*/
 }
 
 .video-section .grid > div{
     min-width: 0
 }
 
-#blogsRadio .section-wrapper > div:first-child .grid{
-    grid-template-columns: repeat(2, 1fr);
+#blogsRadio .section-wrapper > div:first-child .grid > div{
+    width: calc(50% - 2em);
+    margin-top: 0;
 }
 
 #blogsRadio .section-wrapper > div:last-child{
-    grid-template-columns: repeat(2, 1fr);min-width: 30%;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 30%;
     margin-left: 1em;
 }
 
@@ -67,12 +69,12 @@
 }
 
 .video-section .image{
-    height: 300px;
+    height: 290px;
     margin-bottom: 1.1em;
     background: #f5f5f5;
     border-radius: 8px;
     overflow: hidden;
-    width: inherit;
+    width: 100%;
 }
 
 .video-section .image img{

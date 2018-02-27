@@ -52,7 +52,13 @@ nav{
 }
 
 .grid{
-    grid-gap: 0;
+    margin-left: 0;
+    width: 100vw;
+}
+
+.grid > *{
+    width: 33.33%;
+    margin: 0;
 }
 
 .grid .image{

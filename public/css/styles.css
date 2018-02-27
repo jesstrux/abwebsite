@@ -128,12 +128,21 @@ q:after{
 }
 
 .grid{
-    display: grid;
-    grid-gap: 1.1em;
-    grid-template-columns: repeat(3, 1fr);
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -1.1em;
+    width: calc(100% + 1.1em);
+    /*display: grid;*/
+    /*grid-gap: 1.1em;*/
+    /*grid-template-columns: repeat(3, 1fr);*/
 }
 
-.grid > div{
+.grid > *{
+    width: calc(33.33% - 1.1em);
+    margin: 0.55em;
     min-width:0;
 }
 
@@ -557,7 +566,15 @@ footer #subscribe h3{
     height: 60px;
     background: #f0f0f0;
     color: #000;
-    padding: 0 2em;
+    padding: 0 1em;
+}
+
+#appBar #menuBtn{
+    /*margin-right: 0.7em;*/
+}
+
+#appBar #mainLogo{
+    margin-right: 0.2em;
 }
 
 @media screen and (min-width: 681px){

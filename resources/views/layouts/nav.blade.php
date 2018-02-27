@@ -14,8 +14,8 @@
 
 <nav id="mobNav" class="for-mob">
     <div id="appBar" class="layout center">
-        <button>MENU</button>
-        <div class="layout center flex">
+        <button id="menuBtn">MENU</button>
+        <div class="layout center-center flex">
             <a id="mainLogo" href="{{url('/')}}">
                 <img src="{{asset('images/logo.png')}}" alt="" height="90%">
             </a>
