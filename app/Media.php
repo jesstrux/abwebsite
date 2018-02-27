@@ -10,7 +10,7 @@ use App\Episode;
 class Media extends BaseModel
 {
     protected $fillable = [
-      'name', 'media_category_id', 'air_time',
+      'title', 'media_category_id', 'air_time',
       'day', 'description', 'channel',
     ];
 

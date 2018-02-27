@@ -17,10 +17,9 @@ class CreateMediaTable extends Migration
             $table->increments('id');
             $table->string('uuid');
             $table->integer('media_category_id');
-            $table->string('name');
+            $table->string('title');
             $table->string('air_time');
             $table->string('day');
-            $table->string('title');
             $table->text('description')->nullable();
             $table->string('channel');
             $table->timestamps();
