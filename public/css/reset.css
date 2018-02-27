@@ -97,6 +97,11 @@ table {
 }
 
 @font-face {
+    font-family: "Italic";
+    src:url("../fonts/mont/Italic.ttf");
+}
+
+@font-face {
     font-family: "Black";
     src:url("../fonts/mont/Black.ttf");
 }

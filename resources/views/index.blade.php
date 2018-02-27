@@ -5,17 +5,7 @@
 @endsection
 
 @section('content')
-	<div id="sectionBanner" class="for-lg">
-		<div class="section-wrappe layout justified center" style="position: relative; height: inherit; padding-right: 3em;">
-			<img src="{{asset('images/heroimage.png')}}" alt="" height="100%">
-
-			<div class="text-center" style="max-width: 400px; text-align: center; line-height: 1.3em">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloremque excepturi mollitia odit optio voluptatibus.
-			</div>
-
-			<img src="{{asset('images/logo.png')}}" alt="" height="90%">
-		</div>
-	</div>
+	@include('layouts.banner')
 
 	<div class="video-section">
 		<div class="section-wrapper">
@@ -68,10 +58,10 @@
                         <?php $blog = $blogs[$i];?>
 						<div class="video">
 							<div class="image">
-								<img src="{{asset('images/blog'.($i+1).'.jpg')}}" alt="">
+								<img src="{{asset('images/blog'.($i+1).'.jpg')}}" alt="" style="width: 110%; height: auto;">
 							</div>
-							<h3>{{$blog}}</h3>
-							<a href="#">Read More</a>
+							<h3>{{$blog['title']}}</h3>
+							<a href="{{$blog['url']}}" target="_blank">Read More</a>
 						</div>
 					@endfor
 				</div>
@@ -80,7 +70,8 @@
 				<h2>RADIO SHOW</h2>
 
 				<div class="video" style="position: relative; height:375px">
-					<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/38128127&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
+					<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay"
+							src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/444246510&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=true&visual=true"></iframe>
 				</div>
 			</div>
 		</div>

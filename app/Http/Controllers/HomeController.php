@@ -90,8 +90,16 @@ class HomeController extends Controller
             ],
         ];
 
-        $blogs = ["The Art of cooking brings back the family.", "It’s our minds that are poor,never mind I am a dummy text"];
-
+        $blogs = [
+            [
+                "title" => "How I keep peaceful, productive thoughts as I take things one step at a time…",
+                "url" => "https://medium.com/@abella.bateyunga/how-i-keep-peaceful-productive-thoughts-as-i-take-things-one-step-at-a-time-ac3b5cc8a75f"
+            ],
+            [
+                "title" => "My 10 lessons on Leading young so far.",
+                "url" => "https://medium.com/@abella.bateyunga/my-10-lessons-on-leading-young-so-far-e1a447e0e90"
+            ]
+        ];
         return view('index', compact('page','inspirations', 'shows', 'blogs'));
     }
 
@@ -160,12 +168,8 @@ class HomeController extends Controller
     public function show($id = 0, $episode_id = null)
     {
         $page = "Tv Show";
-        $shows = [
-            ["title" => "Nafsi Show", "tv" => "AZAM TV", "day" => "Monday", "time" => "07:30 PM"],
-            ["title" => "His & Hers", "tv" => "CLOUDS TV", "day" => "Wednesday", "time" => "10:30 PM"],
-            ["title" => "Abella's Life Class", "tv" => "TV ONE", "day" => "Friday", "time" => "03:30 PM"],
-            ["title" => "Uongozi 101", "tv" => "TBC", "day" => "Sunday", "time" => "09:30 PM"]
-        ];
+        $shows = \App\Show::get_all();
+
         $show = $shows[$id - 1];
         $show['id'] = $id;
 

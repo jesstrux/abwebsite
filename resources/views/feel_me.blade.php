@@ -5,17 +5,7 @@
 @endsection
 
 @section('content')
-	<div id="sectionBanner" class="for-lg">
-		<div class="section-wrappe layout justified center" style="position: relative; height: inherit; padding-right: 3em;">
-			<img src="{{asset('images/heroimage.png')}}" alt="" height="100%">
-
-			<div class="text-center" style="max-width: 400px; text-align: center; line-height: 1.3em">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloremque excepturi mollitia odit optio voluptatibus.
-			</div>
-
-			<img src="{{asset('images/logo.png')}}" alt="" height="90%">
-		</div>
-	</div>
+	@include('layouts.banner')
 
 	<div id="sectionAbout">
 		<div class="section-wrapper">

@@ -45,7 +45,7 @@
 						@continue
 					@endif
 
-					<a href="{{url('/feel_me/'. $show['id'] . '/'.$loop->iteration)}}" class="episode layout">
+					<a href="{{url('/show/'. $show['id'] . '/'.$loop->iteration)}}" class="episode layout">
 						<div class="image">
 							<img src="{{asset('images/ld'.($loop->iteration+1).'.jpg')}}" alt="">
 						</div>
