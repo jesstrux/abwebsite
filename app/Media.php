@@ -2,25 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use App\BaseModel;
-use App\MediaCategory;
-use App\Episode;
+use Alsofronie\Uuid\UuidModelTrait;
+use Spatie\MediaLibrary\Media as SpatieMedia;
 
-class Media extends BaseModel
+class Media extends SpatieMedia
 {
-    protected $fillable = [
-      'title', 'media_category_id', 'air_time',
-      'day', 'description', 'channel',
-    ];
-
-    public function category()
-    {
-      return $this->belongsTo(MediaCategory::class);
-    }
-
-    public function episodes()
-    {
-      return $this->hasMany(Episode::class);
-    }
+    use UuidModelTrait;
 }

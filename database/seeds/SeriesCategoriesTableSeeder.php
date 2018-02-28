@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\MediaCategory;
+use App\SeriesCategory;
 
-class MediaCategoriesTableSeeder extends Seeder
+class SeriesCategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +12,11 @@ class MediaCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-      MediaCategory::create([
+      SeriesCategory::create([
         'name' => 'TV Shows',
       ]);
 
-      MediaCategory::create([
+      SeriesCategory::create([
         'name' => 'Feel Me',
       ]);
     }

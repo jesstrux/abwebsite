@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMediaCategoriesTable extends Migration
+class CreateSeriesCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateMediaCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('media_categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('uuid');
-            $table->string('name');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('series_categories', function (Blueprint $table) {
+          $table->uuid('id');
+          $table->string('name');
+          $table->timestamps();
+          $table->softDeletes();
+          $table->primary('id');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateMediaCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media_categories');
+        Schema::dropIfExists('series_categories');
     }
 }

@@ -14,13 +14,13 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('uuid');
-            $table->integer('follower_id')->unsigned();
-            $table->integer('question_category_id')->unsigned();
+            $table->uuid('id');
+            $table->uuid('follower_id');
+            $table->uuid('question_category_id');
             $table->text('question');
             $table->timestamps();
             $table->softDeletes();
+            $table->primary('id');
             $table->foreign('follower_id')
                   ->references('id')
                   ->on('followers');

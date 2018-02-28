@@ -4,29 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Alsofronie\Uuid\UuidModelTrait;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
-class BaseModel extends Model
+class BaseModel extends Model implements HasMedia
 {
-    use SoftDeletes;
-
-    /**
-     *  Setup model event hooks
-     */
-    public static function boot()
-    {
-        parent::boot();
-        self::creating(function ($model) {
-            $model->uuid = (string) Uuid::generate(4);
-        });
-    }
-
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'uuid';
-    }
+    use SoftDeletes, UuidModelTrait, HasMediaTrait;
 }

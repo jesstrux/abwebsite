@@ -14,11 +14,11 @@ class CreateAnswersTable extends Migration
     public function up()
     {
         Schema::create('answers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('uuid');
+            $table->uuid('id');
             $table->string('youtube_url');
             $table->timestamps();
             $table->softDeletes();
+            $table->primary('id');
         });
     }
 

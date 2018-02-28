@@ -4,15 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\BaseModel;
-use App\Series;
 use App\SeriesCategory;
+use App\Episode;
 
-class Episode extends BaseModel
+class Series extends BaseModel
 {
     protected $fillable = [
-      'image_url', 'youtube_url', 'title',
-      'description', 'date_aired', 'series_id',
-      'series_category_id',
+      'title', 'series_category_id', 'air_time',
+      'day', 'description', 'channel',
     ];
 
     public function category()
@@ -20,8 +19,8 @@ class Episode extends BaseModel
       return $this->belongsTo(SeriesCategory::class);
     }
 
-    public function series()
+    public function episodes()
     {
-      return $this->belongsTo(Series::class);
+      return $this->hasMany(Episode::class);
     }
 }
