@@ -24,7 +24,7 @@ class CreateQuestionsTable extends Migration
             $table->foreign('follower_id')
                   ->references('id')
                   ->on('followers');
-            $table->foreign('question_id')
+            $table->foreign('question_category_id')
                   ->references('id')
                   ->on('question_categories');
         });
