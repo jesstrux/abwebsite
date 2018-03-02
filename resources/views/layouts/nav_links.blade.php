@@ -7,7 +7,7 @@
 </a>
 
 <div class="dropdown-menu {{strtolower($page) == "tv show" ? 'active' : ''}}">
-    TV Shows
+    <a  href="{{url('/shows/')}}">TV Shows</a>
 
     <div class="dropdown">
         @foreach($shows as $show)
@@ -19,7 +19,7 @@
 </div>
 
 <div class="dropdown-menu {{strtolower($page) == "feel me" ? 'active' : ''}}">
-    Feel Me
+    <a  href="{{url('/feel_me/')}}">Feel Me</a>
 
     <div class="dropdown">
         @foreach($feel_me as $show)

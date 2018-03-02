@@ -558,8 +558,14 @@ footer #subscribe h3{
     width: 100vw;
     top: 0;
     left: 0;
-    background: #333;
+    pointer-events: none;
+    background-color: transparent;
     z-index: 9;
+}
+
+#mobNav.open{
+    background: #f0f0f0;
+    pointer-events: auto;
 }
 
 #appBar{
@@ -567,14 +573,74 @@ footer #subscribe h3{
     background: #f0f0f0;
     color: #000;
     padding: 0 1em;
+    pointer-events: auto;
 }
 
 #appBar #menuBtn{
-    /*margin-right: 0.7em;*/
+    background: transparent;
+    padding: 0.1em 0.3em;
+    line-height: 1.1em;
+    border: 2px solid #333;
+    outline: 0;
+}
+
+#menuBtn #menuBars,
+#menuBtn #backArrow{
+    transform-origin: center;
+    transition: all 0.15s ease-out;
+}
+
+#mobNav:not(.open) #menuBtn #backArrow,
+#mobNav.open #menuBtn #menuBars{
+    opacity: 0;
+    transition: none;
+}
+
+#mobNav.open #menuBtn #menuBars{
+    transform: rotate(-180deg);
+}
+
+#mobNav:not(.open) #menuBtn #backArrow{
+    transform: rotate(180deg);
+}
+
+#menuTitle{
+    margin-right: 1em;
+    font-size: 1.2em;
 }
 
 #appBar #mainLogo{
     margin-right: 0.2em;
+}
+
+#mobNav #theNav{
+    background: #f0f0f0;
+    border-top: 1px solid #ddd;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 0;
+    pointer-events: auto;
+}
+
+#mobNav:not(.open) #theNav{
+    opacity: 0;
+    pointer-events: none;
+}
+
+#mobNav #theNav a,
+#mobNav #theNav .dropdown-menu{
+    text-align: center;
+    padding: 1.3em 0;
+}
+
+#mobNav #theNav a{
+    font-size: 1.5em;
+}
+
+#mobNav .dropdown{
+    display: none;
 }
 
 @media screen and (min-width: 681px){
