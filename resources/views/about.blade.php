@@ -37,7 +37,7 @@
 
 	<section id="lifeDriveImage">
 		<div class="section-wrapper layout center end-justified">
-			Abella's 10 Life Drive.
+			<h3>Abella's 10 <span class="for-mob"><br></span> Life Drive.</h3>
 		</div>
 	</section>
 

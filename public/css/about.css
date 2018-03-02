@@ -110,3 +110,83 @@
     font-size: 1em;
     line-height: 1.5em;
 }
+
+@media screen and (max-width: 680px){
+    #sectionBanner{
+        margin-top: 60px;
+    }
+
+    #sectionBanner .section-wrapper {
+
+    }
+
+    #sectionBanner > .layout{
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    #sectionBanner q {
+        position: relative;
+        text-align: right;
+        /* max-width: 30%; */
+        font-size: 2em;
+        line-height: 1.25em;
+        color: #fff;
+        padding-right: 0.25em;
+        padding-bottom: 1em;
+    }
+
+    #sectionBanner q:before {
+        position: absolute;
+        left: -0.3em;
+        top: 0.1em;
+    }
+
+    #sectionBanner q:after {
+        display: none;
+    }
+
+    #sectionAbout .section-wrapper{
+        padding: 0 1.7em;
+    }
+
+    #lifeDriveImage{
+        text-align: right;
+        background-size:180vw;
+        background-position: 20%;
+    }
+
+    #lifeDriveImage .section-wrapper h3{
+        max-width: 300px;
+        font-size: 0.8em;
+        line-height: 1.2em;
+    }
+
+    #lifeDriveImage .section-wrapper{
+        height: 250px;
+        padding: 0 0.5em;
+    }
+
+    #lifeDriveQuote {
+        padding: 3em 1.7em 0 1.7em;
+    }
+
+    #lifeDriveQuote q{
+        font-size: 1.25em;
+    }
+
+    .a-drive{
+        flex-direction: column;
+        margin-bottom: 2.7em;
+    }
+
+    .a-drive .image{
+        width: 100%;
+        margin-bottom: 2.1em;
+    }
+
+    .a-drive .image img{
+        width: 100%;
+        height: auto;
+    }
+}

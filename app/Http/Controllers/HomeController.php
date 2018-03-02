@@ -165,8 +165,11 @@ class HomeController extends Controller
         return view('ask', compact('page', 'categories', 'answers'));
     }
 
-    public function show($id = 0, $episode_id = null)
+    public function show($id = null, $episode_id = null)
     {
+        if($id == null)
+            $id = 0;
+
         $page = "Tv Show";
         $shows = \App\Show::get_all();
 
@@ -185,8 +188,11 @@ class HomeController extends Controller
         return view('tv_show', compact('page', 'show', 'episodes'));
     }
 
-    public function feel_me($id = 0, $episode_id = null)
+    public function feel_me($id = null, $episode_id = null)
     {
+        if($id == null)
+            $id = 0;
+
         $page = "Feel Me";
         $shows = [
             ["title" => "My piece of mind", "tv" => "AZAM TV", "day" => "Monday", "time" => "07:30 PM"],
