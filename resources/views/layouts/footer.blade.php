@@ -1,4 +1,4 @@
-<footer class="for-lg">
+<footer>
     <div class="section-wrapper">
         <div class="footer-wrapper">
             <div id="footerNav" class="layout justified">
@@ -51,7 +51,7 @@
 
         <div id="copyright" class="layout center-center">
             <span>
-                Copyright &copy; All rights reserved Abella Bateyunga {{date('Y')}} &nbsp; | &nbsp;&nbsp;
+                Copyright &copy; <span class="for-lg">All rights reserved</span> Abella Bateyunga {{date('Y')}}<span class="for-lg"> &nbsp; | &nbsp;&nbsp;</span>
             </span>
             <span>
                 Web Strategies by

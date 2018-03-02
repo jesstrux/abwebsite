@@ -447,7 +447,7 @@ footer{
 footer #copyright{
     background-color: transparent;
     /*max-width: 800px;*/
-    font-size: 12px;
+    font-size: 0.8em;
     color: #aaa;
     border-top: 1px solid #333;
     font-family: "FiraSans", sans-serif;
@@ -509,7 +509,7 @@ footer #subscribe h3{
 #footerNav a:not(.social-icon){
     font-family: "FiraSans", sans-serif;
     display: inline-block;
-    font-size: 15px;
+    font-size: 1em;
     margin-bottom: 8px;
 }
 
@@ -652,5 +652,52 @@ footer #subscribe h3{
 @media screen and (max-width: 680px){
     .for-lg{
         display: none !important;
+    }
+
+    .section-wrapper {
+        padding: 0 1em;
+    }
+
+    .grid{
+        margin: 0;
+        width: 100%;
+    }
+
+    .grid > * {
+        width: 100%;
+        margin: 0.55em 0;
+        min-width: 0;
+    }
+
+    .video p{
+        color: #000;
+    }
+
+    #footerNav{
+        flex-direction: column;
+    }
+
+    #footerNav > .flex,
+    #footerNav > .layout{
+        max-width: 100% !important;
+        text-align: center;
+        align-items: center;
+        margin-bottom: 3em;
+    }
+
+    #footerNav a:not(.social-icon) {
+        font-size: 1.2em;
+        padding: 0.2em 0;
+    }
+
+    footer #copyright {
+        border-top: 1px solid #999;
+        font-size: 1.1em;
+        padding: 1.5em 1em;
+        flex-direction: column;
+    }
+
+    footer #copyright > span:first-child{
+        margin-bottom: 0.5em;
     }
 }

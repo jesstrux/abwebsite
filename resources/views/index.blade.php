@@ -7,7 +7,7 @@
 @section('content')
 	@include('layouts.banner')
 
-	<div class="video-section">
+	<div id="beInspired" class="video-section">
 		<div class="section-wrapper">
 			<h2>BE INSPIRED</h2>
 			<div class="grid">
