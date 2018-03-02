@@ -632,7 +632,7 @@ footer #subscribe h3{
 #mobNav #theNav a,
 #mobNav #theNav .dropdown-menu{
     text-align: center;
-    padding: 1.3em 0;
+    padding: 1.2em 0;
 }
 
 #mobNav #theNav a{
@@ -691,6 +691,7 @@ footer #subscribe h3{
     }
 
     footer #copyright {
+        margin-top: -1em;
         border-top: 1px solid #999;
         font-size: 1.1em;
         padding: 1.5em 1em;
