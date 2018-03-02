@@ -9,6 +9,10 @@ use App\Follower;
 
 class Question extends BaseModel
 {
+    public static $folder = 'cms.questions';
+
+    public static $forms = 'cms.questions.forms';
+
     protected $fillable = [
       'question_category_id', 'follower_id', 'question',
     ];

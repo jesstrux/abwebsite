@@ -9,6 +9,10 @@ use App\Answer;
 
 class QuestionCategory extends BaseModel
 {
+    public static $folder = 'cms.question_categories';
+
+    public static $forms = 'cms.question_categories.forms';
+
     protected $fillable = [
       'name',
     ];

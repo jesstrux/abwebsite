@@ -8,6 +8,10 @@ use App\QuestionCategory;
 
 class Answer extends BaseModel
 {
+    public static $folder = 'cms.answers';
+
+    public static $forms = 'cms.answers.forms';
+
     protected $fillable = ['youtube_url',];
 
     public function categories()

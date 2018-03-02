@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -59,7 +60,6 @@ class HomeController extends Controller
     public function index()
     {
         $page = "Home";
-
         $inspirations = [
             [
                 "title" => "Forward afro fashion",
@@ -74,7 +74,6 @@ class HomeController extends Controller
                 "subtitle" => "Customer's value a person who respects their workspace, here's..."
             ],
         ];
-
         $shows = [
             [
                 "title" => "Nafsi Show",
@@ -89,7 +88,6 @@ class HomeController extends Controller
                 "subtitle" => "Life isn't just earning your first salary or even putting your kids..."
             ],
         ];
-
         $blogs = [
             [
                 "title" => "How I keep peaceful, productive thoughts as I take things one step at a time…",
@@ -154,7 +152,6 @@ class HomeController extends Controller
             "Family",
             "About Abella"
         ];
-
         $answers = [
             ["yt_id" => "_pan5xdHb54","category" => "Family", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
             ["yt_id" => "MgHlWr_13kY","category" => "Love and Relationships", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
@@ -169,19 +166,15 @@ class HomeController extends Controller
     {
         $page = "Tv Show";
         $shows = \App\Show::get_all();
-
         $show = $shows[$id - 1];
         $show['id'] = $id;
-
         $episodes = $this->getEpisodes();
-
         if($episode_id != null){
             $episode = $episodes[$episode_id%5];
             $episode['id'] = $episode_id;
             $other_episodes = $episodes;
             return view('tv_show_single', compact('page', 'show', 'episode', 'other_episodes'));
         }
-
         return view('tv_show', compact('page', 'show', 'episodes'));
     }
 
@@ -195,17 +188,13 @@ class HomeController extends Controller
         ];
         $show = $shows[$id - 1];
         $show['id'] = $id;
-
         $episodes = $this->getEpisodes();
-
         if($episode_id != null){
             $episode = $episodes[$episode_id%5];
             $episode['id'] = $episode_id;
             $other_episodes = $episodes;
             return view('feel_me_single', compact('page', 'show', 'episode', 'other_episodes'));
         }
-
-
         return view('feel_me', compact('page', 'show', 'episodes'));
     }
 }

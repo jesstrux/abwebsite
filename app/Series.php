@@ -9,6 +9,12 @@ use App\Episode;
 
 class Series extends BaseModel
 {
+    public static $folder = 'cms.series';
+
+    public static $forms = 'cms.series.forms';
+
+    protected $cascadeDeletes = ['episodes'];
+
     protected $fillable = [
       'title', 'series_category_id', 'air_time',
       'day', 'description', 'channel',
