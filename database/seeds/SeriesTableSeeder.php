@@ -25,15 +25,32 @@ class SeriesTableSeeder extends Seeder
       ];
 
       collect($titles)->each(function ($title)
-                             use ($series_category_ids, $channels) {
+                             use ($series_category_ids, $channels, $faker) {
         Series::create([
           'title' => $title,
-          'series_category_id' => array_random($series_category_ids),
+          'series_category_id' => $series_category_ids[0],
           'day' => $faker->dayOfWeek('now'),
           'air_time' => $faker->time('H:i:s', 'now'),
           'description' => $faker->paragraph(3, true),
           'channel' => array_random($channels),
         ]);
       });
+
+      $titles = [
+        'My Peace of Mind', 'Spoken Word', 'Moment of Wisdom',
+      ];
+
+      collect($titles)->each(function ($title)
+                             use ($series_category_ids, $channels, $faker) {
+        Series::create([
+          'title' => $title,
+          'series_category_id' => $series_category_ids[1],
+          'day' => $faker->dayOfWeek('now'),
+          'air_time' => $faker->time('H:i:s', 'now'),
+          'description' => $faker->paragraph(3, true),
+          'channel' => array_random($channels),
+        ]);
+      });
+
     }
 }

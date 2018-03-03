@@ -18,7 +18,6 @@ class FollowersTableSeeder extends Seeder
         Follower::create([
           'name' => $faker->name,
           'email' => $faker->freeEmail,
-          'password' => bcrypt(str_random(32)),
         ]);
       }
     }

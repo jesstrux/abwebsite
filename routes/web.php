@@ -17,11 +17,18 @@ Route::get('/ask', 'HomeController@ask');
 Route::get('/show/{id}/{episode?}', 'HomeController@show');
 Route::get('/feel_me/{id}/{episode?}', 'HomeController@feel_me');
 
-Route::resources([
-    'series_categories' => 'SeriesCategoryController',
-    'series' => 'SeriesController',
-    'episodes' => 'EpisodeController',
-    'question_categories' => 'QuestionCategoryController',
-    'questions' => 'QuestionController',
-    'answers' => 'AnswerController',
-]);
+Auth::routes();
+
+Route::middleware('auth')->group(function() {
+
+  Route::get('/admin', 'CmsController@index')->name('admin.index');
+
+  Route::resources([
+      'series_categories' => 'SeriesCategoryController',
+      'series' => 'SeriesController',
+      'episodes' => 'EpisodeController',
+      'question_categories' => 'QuestionCategoryController',
+      'questions' => 'QuestionController',
+      'answers' => 'AnswerController',
+  ]);
+});

@@ -94,7 +94,7 @@ class EpisodeController extends Controller
          'series_category_id' => 'required|integer',
          'series_id' => 'required|integer',
          'date_aired' => 'required',
-         'youtube_url' => 'required',
+         'youtube_id' => 'required|string', //The Video-ID
        ];
      }
 

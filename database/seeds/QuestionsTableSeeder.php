@@ -20,7 +20,8 @@ class QuestionsTableSeeder extends Seeder
         $faker = Faker\Factory::create();
 
         collect($question_category_ids)
-              ->each(function ($id) use($follower_ids) {
+              ->each(function ($id)
+                use($follower_ids, $question_category_ids, $faker) {
                 Question::create([
                   'question_category_id' => array_random($question_category_ids),
                   'follower_id' => array_random($follower_ids),

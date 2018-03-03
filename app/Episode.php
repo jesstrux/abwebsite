@@ -13,7 +13,7 @@ class Episode extends BaseModel
     public static $forms = 'cms.episodes.forms';
 
     protected $fillable = [
-      'youtube_url', 'title', 'description',
+      'youtube_id', 'title', 'description',
       'date_aired', 'series_id', 'series_category_id',
     ];
 

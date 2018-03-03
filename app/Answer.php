@@ -12,7 +12,9 @@ class Answer extends BaseModel
 
     public static $forms = 'cms.answers.forms';
 
-    protected $fillable = ['youtube_url',];
+    protected $fillable = [
+      'youtube_id',
+    ];
 
     public function categories()
     {

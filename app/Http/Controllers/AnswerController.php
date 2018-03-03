@@ -55,7 +55,7 @@ class AnswerController extends Controller
         $answer = null;
         try
         {
-          $answer = Answer::create($request->only('youtube_url'));
+          $answer = Answer::create($request->only('youtube_id'));
           $answer->categories()->sync($request->question_category_id);
           DB::commit();
         }
@@ -81,7 +81,7 @@ class AnswerController extends Controller
      {
        return [
          'question_category_id' => 'required|integer',
-         'youtube_url' => 'required|string', //The Video-ID
+         'youtube_id' => 'required|string', //The Video-ID
        ];
      }
 
@@ -129,7 +129,7 @@ class AnswerController extends Controller
     public function update(Request $request, Answer $answer)
     {
       $this->validate($request, $this->rules($answer->id));
-      $answer->update($request->only('youtube_url');
+      $answer->update($request->only('youtube_id');
       flash('Answer Updated Successfully')->success();
       return redirect($this->redirectTo);
     }
