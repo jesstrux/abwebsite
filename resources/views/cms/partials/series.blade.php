@@ -2,7 +2,7 @@
 
     <a href="#">
 
-        <i class="fa fa-clipboard-list"></i>
+        <i class="fa fa-video"></i>
 
         <span class="nav-label">
 
