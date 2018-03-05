@@ -54,7 +54,7 @@
       --}}
 
         {!!
-            Form::select('series_category_id[]', $categories, $selectedCategories, [
+            Form::select('series_category_id', $categories, $selectedCategory, [
 
                 'id' => 'categorySelector',
 
@@ -71,12 +71,12 @@
             ])
         !!}
 
-        @if($errors->any() && $errors->has('series_category_id*'))
+        @if($errors->any() && $errors->has('series_category_id'))
 
             {!!
 
                 $errors->first(
-                    'series_category_id*',
+                    'series_category_id',
 
                     '<p class="help-block">:message</p>'
                 )
@@ -200,7 +200,7 @@
         $('#air_time').timepicker({
             template: false,
             showInputs: false,
-            minuteStep: 5
+            minuteStep: 1
         });
     </script>
 

@@ -30,7 +30,7 @@ class SeriesTableSeeder extends Seeder
           'title' => $title,
           'series_category_id' => $series_category_ids[0],
           'day' => $faker->dayOfWeek('now'),
-          'air_time' => $faker->time('H:i:s', 'now'),
+          'air_time' => $faker->time('H:i', 'now'),
           'description' => $faker->paragraph(3, true),
           'channel' => array_random($channels),
         ]);

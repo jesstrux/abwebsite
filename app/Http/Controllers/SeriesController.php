@@ -58,9 +58,11 @@ class SeriesController extends Controller
     {
         $categories = SeriesCategory::pluck('name', 'id');
         $days = $this->getWeekDays();
+        $selectedDay = null;
         $selectedCategory = null;
         return view($this->forms . '.create',
-                            compact('categories', 'days', 'selectedCategory'));
+                            compact('categories', 'days', 'selectedCategory',
+                                    'selectedDay'));
     }
 
     /**
@@ -133,10 +135,13 @@ class SeriesController extends Controller
      */
     public function edit(Series $series)
     {
+        $categories = SeriesCategory::pluck('name', 'id');
         $days = $this->getWeekDays();
+        $selectedDay = $series->day;
         $selectedCategory = $series->category()->first();
         return view($this->forms . '.edit',
-            compact('series', 'days', 'selectedCategory'));
+            compact('series', 'days', 'selectedCategory',
+                    'categories', 'selectedDay'));
     }
 
     /**
