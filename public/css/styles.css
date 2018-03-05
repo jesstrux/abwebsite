@@ -605,12 +605,15 @@ footer #subscribe h3{
 }
 
 #menuTitle{
-    margin-right: 1em;
     font-size: 1.2em;
 }
 
 #appBar #mainLogo{
-    margin-right: 0.2em;
+    margin-right: 0;
+}
+
+#appBar #mainLogo img{
+    height: 45px;
 }
 
 #mobNav #theNav{
@@ -675,13 +678,14 @@ footer #subscribe h3{
 
     #footerNav{
         flex-direction: column;
+        padding: 0 1.2em;
     }
 
     #footerNav > .flex,
     #footerNav > .layout{
         max-width: 100% !important;
-        text-align: center;
-        align-items: center;
+        /*text-align: center;*/
+        /*align-items: center;*/
         margin-bottom: 3em;
     }
 

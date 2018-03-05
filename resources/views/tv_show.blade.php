@@ -7,6 +7,10 @@
 @section('content')
 	@include('layouts.banner')
 
+	<div id="showBanner" class="for-mob layout center-center">
+		{{strtoupper($show['title'])}}
+	</div>
+
 	<div id="sectionAbout">
 		<div class="section-wrapper">
 			<h2 class="text-bold">ABOUT {{strtoupper($show['title'])}} TV SHOW</h2>
@@ -30,19 +34,26 @@
 	</div>
 
 	<div class="grid">
-		@foreach($episodes as $episode)
-			<a href="{{url('/show/'. $show['id'] . '/'.$loop->iteration)}}" class="episode">
-				<div class="image">
-					<img src="{{asset('images/ld'.($loop->iteration+1).'.jpg')}}" alt="">
-					<div class="scrim layout center-center">
-						<i class="fa fa-youtube-play"></i>
+
+		<p style="color: #fff">{{count($episodes)}}</p>
+
+		@if(count($episodes) == 0)
+			<p>Episodes for {{$show['title]}} coming soon. Stay alert.</p>
+		@else
+			@foreach($episodes as $episode)
+				<a href="{{url('/show/'. $show['id'] . '/'.$loop->iteration)}}" class="episode">
+					<div class="image">
+						<img src="https://i.ytimg.com/vi/{{$episode['yt_id']}}/maxresdefault.jpg" alt="">
+						<div class="scrim layout center-center">
+							<i class="fa fa-youtube-play"></i>
+						</div>
 					</div>
-				</div>
-				<div class="text layout vertical end-justified">
-					<h3>{{$episode['title']}}</h3>
-					<p class="text-bold">Aired on :&nbsp;<span>{{$episode['date']}}</span></p>
-				</div>
-			</a>
-		@endforeach
+					<div class="text layout vertical end-justified">
+						<h3>{{$episode['title']}}</h3>
+						<p class="text-bold">Aired on :&nbsp;<span>{{$episode['date']}}</span></p>
+					</div>
+				</a>
+			@endforeach
+		@endif
 	</div>
 @endsection

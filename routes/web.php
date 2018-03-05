@@ -15,8 +15,8 @@ Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/ask', 'HomeController@ask');
 
+Route::get('/shows/', 'HomeController@show');
 Route::get('/show/{id}/{episode?}', 'HomeController@show');
-Route::get('/show/{id?}/{episode?}', 'HomeController@show');
 
-Route::get('/feel_me/{id?}/{episode?}', 'HomeController@feel_me');
+Route::get('/feel_me/', 'HomeController@feel_me');
 Route::get('/feel_me/{id}/{episode?}', 'HomeController@feel_me');

@@ -102,10 +102,6 @@ nav{
 #answers{
     margin-top: 2em;
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-between;
-    grid-gap: 1em;
 }
 
 .answer{
@@ -143,4 +139,109 @@ nav{
 
 #answers:not(.all) .answer .text p{
     display: none;
+}
+
+#catLabel{
+    font-size: 1.1em;
+}
+
+#catPicker{
+    font-size: 1em;
+    padding: 0.1em 0em;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+#askBtn{
+    position: relative;
+    font-size: 1.1em;
+    padding: 1.1em 1em;
+    background: transparent;
+    border: none;
+    width: 100%;
+    color: #fff;
+    margin-top: -0.6em;
+    margin-bottom: 0.4em;
+}
+
+#askBtn:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: all 0.25s ease-out;
+}
+
+#askBtn.hide{
+    color: transparent;
+    transition: all 0.15s ease-out;
+}
+
+#askBtn.hide:before{
+    /*width: 30%;*/
+    /*left: 70%;*/
+    left: calc(100% - 64px);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+#askFab{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: none;
+    background: #f00;
+    z-index: 1;
+    -webkit-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+    -moz-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+    box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+
+    transition: opacity 0.25s ease-out;
+    transition-delay: 0.15s;
+}
+
+#askFab.hide{
+    opacity: 0;
+    transform: translate3d(-405%, 0, 0);
+    transition: all 0.25s ease-out;
+    transition-delay: 0s;
+}
+
+#askFab svg{
+    fill: #fff
+}
+
+@media screen and (max-width: 680px){
+    body{
+        padding-top: 60px !important;
+    }
+
+    #sectionAnswers #text h2{
+        font-size: 1.7em;
+        margin-bottom: 0.8em;
+    }
+
+    #sectionAnswers{
+        position: relative;
+        padding-bottom: 0.5em;
+    }
+
+    #sectionBanner #askForm{
+        display: none;
+    }
+
+    .grid > *{
+        width: 100% !important;
+        margin: 0;
+        margin-bottom: 1.5em;
+    }
 }

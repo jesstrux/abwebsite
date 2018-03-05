@@ -59,6 +59,7 @@ class HomeController extends Controller
     public function index()
     {
         $page = "Home";
+        $page_title = "Abella Bateyunga";
 
         $inspirations = [
             [
@@ -100,12 +101,14 @@ class HomeController extends Controller
                 "url" => "https://medium.com/@abella.bateyunga/my-10-lessons-on-leading-young-so-far-e1a447e0e90"
             ]
         ];
-        return view('index', compact('page','inspirations', 'shows', 'blogs'));
+        return view('index', compact('page', 'page_title', 'inspirations', 'shows', 'blogs'));
     }
 
     public function about()
     {
         $page = "About";
+        $page_title = "About Me";
+
         $lds = collect([
             [
                 "title" => "BELEIVE IN GOD",
@@ -139,12 +142,14 @@ class HomeController extends Controller
                 "title" => "POWER"
             ]
         ]);
-        return view('about', compact('page', 'lds'));
+        return view('about', compact('page', 'page_title', 'lds'));
     }
 
     public function ask()
     {
         $page = "Ask";
+        $page_title = "Ask Abella";
+
         $categories = [
             "Fashion",
             "Love and Relationship",
@@ -162,13 +167,13 @@ class HomeController extends Controller
             ["yt_id" => "rHStL6-XHYs","category" => "Fashion", "answer" => "Life isn't just earning your first salary or even putting your kids..."],
             ["yt_id" => "j6KXXmE5Kbk","category" => "Leadership", "answer" => "Life isn't just earning your first salary or even putting your kids..."]
         ];
-        return view('ask', compact('page', 'categories', 'answers'));
+        return view('ask', compact('page', 'page_title', 'categories', 'answers'));
     }
 
     public function show($id = null, $episode_id = null)
     {
         if($id == null)
-            $id = 0;
+            $id = 1;
 
         $page = "Tv Show";
         $shows = \App\Show::get_all();
@@ -177,21 +182,25 @@ class HomeController extends Controller
         $show['id'] = $id;
 
         $episodes = $this->getEpisodes();
+//        $episodes = Show::get_episodes($id - 1);
+        $page_title = "Tv Shows";
+
+        return $show['id'];
 
         if($episode_id != null){
             $episode = $episodes[$episode_id%5];
             $episode['id'] = $episode_id;
             $other_episodes = $episodes;
-            return view('tv_show_single', compact('page', 'show', 'episode', 'other_episodes'));
+            return view('tv_show_single', compact('page', 'page_title', 'show', 'episode', 'other_episodes'));
         }
 
-        return view('tv_show', compact('page', 'show', 'episodes'));
+        return view('tv_show', compact('page', 'page_title','show', 'episodes'));
     }
 
     public function feel_me($id = null, $episode_id = null)
     {
         if($id == null)
-            $id = 0;
+            $id = 1;
 
         $page = "Feel Me";
         $shows = [
@@ -204,14 +213,15 @@ class HomeController extends Controller
 
         $episodes = $this->getEpisodes();
 
+        $page_title = "Feel Me";
+
         if($episode_id != null){
             $episode = $episodes[$episode_id%5];
             $episode['id'] = $episode_id;
             $other_episodes = $episodes;
-            return view('feel_me_single', compact('page', 'show', 'episode', 'other_episodes'));
+            return view('feel_me_single', compact('page', 'page_title', 'show', 'episode', 'other_episodes'));
         }
 
-
-        return view('feel_me', compact('page', 'show', 'episodes'));
+        return view('feel_me', compact('page', 'page_title','show', 'episodes'));
     }
 }

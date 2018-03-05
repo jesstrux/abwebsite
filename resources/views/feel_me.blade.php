@@ -7,6 +7,10 @@
 @section('content')
 	@include('layouts.banner')
 
+	<div id="showBanner" class="for-mob layout center-center">
+		{{strtoupper($show['title'])}}
+	</div>
+
 	<div id="sectionAbout">
 		<div class="section-wrapper">
 			<h2 class="text-bold">ABOUT {{strtoupper($show['title'])}}</h2>

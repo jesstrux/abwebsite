@@ -34,7 +34,15 @@
                     </ul>
                 </div>
 
-                <div  class="fle layout inline vertical center">
+                <div class="layout inline vertical start flex" style="text-align: cente; line-height: 1.6em">
+                    <h5 style="display: inline-block;">ABOUT ABELLA</h5>
+                    <p style="margin-top: -0.5em;">
+                        Abella Bateyunga is a Tanzanian social entrepreneur, media personality, life coach, public and transformational speaker.
+                        <a href="{{url('/about')}}" style="color: #f00">Learn More</a>
+                    </p>
+                </div>
+
+                <div  class="fle layout inline vertical center" style="display: none;">
                     <h5>FEEL ME IN</h5>
                     <ul>
                         @foreach($feel_me as $show)

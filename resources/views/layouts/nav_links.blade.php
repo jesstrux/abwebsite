@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div class="dropdown-menu {{strtolower($page) == "feel me" ? 'active' : ''}}">
+<div class="dropdown-menu {{strtolower($page) == "feel me" ? 'active' : ''}}" style="display: none;">
     <a  href="{{url('/feel_me/')}}">Feel Me</a>
 
     <div class="dropdown">

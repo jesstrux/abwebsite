@@ -114,3 +114,37 @@ nav{
 .episode:not(:hover) .scrim{
     opacity: 0;
 }
+
+#showBanner{
+    margin-top: 60px;
+    height: 160px;
+    text-align: center;
+    background: #f2f2f2;
+    /*color: #fff;*/
+    border-bottom: 2px solid #f00;
+    font-family: Bold, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 680px){
+    #sectionAbout{
+        margin-top: -20px;
+    }
+    #sectionAbout .section-wrapper {
+        padding: 0 1.7em;
+    }
+
+    .grid > * {
+        width: 100%;
+        margin: 0;
+    }
+
+    #sectionAbout h2 {
+        border-bottom:none;
+    }
+
+    #sectionAbout h2 {
+        margin-bottom: 0.6em;
+    }
+}

@@ -22,11 +22,12 @@
         </button>
 
         <div id="menuTitle" class="layout center-center flex">
-            <a id="mainLogo" href="{{url('/')}}">
-                <img src="{{asset('images/logo.png')}}" alt="" height="90%">
-            </a>
-            Abella Bateyunga
+            {{$page_title}}
         </div>
+
+        <a id="mainLogo" href="{{url('/')}}" class="layout center">
+            <img src="{{asset('images/logo.png')}}" alt="" height="90%">
+        </a>
     </div>
     <div id="theNav">
         <a href="{{url('/')}}" class="{{strtolower($page) == "home" ? 'active' : ''}}">
@@ -39,7 +40,7 @@
 
         <a  href="{{url('/shows/')}}" class="{{strtolower($page) == "tv show" ? 'active' : ''}}">TV Shows</a>
 
-        <a  href="{{url('/feel_me/')}}" class="{{strtolower($page) == "feel me" ? 'active' : ''}}">Feel Me</a>
+        <a  href="{{url('/feel_me/')}}" class="{{strtolower($page) == "feel me" ? 'active' : ''}}" style="display: none;">Feel Me</a>
 
         <a href="https://medium.com/@abella.bateyunga" target="_blank">
             Blogs
