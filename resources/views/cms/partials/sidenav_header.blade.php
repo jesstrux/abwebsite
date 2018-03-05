@@ -2,13 +2,13 @@
 
   <a href="{{ route('admin.index') }}">
       <img src="{{ asset('images/logo.png') }}"
-        style="margin-top:15px;margin-left:-10px" width="50px">
+        style="margin-top:15px;margin-left:-10px" height="50px">
   </a>
 
   <div style="font-size:1em">
 
     <a href="{{ route('admin.index') }}">
-      <span><i class="fas fa-home text-white" ></i></span>
+      {{-- <span><i class="fas fa-home text-white" ></i></span> --}}
     </a> &nbsp&nbsp
 
   </div>

@@ -12,6 +12,8 @@
 
   <title>{{ config('app.name') }}</title>
 
+  <link href="{{asset('fav.png')}}" rel="shortcut icon" type="image">
+
   <link
       href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
       rel="stylesheet">
@@ -24,13 +26,24 @@
   	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--}}
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-  <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-  </script>
+  <style>
+    @media (min-width: 768px) {
+      .navbar-static-side {
+        width: 250px;
+      }
 
-  <script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-  </script>
+      #page-wrapper {
+        margin: 0 0 0 250px;
+      }
+    }
+    .panel-top-nav {
+      background-color: #bbb;
+    }
+
+    .navbar-default {
+      background-color: #000;
+    }
+  </style>
 
 </head>
 

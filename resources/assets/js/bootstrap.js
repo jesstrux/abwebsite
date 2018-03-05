@@ -1,6 +1,10 @@
-require('jquery'); //fetch from node_modules
+try {
+    window.$ = window.jQuery = require('jquery');
 
-require('bootstrap-sass');
+    require('bootstrap-sass');
+} catch (e) {}
+
+require('bootstrap-sass'); 
 
 require('metismenu');
 

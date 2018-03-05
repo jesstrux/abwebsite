@@ -5,32 +5,46 @@
 @endsection
 
 @section('content')
+	<script>
+		$(function() {
+			$("#question_category").val("{{ old('question_category') }}")
+		});
+	</script>
 	<section id="sectionBanner">
 		<div class="section-wrapper layout center end-justified">
 			<div id="askForm">
-				<p>
-					<label for="">FULL NAME</label>
-					<input type="text">
-				</p>
-				<p>
-					<label for="">EMAIL ADDRESS</label>
-					<input type="text">
-				</p>
-				<p>
-					<label for="">QUESTION CATEGORY</label>
-					<select name="" id="">
-						@foreach($categories as $category)
-							<option value="{{$loop->iteration}}">{{$category}}</option>
-						@endforeach
-					</select>
-				</p>
-				<p>
-					<label for="">YOUR QUESTION</label>
-					<textarea name="" id="" rows="5"></textarea>
-				</p>
-				<p>
-					<button type="submit" class="btn block">SUBMIT</button>
-				</p>
+				<form action="{{ route('questions.store') }}" method="post">
+
+					{{ csrf_field() }}
+
+					<p>
+						<label for="">FULL NAME</label>
+						<input type="text" name="name" value="{{ old('name') }}"
+							required>
+					</p>
+					<p>
+						<label for="">EMAIL ADDRESS</label>
+						<input type="text" name="email" value="{{ old('email') }}"
+							required>
+					</p>
+					<p>
+						<label for="">QUESTION CATEGORY</label>
+						<select name="question_category" id="question_category" required>
+							@foreach($categories as $category)
+								<option value="{{$loop->iteration}}">{{$category}}</option>
+							@endforeach
+						</select>
+					</p>
+					<p>
+						<label for="">YOUR QUESTION</label>
+						<textarea name="question" id="" rows="5"
+							value="{{ old('question') }}" required>
+						</textarea>
+					</p>
+					<p>
+						<button type="submit" class="btn block">SUBMIT</button>
+					</p>
+			  </form>
 			</div>
 		</div>
 	</section>

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10325,39 +10325,6 @@ return jQuery;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(3);
-
-__webpack_require__(9);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(0); //fetch from node_modules
-
-__webpack_require__(4);
-
-__webpack_require__(5);
-
-__webpack_require__(6);
-
-__webpack_require__(7);
-
-__webpack_require__(8); //fetch from plugin folder
-
-//require('./plugins/colorpicker');
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports) {
 
 /*!
@@ -12738,6 +12705,43 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(3);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(4);
+
+__webpack_require__(9);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+try {
+    window.$ = window.jQuery = __webpack_require__(0);
+
+    __webpack_require__(1);
+} catch (e) {}
+
+__webpack_require__(1);
+
+__webpack_require__(5);
+
+__webpack_require__(6);
+
+__webpack_require__(7);
+
+__webpack_require__(8); //fetch from plugin folder
+
+//require('./plugins/colorpicker');
 
 /***/ }),
 /* 5 */

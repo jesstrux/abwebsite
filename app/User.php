@@ -30,4 +30,11 @@ class User extends Authenticatable implements HasMedia
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAvatarAttribute()
+    {
+        return $this->hasMedia()
+            ? $this->getFirstMedia()->getUrl()
+            : asset('/images/avatar.jpg');
+    }
 }
