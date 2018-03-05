@@ -26,7 +26,7 @@ class QuestionCategoryController extends Controller
      */
     public function index()
     {
-        $categories = QuestionCategory::all();
+        $categories = QuestionCategory::latest('updated_at')->get();
         return view($this->folder . '.index', compact('categories'));
     }
 
@@ -64,7 +64,7 @@ class QuestionCategoryController extends Controller
        return [
          'name' => [
            'required', 'string',
-           Rule::unique('series')
+           Rule::unique('question_categories')
                ->ignore($id)
                ->where(function($query) {
                  return $query->where('deleted_at', null);
@@ -132,7 +132,8 @@ class QuestionCategoryController extends Controller
     public function destroy(QuestionCategory $questionCategory)
     {
         $questionCategory->delete();
-        flash('Category Deleted Successfully')->success();
-        return redirect($this->redirectTo);
+        // flash('Category Deleted Successfully')->success();
+        $categories = QuestionCategory::all();
+        return view($this->folder . '.table', compact('categories'));
     }
 }

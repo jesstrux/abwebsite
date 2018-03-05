@@ -27,7 +27,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = Series::all();
+        $series = Series::latest('updated_at')->get();
         return view($this->folder . '.index', compact('series'));
     }
 

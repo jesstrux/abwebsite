@@ -27,7 +27,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        $answers = Answer::all();
+        $answers = Answer::latest('updated_at')->get();
         return view($this->folder . '.index', compact('answers'));
     }
 
@@ -129,7 +129,7 @@ class AnswerController extends Controller
     public function update(Request $request, Answer $answer)
     {
       $this->validate($request, $this->rules($answer->id));
-      $answer->update($request->only('youtube_id');
+      $answer->update($request->only('youtube_id'));
       flash('Answer Updated Successfully')->success();
       return redirect($this->redirectTo);
     }

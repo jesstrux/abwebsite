@@ -26,7 +26,7 @@ class SeriesCategoryController extends Controller
      */
     public function index()
     {
-      $categories = SeriesCategory::all();
+      $categories = SeriesCategory::latest('updated_at')->get();
       return view($this->folder . '.index', compact('categories'));
     }
 
@@ -131,7 +131,8 @@ class SeriesCategoryController extends Controller
     public function destroy(SeriesCategory $seriesCategory)
     {
         $seriesCategory->delete();
-        flash('Category Deleted Successfully')->success();
-        return redirect($this->redirectTo);
+        // flash('Category Deleted Successfully')->success();
+        $categories = SeriesCategory::all();
+        return view($this->folder . '.table', compact('categories'));
     }
 }

@@ -27,7 +27,7 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        $episodes = Episode::all();
+        $episodes = Episode::latest('updated_at')->get();
         return view($this->folder . '.index', compact('episodes'));
     }
 
