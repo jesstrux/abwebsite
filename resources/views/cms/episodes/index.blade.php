@@ -37,7 +37,7 @@
         @foreach($episodes as $episode)
         <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
           <td>{{$loop->iteration}}</td>
-          <td>{{$episode->title}}</td>
+          <td>{{ str_limit($episode->title, 20) }}</td>
           {{--<td>{{$episode->series->title}}</td>
           <td>{{$episode->category->name}}</td>--}}
           <td>{{$episode->date_aired}}</td>
