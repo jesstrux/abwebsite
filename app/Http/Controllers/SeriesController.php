@@ -45,7 +45,7 @@ class SeriesController extends Controller
     public function index()
     {
         $series = Series::latest('updated_at')->get();
-        $series = Series::first()->category()->first();
+        // $series = Series::first()->category()->first();
         return view($this->folder . '.index', compact('series'));
     }
 
