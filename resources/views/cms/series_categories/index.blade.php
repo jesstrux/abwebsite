@@ -16,7 +16,7 @@
     <h3 style="font-weight: bold; color: #337ab7;" class="panel-title pull-left">
       Series Categories: </h3>
      <a href="{{ route('series_categories.create') }}" class="pull-right"
-      title="add question category">
+      title="add series category">
        <i class="fa fa-plus-circle fa-2x text-primary" style="cursor: pointer;"></i>
      </a>
      <div class="clearfix"></div>

@@ -132,7 +132,7 @@ class SeriesCategoryController extends Controller
     {
         $seriesCategory->delete();
         // flash('Category Deleted Successfully')->success();
-        $categories = SeriesCategory::all();
+        $categories = SeriesCategory::latest('updated_at')->get();
         return view($this->folder . '.table', compact('categories'));
     }
 }

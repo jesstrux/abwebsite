@@ -9,7 +9,9 @@ use Illuminate\Validation\Rule;
 
 class SeriesController extends Controller
 {
-    private $folder, $forms;
+    private $folder;
+
+    private $forms;
 
     private $redirectTo = '/series';
 
@@ -20,6 +22,21 @@ class SeriesController extends Controller
       $this->forms = Series::$forms;
     }
 
+    private function getWeekDays()
+    {
+      $days = [
+        'Sunday', 'Monday', 'Tuesday',
+        'Wednesday', 'Thursday', 'Friday', 'Saturday'
+      ];
+
+      $index = 0; $weekDays = [];
+      foreach ($days as $day) {
+        $weekDays[$index++] = $day;
+      }
+
+      return $weekDays;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +45,7 @@ class SeriesController extends Controller
     public function index()
     {
         $series = Series::latest('updated_at')->get();
+        return $series = Series::first()->category()->first();
         return view($this->folder . '.index', compact('series'));
     }
 
@@ -39,7 +57,10 @@ class SeriesController extends Controller
     public function create()
     {
         $categories = SeriesCategory::pluck('name', 'id');
-        return view($this->forms . '.create', compact('categories'));
+        $days = $this->getWeekDays();
+        $selectedCategory = null;
+        return view($this->forms . '.create',
+                            compact('categories', 'days', 'selectedCategory'));
     }
 
     /**
@@ -65,17 +86,18 @@ class SeriesController extends Controller
      {
        return [
          'title' => [
-           'required', 'string',
+           'required',
+           'string',
            Rule::unique('series')
                ->ignore($id)
                ->where(function($query) {
                  return $query->where('deleted_at', null);
                }),
+           'series_category_id' => 'required|integer',
+           'day' => 'required',
+           'air_time' => 'required',
+           'channel' => 'required',
          ]
-         'series_category_id' => 'required|integer',
-         'day' => 'required',
-         'air_time' => 'required',
-         'channel' => 'required',
        ];
      }
 
@@ -111,7 +133,10 @@ class SeriesController extends Controller
      */
     public function edit(Series $series)
     {
-        return view($this.forms . '.edit', compact('series'));
+        $days = $this->getWeekDays();
+        $selectedCategory = $series->category()->first();
+        return view($this->forms . '.edit',
+            compact('series', 'days', 'selectedCategory'));
     }
 
     /**
@@ -138,7 +163,8 @@ class SeriesController extends Controller
     public function destroy(Series $series)
     {
         $series->delete();
-        flash('Series Deleted Successfully')->success();
-        return redirect($this->redirectTo);
+        // flash('Series Deleted Successfully')->success();
+        $series = Series::latest('updated_at')->get();
+        return view($this->folder . '.table', compact('series'));
     }
 }

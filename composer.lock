@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd1e432e09012504f934e7b694a2d537",
+    "content-hash": "6d13ae7662d1402574a106b9708a99b8",
     "packages": [
         {
             "name": "alsofronie/eloquent-uuid",
@@ -684,21 +684,21 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.36",
+            "version": "v5.5.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9283cea4a5727aaf1def60a8fa820e49df2cf874"
+                "reference": "cfafae1f2043208390a7c984e3070696f4969605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9283cea4a5727aaf1def60a8fa820e49df2cf874",
-                "reference": "9283cea4a5727aaf1def60a8fa820e49df2cf874",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cfafae1f2043208390a7c984e3070696f4969605",
+                "reference": "cfafae1f2043208390a7c984e3070696f4969605",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "~1.1",
-                "erusev/parsedown": "~1.7",
+                "erusev/parsedown": "~1.6",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
                 "league/flysystem": "~1.0",
@@ -750,7 +750,7 @@
                 "illuminate/translation": "self.version",
                 "illuminate/validation": "self.version",
                 "illuminate/view": "self.version",
-                "tightenco/collect": "<5.5.33"
+                "tightenco/collect": "self.version"
             },
             "require-dev": {
                 "aws/aws-sdk-php": "~3.0",
@@ -814,7 +814,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-03-01T13:59:00+00:00"
+            "time": "2017-12-26T16:24:40+00:00"
         },
         {
             "name": "laravel/tinker",

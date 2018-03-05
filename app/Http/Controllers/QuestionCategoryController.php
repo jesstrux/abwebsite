@@ -133,7 +133,7 @@ class QuestionCategoryController extends Controller
     {
         $questionCategory->delete();
         // flash('Category Deleted Successfully')->success();
-        $categories = QuestionCategory::all();
+        $categories = QuestionCategory::latest('updated_at')->get();
         return view($this->folder . '.table', compact('categories'));
     }
 }

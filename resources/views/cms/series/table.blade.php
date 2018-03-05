@@ -1,22 +1,30 @@
 <table id="myTable" class="table table-hover">
   <thead>
     <th>No.</th>
-    <th>Name</th>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Day</th>
+    <th>Time</th>
+    <th>Channel</th>
     <th>Action</th>
   </thead>
   <tbody>
-    @foreach($categories as $category)
+    @foreach($series as $ser)
     <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
       <td>{{$loop->iteration}}</td>
-      <td>{{$category->name}}</td>
+      <td>{{$ser->category()->first()->name}}</td>
+      <td>{{$ser->title}}</td>
+      <td>{{$ser->day}}</td>
+      <td>{{$ser->time}}</td>
+      <td>{{$ser->channel}}</td>
       <td>
         <div class="btn-group">
-          <a class="btn btn-warning" title="edit category"
-           href="{{route('series_categories.edit', ['seriesCategory' => $category->id])}}">
+          <a class="btn btn-warning" title="edit series"
+           href="{{route('series.edit', ['series' => $ser->id])}}">
             <span class="fa fa-pencil"></span>
           </a>
-          <button class="btn btn-danger" title="delete category"
-            onclick="showDeleteModal({{$category}})">
+          <button class="btn btn-danger" title="delete series"
+            onclick="showDeleteModal({{$ser}})">
             <span class="fa fa-trash-o"></span>
           </button>
         </div>
@@ -41,21 +49,25 @@ $(function ()
 function showDeleteModal(model)
 {
   showModal("delete_confirmation_modal");
-  $("#confirmation_text").text("Delete " + model.name);
+  $("#confirmation_text").text("Delete " + model.title);
   model_id = model.id;
 }
 
-function deleteProduct()
+function deleteSeries()
 {
   $.ajax({
     type: 'delete',
-    url: '/series_categories/' + model_id,
-    success: function() {
+    url: '/series/' + model_id,
+    success: function(table) {
       $(".my_loader").fadeOut(0);
       $(".btn-primary").prop("disabled", false);
       closeModal("delete_confirmation_modal");
 
-      window.location.href = '/series_categories/';
+      $("#seriesCategoriesTable").html(table);
+      $("#success-alert").text("Category Deleted Successfully");
+      $("#success-alert").fadeIn(0, function() {
+        $("#success-alert").fadeOut(1500);
+      });
     },
     error: function(error) {
       $(".my_loader").fadeOut(0);
