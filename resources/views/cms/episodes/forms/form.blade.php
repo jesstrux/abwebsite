@@ -241,7 +241,7 @@
     </div>
 
     <script type="text/javascript">
-        $('.datepicker').datepicker('show');
+        $('.datepicker').datepicker();
     </script>
 
 </div>
