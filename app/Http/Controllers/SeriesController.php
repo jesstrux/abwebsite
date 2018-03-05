@@ -31,7 +31,7 @@ class SeriesController extends Controller
 
       $index = 0; $weekDays = [];
       foreach ($days as $day) {
-        $weekDays[$index++] = $day;
+        $weekDays[$day] = $day;
       }
 
       return $weekDays;
@@ -96,7 +96,7 @@ class SeriesController extends Controller
                  return $query->where('deleted_at', null);
                }),
          ],
-         'series_category_id' => 'required|integer',
+         'series_category_id' => 'required',
          'day' => 'required',
          'air_time' => 'required',
          'channel' => 'required',

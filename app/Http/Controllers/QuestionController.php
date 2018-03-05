@@ -74,7 +74,7 @@ class QuestionController extends Controller
          'name' => 'required|string',
          'email' => 'required|email',
          'question' => 'required|string',
-         'question_category_id' => 'required|integer',
+         'question_category_id' => 'required',
        ];
      }
 
