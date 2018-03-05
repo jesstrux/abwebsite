@@ -97,11 +97,11 @@ class EpisodeController extends Controller
                ->where(function($query) {
                  return $query->where('deleted_at', null);
                }),
-         'series_category_id' => 'required|integer',
-         'series_id' => 'required|integer',
-         'date_aired' => 'required',
-         'youtube_id' => 'required|string', //The Video-ID
-         ]
+       ],
+       'series_category_id' => 'required|integer',
+       'series_id' => 'required|integer',
+       'date_aired' => 'required',
+       'youtube_id' => 'required|string', //The Video-ID
        ];
      }
 

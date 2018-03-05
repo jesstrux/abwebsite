@@ -95,11 +95,11 @@ class SeriesController extends Controller
                ->where(function($query) {
                  return $query->where('deleted_at', null);
                }),
-           'series_category_id' => 'required|integer',
-           'day' => 'required',
-           'air_time' => 'required',
-           'channel' => 'required',
-         ]
+         ],
+         'series_category_id' => 'required|integer',
+         'day' => 'required',
+         'air_time' => 'required',
+         'channel' => 'required',
        ];
      }
 
