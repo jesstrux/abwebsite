@@ -7,7 +7,7 @@
     <div class="col-md-12">
 
         {!!
-            Form::model($category, [
+            Form::model($episode, [
 
                 'files' => true,
 
@@ -15,7 +15,7 @@
 
                 'class'  => 'form-horizontal',
 
-                'route'  => ['series_categories.update', $category],
+                'route'  => ['episodes.update', $episode],
             ])
         !!}
 
@@ -29,7 +29,7 @@
 
                         <a
                             class="btn btn-white"
-                            href="{{ route('series_categories.index') }}"
+                            href="{{ route('episodes.index') }}"
                             title="cancel">
 
                             cancel
@@ -52,7 +52,7 @@
 
                         <small>
 
-                             Update Series Category
+                             Update Episode
 
                         </small>
 
@@ -62,7 +62,7 @@
 
                 <div class="row m-t-lg m-b-lg">
 
-                    @include ('cms.series_categories.forms.form', [
+                    @include ('cms.episodes.forms.form', [
 
 
                     ])

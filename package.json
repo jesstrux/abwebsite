@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
+        "bootstrap-datepicker": "^1.7.1",
         "bootstrap-filestyle": "^1.2.1",
         "bootstrap-sass": "^3.3.7",
         "jquery": "^3.2",

@@ -4,6 +4,8 @@ require('bootstrap-sass');
 
 require('metismenu');
 
+require('bootstrap-datepicker');
+
 require('bootstrap-filestyle');
 
 require('./plugins/bootstrap-timepicker'); //fetch from plugin folder

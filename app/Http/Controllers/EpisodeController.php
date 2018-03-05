@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Episode;
+use App\SeriesCategory;
+use App\Series;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +29,8 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        $episodes = Episode::latest('updated_at')->get();
+        $episodes = Episode::with(['series', 'category'])
+                           ->latest('updated_at')->get();
         return view($this->folder . '.index', compact('episodes'));
     }
 
@@ -39,8 +42,12 @@ class EpisodeController extends Controller
     public function create()
     {
         $categories = SeriesCategory::pluck('name', 'id');
-        // $series = Series::pluck('title', 'id');
-        return view($this->forms . '.create', compact('categories'));
+        $series = Series::pluck('title', 'id');
+        $selectedCategory = null;
+        $selectedSeries = null;
+        return view($this->forms . '.create',
+          compact('categories', 'series', 'selectedCategory',
+                  'selectedSeries'));
     }
 
     /**
@@ -90,11 +97,11 @@ class EpisodeController extends Controller
                ->where(function($query) {
                  return $query->where('deleted_at', null);
                }),
-         ]
          'series_category_id' => 'required|integer',
          'series_id' => 'required|integer',
          'date_aired' => 'required',
          'youtube_id' => 'required|string', //The Video-ID
+         ]
        ];
      }
 
@@ -132,7 +139,13 @@ class EpisodeController extends Controller
     public function edit(Episode $episode)
     {
         $images = $episode->getMedia();
-        return view($this->forms . '.edit', compact('episode', 'images'));
+        $categories = SeriesCategory::pluck('name', 'id');
+        $series = Series::pluck('title', 'id');
+        $selectedCategory = $episode->category()->first();
+        $selectedSeries = $episode->series()->first();
+        return view($this->forms . '.edit',
+            compact('episode', 'images', 'categories', 'series',
+                    'selectedCategory', 'selectedSeries'));
     }
 
     /**

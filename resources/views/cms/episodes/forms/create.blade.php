@@ -14,7 +14,7 @@
 
                 'class'  => 'form-horizontal',
 
-                'route'  => 'series_categories.store',
+                'route'  => 'episodes.store',
             ])
         !!}
 
@@ -28,7 +28,7 @@
 
                         <a
                             class="btn btn-white"
-                            href="{{ route('series_categories.index') }}"
+                            href="{{ route('episodes.index') }}"
                             title="cancel">
 
                             cancel
@@ -50,7 +50,7 @@
                     <h2>
 
                         <small>
-                          New Series Category
+                          New Episode
                         </small>
 
                     </h2>
@@ -59,7 +59,7 @@
 
                 <div class="row m-t-lg m-b-lg">
 
-                    @include ('cms.series_categories.forms.form', [
+                    @include ('cms.episodes.forms.form', [
 
 
                     ])

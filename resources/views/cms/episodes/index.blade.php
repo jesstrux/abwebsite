@@ -5,18 +5,18 @@
 @include('cms.modals.confirmation_modal',
   ['id' => 'delete_confirmation_modal',
   'title' => 'Confirm',
-  'text' =>  'You are about to delete this product!',
+  'text' =>  'You are about to delete this episode!',
   'action' => 'Confirm',
-  'function' => 'deleteProduct()',])
+  'function' => 'deleteEpisode()',])
 
 @include('cms.alerts.success-alert')
 
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 style="font-weight: bold; color: #337ab7;" class="panel-title pull-left">
-      Series Categories: </h3>
-     <a href="{{ route('series_categories.create') }}" class="pull-right"
-      title="add question category">
+      Episodes: </h3>
+     <a href="{{ route('episodes.create') }}" class="pull-right"
+      title="add episode">
        <i class="fa fa-plus-circle fa-2x text-primary" style="cursor: pointer;"></i>
      </a>
      <div class="clearfix"></div>
@@ -26,22 +26,30 @@
     <table id="myTable" class="table table-hover">
       <thead>
         <th>No.</th>
-        <th>Name</th>
+        <th>Title</th>
+        {{--<th>Series</th>
+        <th>Category</th>--}}
+        <th>Date Aired</th>
+        <th>Youtube-ID</th>
         <th>Action</th>
       </thead>
       <tbody>
-        @foreach($categories as $category)
+        @foreach($episodes as $episode)
         <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
           <td>{{$loop->iteration}}</td>
-          <td>{{$category->name}}</td>
+          <td>{{$episode->title}}</td>
+          {{--<td>{{$episode->series->title}}</td>
+          <td>{{$episode->category->name}}</td>--}}
+          <td>{{$episode->date_aired}}</td>
+          <td>{{$episode->youtube_id}}</td>
           <td>
             <div class="btn-group">
-              <a class="btn btn-warning" title="edit category"
-               href="{{route('series_categories.edit', ['seriesCategory' => $category->id])}}">
+              <a class="btn btn-warning" title="edit episode"
+               href="{{route('episodes.edit', ['episode' => $episode->id])}}">
                 <span class="fa fa-pencil"></span>
               </a>
-              <button class="btn btn-danger" title="delete category"
-                onclick="showDeleteModal({{$category}})">
+              <button class="btn btn-danger" title="delete episode"
+                onclick="showDeleteModal({{$episode}})">
                 <span class="fa fa-trash-o"></span>
               </button>
             </div>
@@ -60,22 +68,22 @@ var model_id = null;
 function showDeleteModal(model)
 {
   showModal("delete_confirmation_modal");
-  $("#confirmation_text").text("Delete " + model.name);
+  // $("#confirmation_text").text("Delete " + model.title);
   model_id = model.id;
 }
 
-function deleteProduct()
+function deleteEpisode()
 {
   $.ajax({
     type: 'delete',
-    url: '/series_categories/' + model_id,
+    url: '/episodes/' + model_id,
     success: function(table) {
       $(".my_loader").fadeOut(0);
       $(".btn-primary").prop("disabled", false);
       closeModal("delete_confirmation_modal");
 
       $("#seriesCategoriesTable").html(table);
-      $("#success-alert").text("Category Deleted Successfully");
+      $("#success-alert").text("Episode Deleted Successfully");
       $("#success-alert").fadeIn(0, function() {
         $("#success-alert").fadeOut(1500);
       });

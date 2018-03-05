@@ -26,8 +26,8 @@
     <table id="myTable" class="table table-hover">
       <thead>
         <th>No.</th>
-        {{-- <th>Category</th> --}}
         <th>Title</th>
+        {{-- <th>Category</th> --}}
         <th>Day</th>
         <th>Time</th>
         <th>Channel</th>
@@ -37,8 +37,8 @@
         @foreach($series as $ser)
         <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
           <td>{{$loop->iteration}}</td>
-          {{-- <td>{{$ser->category()->first()->name}}</td> --}}
           <td>{{$ser->title}}</td>
+          {{-- <td>{{$ser->category()->first()->name}}</td> --}}
           <td>{{$ser->day}}</td>
           <td>{{$ser->air_time}}</td>
           <td>{{$ser->channel}}</td>
@@ -83,7 +83,7 @@ function deleteSeries()
       closeModal("delete_confirmation_modal");
 
       $("#seriesCategoriesTable").html(table);
-      $("#success-alert").text("Category Deleted Successfully");
+      $("#success-alert").text("Series Deleted Successfully");
       $("#success-alert").fadeIn(0, function() {
         $("#success-alert").fadeOut(1500);
       });
