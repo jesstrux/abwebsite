@@ -13,7 +13,7 @@ class SeriesController extends Controller
 
     private $forms;
 
-    private $redirectTo = '/series';
+    private $redirectTo = '/admin/series';
 
     public function __construct()
     {

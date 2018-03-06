@@ -11,7 +11,7 @@ class QuestionController extends Controller
 {
     private $folder, $forms;
 
-    private $redirectTo = '/questions';
+    private $redirectTo = '/admin/questions';
 
     public function __construct()
     {

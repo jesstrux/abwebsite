@@ -13,7 +13,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 style="font-weight: bold; color: #337ab7;" class="panel-title pull-left">
+    <h3 style="font-weight: bold; color: #337ab7;" class="pull-left">
       Episodes: </h3>
      <a href="{{ route('episodes.create') }}" class="pull-right"
       title="add episode">

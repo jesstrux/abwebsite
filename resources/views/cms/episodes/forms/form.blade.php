@@ -11,7 +11,7 @@
 
                 'aria-describedby'=> 'titleHelpBlock',
 
-                'placeholder' => 'title',
+                'placeholder' => 'Title',
 
             ])
         !!}
@@ -55,7 +55,7 @@
 
                 'aria-describedby'=> 'youtubeHelpBlock',
 
-                'placeholder' => 'youtube_id',
+                'placeholder' => 'Youtube_id',
 
             ])
         !!}

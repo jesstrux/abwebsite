@@ -11,7 +11,7 @@ class AnswerController extends Controller
 {
     private $folder, $forms;
 
-    private $redirectTo = '/answers';
+    private $redirectTo = '/admin/answers';
 
     public function __construct()
     {

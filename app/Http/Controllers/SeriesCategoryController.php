@@ -10,7 +10,7 @@ class SeriesCategoryController extends Controller
 {
     private $folder, $forms;
 
-    private $redirectTo = '/series_categories';
+    private $redirectTo = '/admin/series_categories';
 
     public function __construct()
     {

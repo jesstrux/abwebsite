@@ -1,0 +1,65 @@
+@media (min-width: 768px) {
+  .navbar-static-side {
+    width: 250px;
+  }
+
+  #page-wrapper {
+    margin: 0 0 0 250px;
+  }
+}
+.panel-top-nav {
+  background-color: #bbb;
+}
+
+.navbar-default {
+  background-color: #000;
+}
+
+.profile_picture {
+  position: relative;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.profile_picture:hover .abella-avatar {
+  opacity: 0.3;
+}
+
+.profile_picture:hover .upload-div {
+  opacity: 1;
+}
+
+.abella-avatar {
+  width: inherit;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.file-input {
+  width: 0px;
+  height: 0px;
+}
+
+.upload-div {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.pictureSpinner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 3em;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}

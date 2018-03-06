@@ -10,7 +10,7 @@ class QuestionCategoryController extends Controller
 {
     private $folder, $forms;
 
-    private $redirectTo = '/question_categories';
+    private $redirectTo = '/admin/question_categories';
 
     public function __construct()
     {

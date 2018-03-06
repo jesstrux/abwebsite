@@ -19,9 +19,13 @@ Route::get('/feel_me/{id}/{episode?}', 'HomeController@feel_me');
 
 Auth::routes();
 
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->prefix('/admin')->group(function() {
 
-  Route::get('/admin', 'CmsController@index')->name('admin.index');
+  Route::get('/', 'CmsController@index')->name('admin.index');
+
+  Route::view('/profile_picture', 'cms.users.profile_picture')->name('profile_picture.index');
+
+  Route::post('/profile_picture', 'CmsController@updateProfilePicture')->name('profile_picture.update');
 
   Route::resources([
       'series_categories' => 'SeriesCategoryController',

@@ -24,26 +24,10 @@
 
   {{--<link rel="stylesheet"
   	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--}}
+
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-  <style>
-    @media (min-width: 768px) {
-      .navbar-static-side {
-        width: 250px;
-      }
-
-      #page-wrapper {
-        margin: 0 0 0 250px;
-      }
-    }
-    .panel-top-nav {
-      background-color: #bbb;
-    }
-
-    .navbar-default {
-      background-color: #000;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/cms_styles.css') }}">
 
 </head>
 

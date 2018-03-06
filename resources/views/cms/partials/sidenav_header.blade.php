@@ -1,6 +1,6 @@
 <div class="panel-top-nav">
 
-  <a href="{{ route('admin.index') }}">
+  <a href="{{ route('admin.index') }}" title="home">
       <img src="{{ asset('images/logo.png') }}"
         style="margin-top:15px;margin-left:-10px" height="50px">
   </a>
@@ -19,21 +19,23 @@
 
     <div class="dropdown profile-element">
 
-        <span title="User Avatar">
+        <a href="{{ route('profile_picture.index') }}" title="change">
 
-            <img
+          <img
 
-                alt="image"
+              id="abella-avatar"
 
-                width="40"
+              alt="image"
 
-                height="40"
+              width="40"
 
-                class="img-circle"
+              height="40"
 
-                src="{{ Auth::user()->avatar }}" />
+              class="img-circle"
 
-        </span>
+              src="{{ Auth::user()->avatar }}" />
+
+        </a>
 
         <a
             data-toggle="dropdown"

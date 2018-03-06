@@ -13,7 +13,7 @@ class EpisodeController extends Controller
 {
     private $folder, $forms;
 
-    private $redirectTo = '/episodes';
+    private $redirectTo = '/admin/episodes';
 
     public function __construct()
     {
