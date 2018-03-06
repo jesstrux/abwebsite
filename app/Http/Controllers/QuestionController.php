@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Follower;
 use App\QuestionCategory;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -39,7 +41,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules(), $this->errorMessages);
+        $this->validate($request, $this->rules(), $this->errorMessages());
         DB::beginTransaction();
         $question = null;
         try {
@@ -50,10 +52,10 @@ class QuestionController extends Controller
           ]);
           DB::commit();
         }
-        catch (Throwable $e)
+        catch (\Throwable $e)
         {
           DB::rollBack();
-          flash('Sorry, Your Question couldn\'t be posted')->error()->important();
+          flash('Sorry, Your Question Couldn\'t Be Posted')->error();
           return back();
         }
         if($question)

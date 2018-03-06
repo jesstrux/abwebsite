@@ -67,10 +67,10 @@ class EpisodeController extends Controller
                   ->toMediaCollection('episode_pictures');
           DB::commit();
         }
-        catch (Throwable $e)
+        catch (\Throwable $e)
         {
           DB::rollBack();
-          flash('Error: Episode couldn\'t be created')->error()->important();
+          flash('Sorry, Episode Couldn\'t Be Created')->error()->important();
           return back();
         }
         if($episode)

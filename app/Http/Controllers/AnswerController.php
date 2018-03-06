@@ -59,7 +59,7 @@ class AnswerController extends Controller
           $answer->categories()->sync($request->question_category_id);
           DB::commit();
         }
-        catch(Throwable $e)
+        catch(\Throwable $e)
         {
           DB::rollBack();
           flash('Answer couldn\'t be saved')->error()->important();

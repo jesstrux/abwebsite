@@ -2,17 +2,74 @@
 
 @section('styles')
 	<link href="{{asset('css/ask.css')}}" rel="stylesheet">
+	<style>
+		.alert {
+			padding: 15px;
+			margin-bottom: 20px;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+    .alert-danger {
+			color: #a94442;
+	    background-color: #f2dede;
+	    border-color: #ebccd1;
+		}
+		.alert-dismissable, .alert-dismissible {
+		    padding-right: 35px;
+		}
+		.close {
+	    float: right;
+	    font-size: 21px;
+	    font-weight: 700;
+	    line-height: 1;
+	    color: #000;
+	    text-shadow: 0 1px 0 #fff;
+	    filter: alpha(opacity=20);
+	    opacity: .2;
+	  }
+  </style>
 @endsection
 
 @section('content')
 	<script>
 		$(function() {
-			$("#question_category").val("{{ old('question_category') }}")
+
+			$("#askForm").find('input, textarea').each( function() {
+	       $(this).keydown( function() {
+					 $("#question-errors").fadeOut(0);
+				 });
+	    });
+
+			$("#question_category").val("{{ old('question_category_id') }}");
+
+			$("#question-textarea").val("{{ old('question') }}");
+
 		});
 	</script>
 	<section id="sectionBanner">
 		<div class="section-wrapper layout center end-justified">
 			<div id="askForm">
+
+				@if ($errors->any())
+			    <div class="alert alert-danger" style="display: inline-block;"
+						id="question-errors">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+				@endif
+
+				<div style="display: inline-block;">
+					<div id="flash">
+						@include('flash::message')
+					</div>
+					<script>
+						$("#flash").fadeOut(2500);
+					</script>
+				</div>
+
 				<form action="{{ route('questions.store') }}" method="post">
 
 					{{ csrf_field() }}
@@ -29,7 +86,7 @@
 					</p>
 					<p>
 						<label for="">QUESTION CATEGORY</label>
-						<select name="question_category" id="question_category" required>
+						<select name="question_category_id" id="question_category" required>
 							@foreach($categories as $category)
 								<option value="{{$loop->iteration}}">{{$category}}</option>
 							@endforeach
@@ -37,9 +94,7 @@
 					</p>
 					<p>
 						<label for="">YOUR QUESTION</label>
-						<textarea name="question" id="" rows="5"
-							value="{{ old('question') }}" required>
-						</textarea>
+						<textarea name="question" id="question-textarea" rows="5" required></textarea>
 					</p>
 					<p>
 						<button type="submit" class="btn block">SUBMIT</button>
