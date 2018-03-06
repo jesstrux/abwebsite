@@ -2,82 +2,45 @@
 
 @section('content')
 
-<div class="row">
+<style>
+  .nav-tabs > li > a {
+    color: #555555;
+  }
+  
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    color: #337ab7;
+  }
 
-    <div class="col-md-12">
+  .tab-content {
+    margin-top: 20px;
+    background-color: #fff;
+  }
 
-        {!!
-            Form::model($episode, [
+  #changePicture {
+    padding: 10px 0;
+  }
+</style>
 
-                'files' => true,
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#editEpisode">Episode Details</a></li>
+  <li><a data-toggle="tab" href="#changePicture">Change Picture</a></li>
+</ul>
 
-                'method' => 'PATCH',
+<div class="tab-content">
 
-                'class'  => 'form-horizontal',
+  <div id="editEpisode" class="tab-pane fade active in">
+    @include('cms.episodes.forms.edit_form', [
 
-                'route'  => ['episodes.update', $episode],
-            ])
-        !!}
+    ])
+  </div>
 
-        <div class="ibox">
+  <div id="changePicture" class="tab-pane fade">
+    @include('cms.episodes.forms.pictures', [
 
-            <div class="ibox-content">
-
-                <div class="page-header">
-
-                    <div class='btn-toolbar pull-right' role="toolbar">
-
-                        <a
-                            class="btn btn-white"
-                            href="{{ route('episodes.index') }}"
-                            title="cancel">
-
-                            cancel
-
-                        </a>
-
-                        {!!
-                            Form::button("update", [
-                                'type' => 'submit',
-
-                                'class' => 'btn btn-primary',
-
-                                'title' => 'update',
-                            ])
-                        !!}
-
-                    </div>
-
-                    <h2>
-
-                        <small>
-
-                             Update Episode
-
-                        </small>
-
-                    </h2>
-
-                </div>
-
-                <div class="row m-t-lg m-b-lg">
-
-                    @include ('cms.episodes.forms.form', [
-
-
-                    ])
-
-                </div>
-
-            </div>
-
-        </div>
-
-        {!! Form::close() !!}
-
-    </div>
+    ])
+  </div>
 
 </div>
-
 
 @endsection

@@ -26,4 +26,11 @@ class Episode extends BaseModel
     {
       return $this->belongsTo(Series::class);
     }
+
+    public function getPictureAttribute()
+    {
+        return $this->hasMedia('episode_pictures')
+            ? $this->getFirstMedia('episode_pictures')->getUrl()
+            : asset('/images/poster.png');
+    }
 }

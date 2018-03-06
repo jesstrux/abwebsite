@@ -21,7 +21,7 @@
           class="img-thumbnail abella-avatar"
           src="{{ Auth::user()->avatar }}" />
       <div class="file-input">
-        <form action="{{ route('profile_picture.update') }}" method="post">
+        <form>
           <input type="file" name="profile_picture" id="profile_picture">
         </form>
       </div>
@@ -65,6 +65,7 @@
         var original_src = preview.src;
 
         preview.style.opacity = "0.3";
+
         var file = document.getElementById('profile_picture').files[0];
 
         if (file) {

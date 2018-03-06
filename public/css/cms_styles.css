@@ -63,3 +63,13 @@
     width: 100%;
     text-align: center;
 }
+
+.episode-picture {
+  width: inherit;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.profile_picture:hover .episode-picture {
+  opacity: 0.3;
+}

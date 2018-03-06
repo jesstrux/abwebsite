@@ -63,10 +63,8 @@ class EpisodeController extends Controller
         $episode = null;
         try {
           $episode = Episode::create($request->all());
-          $episode->addAllMediaFromRequest()
-                  ->each( function($episodeImage) {
-                      $episodeImage->toMediaCollection('episode_images');
-                  });
+          $episode->addMediaFromRequest('episode_picture')
+                  ->toMediaCollection('episode_pictures');
           DB::commit();
         }
         catch (Throwable $e)
@@ -102,6 +100,7 @@ class EpisodeController extends Controller
        'series_id' => 'required',
        'date_aired' => 'required',
        'youtube_id' => 'required|string', //The Video-ID
+       'episode_picture' => 'nullable|file|image|max:2048',
        ];
      }
 
@@ -161,6 +160,28 @@ class EpisodeController extends Controller
         $episode->update($request->all());
         flash('Episode Updated Successfully')->success();
         return redirect($this->redirectTo);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Episode  $episode
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePicture(Request $request, Episode $episode)
+    {
+        $this->validate($request, $this->pictureRules());
+        $episode->clearMediaCollection('episode_pictures');
+        $episode->addMediaFromRequest('episode_picture')
+                ->toMediaCollection('episode_pictures');
+    }
+
+    private function pictureRules()
+    {
+      return [
+        'episode_picture' => 'bail|file|image|max:2048',
+      ];
     }
 
     /**

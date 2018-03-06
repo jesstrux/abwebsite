@@ -287,3 +287,47 @@
     </div>
 
 </div>
+
+@if( isActiveRoute('episodes.create', true) )
+
+<div class="form-group {{ $errors->has('episode_picture') ? 'has-error' : ''}}">
+
+    <div class="col-md-offset-3 col-md-6">
+
+        {!!
+            Form::file('episode_picture', [
+
+                'aria-describedby'=> 'imageHelpBlock',
+
+            ])
+        !!}
+
+        @if($errors->any() && $errors->has('episode_picture'))
+
+            {!!
+
+                $errors->first(
+                    'episode_picture',
+
+                    '<p class="help-block">:message</p>'
+                )
+
+            !!}
+
+        @else
+
+            <p id="imageHelpBlock" class="help-block">
+
+
+                Episode Picture
+
+
+            </p>
+
+        @endif
+
+    </div>
+
+</div>
+
+@endif

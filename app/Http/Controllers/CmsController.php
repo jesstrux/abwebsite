@@ -17,14 +17,14 @@ class CmsController extends Controller
 
     public function updateProfilePicture(Request $request)
     {
-      $this->validate($request, $this->rules());
+      $this->validate($request, $this->pictureRules());
       $user = $request->user();
       $user->clearMediaCollection('profile_pictures');
       $user->addMediaFromRequest('profile_picture')
            ->toMediaCollection('profile_pictures');
     }
 
-    private function rules()
+    private function pictureRules()
     {
       return [
         'profile_picture' => 'bail|file|image|max:2048',
