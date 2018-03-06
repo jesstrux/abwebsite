@@ -143,7 +143,7 @@
 
 <div class="form-group {{ $errors->has('series_id') ? 'has-error' : ''}}">
 
-    <div class="col-md-offset-3 col-md-6">
+    <div class="col-md-offset-3 col-md-6" style="display: inline-block;">
       {{--
           Form::label('series_id', 'Series:', [
 
@@ -162,8 +162,6 @@
                 'required' => 'required',
 
                 'aria-describedby'=> 'seriesHelpBlock',
-
-                'onchange' => 'seriesChanged()',
 
                 'placeholder' => 'Choose Series',
 
@@ -194,6 +192,9 @@
 
     </div>
 
+    <div class="col-md-3" style="padding-left: 0; display:inline-block;">
+      @include('cms.select_loader')
+    </div>
 </div>
 
 <div class="form-group {{ $errors->has('date_aired') ? 'has-error' : '' }}">
@@ -331,3 +332,57 @@
 </div>
 
 @endif
+
+<script>
+$(function()
+{
+  $("#seriesSelector").prop("disabled", true);
+});
+
+function categoryChanged()
+{
+  $(".select_loader").fadeIn(0);
+  var selected_id = $("#categorySelector").val();
+  if(selected_id != "" && selected_id != null) {
+    var link = '/admin/series_categories/' + selected_id + '/series';
+    $.getJSON(link)
+     .done(function (series) {
+       $(".select_loader").fadeOut(0);
+       setUpSeries(series);
+       $("#seriesSelector").prop("disabled", false);
+     })
+     .fail(function (error) {
+       $(".select_loader").fadeOut(0);
+     });
+  }
+  else {
+    $(".select_loader").fadeOut(0);
+  }
+}
+
+function setUpSeries(series)
+{
+  var mySelect = document.getElementById("seriesSelector");
+
+  //Delete the all options
+  $("#seriesSelector").find('option').remove();
+
+  //Create the first (default) option
+  var opt = document.createElement("option");
+  opt.value= "";
+  opt.innerHTML = "Choose Series";
+
+  // then append it to the select element
+  mySelect.appendChild(opt);
+
+  //Create remaining elements
+  for(i = 0; i < series.length; i++) {
+     var opt = document.createElement("option");
+     opt.value= series[i].id;
+     opt.innerHTML = series[i].title;
+
+     // then append it to the select element
+     mySelect.appendChild(opt);
+  }
+}
+</script>

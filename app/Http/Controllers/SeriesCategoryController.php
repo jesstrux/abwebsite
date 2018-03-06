@@ -135,4 +135,9 @@ class SeriesCategoryController extends Controller
         $categories = SeriesCategory::latest('updated_at')->get();
         return view($this->folder . '.table', compact('categories'));
     }
+
+    public function getSeries(SeriesCategory $seriesCategory)
+    {
+      return $seriesCategory->series()->get();
+    }
 }

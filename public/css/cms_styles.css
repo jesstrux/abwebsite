@@ -73,3 +73,7 @@
 .profile_picture:hover .episode-picture {
   opacity: 0.3;
 }
+
+.text-primary {
+  color: #1ab394;
+}

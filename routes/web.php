@@ -33,6 +33,8 @@ Route::middleware('auth')->prefix('/admin')->group(function() {
 
   Route::post('/episode_picture/{episode}', 'EpisodeController@updatePicture')->name('episode_picture.update');
 
+  Route::get('/series_categories/{seriesCategory}/series', 'SeriesCategoryController@getSeries')->name('get_series');
+
   Route::resources([
       'series_categories' => 'SeriesCategoryController',
       'series' => 'SeriesController',
