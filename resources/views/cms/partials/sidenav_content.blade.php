@@ -1,4 +1,4 @@
-<li class="{{ areActiveRoutes(['admin.index', 'question_categories.*']) }}">
+<li class="{{ isActiveRoute('question_categories.*') }}">
 
     <a href="{{ route('question_categories.index') }}">
 
@@ -14,7 +14,7 @@
 
 </li>
 
-<li class="{{ isActiveRoute('questions.*') }}">
+<li class="{{ areActiveRoutes(['admin.index', 'questions.*']) }}">
 
     <a href="{{ route('questions.index') }}">
 

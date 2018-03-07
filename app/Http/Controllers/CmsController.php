@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Question;
 use App\QuestionCategory;
 
 class CmsController extends Controller
@@ -11,8 +12,11 @@ class CmsController extends Controller
 
     public function index()
     {
-      $categories = QuestionCategory::latest('updated_at')->get();
-      return view(QuestionCategory::$folder . '.index', compact('categories'));
+      $categories = QuestionCategory::latest('updated_at')
+                                    ->with('questions')
+                                    ->withCount('questions')
+                                    ->get();
+      return view(Question::$folder . '.index', compact('categories'));
     }
 
     public function updateProfilePicture(Request $request)
