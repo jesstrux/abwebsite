@@ -15,8 +15,7 @@
       </button>
     </div>
     <div class="pictureSpinner" style="display: none" id="spinner">
-      <i class="fa fa-spinner fa-spin fa-3x fa-fw text-primary"
-        style="display: none;"></i>
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw text-primary"></i>
     </div>
 </div>
 
