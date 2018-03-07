@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "alsofronie/eloquent-uuid": "dev-master",
         "fideloper/proxy": "~3.3",
         "iatstuti/laravel-cascade-soft-deletes": "^1.4",
         "laracasts/flash": "^3.0",

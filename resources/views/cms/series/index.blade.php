@@ -27,7 +27,7 @@
       <thead>
         <th>No.</th>
         <th>Title</th>
-        {{-- <th>Category</th> --}}
+        {{--<th>Category</th>--}}
         <th>Day</th>
         <th>Time</th>
         <th>Channel</th>
@@ -38,7 +38,7 @@
         <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
           <td>{{$loop->iteration}}</td>
           <td>{{$ser->title}}</td>
-          {{-- <td>{{$ser->category()->first()->name}}</td> --}}
+          {{--<td>{{$ser->category()->first()->name}}</td>--}}
           <td>{{$ser->day}}</td>
           <td>{{$ser->air_time}}</td>
           <td>{{$ser->channel}}</td>

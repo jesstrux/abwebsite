@@ -60,7 +60,7 @@
           </ul>
       </div>
     @endif
-    <form id="login_form" name="login_form" action="{{url('/login')}}"
+    <form id="login_form" name="login_form" action="{{ route('login') }}"
       method="post">
       {{ csrf_field() }}
       <div class="form-group">

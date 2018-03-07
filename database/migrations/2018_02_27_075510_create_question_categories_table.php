@@ -14,11 +14,10 @@ class CreateQuestionCategoriesTable extends Migration
     public function up()
     {
         Schema::create('question_categories', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->increments('id');
             $table->string('name');
             $table->timestamps();
             $table->softDeletes();
-            $table->primary('id');
         });
     }
 

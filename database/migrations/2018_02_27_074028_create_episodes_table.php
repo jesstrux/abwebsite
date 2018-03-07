@@ -14,16 +14,15 @@ class CreateEpisodesTable extends Migration
     public function up()
     {
         Schema::create('episodes', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->uuid('series_id');
-            $table->uuid('series_category_id');
+            $table->increments('id');
+            $table->integer('series_id')->unsigned();
+            $table->integer('series_category_id')->unsigned();
             $table->string('image_url')->nullable();
             $table->string('youtube_url');
             $table->string('title');
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->primary('id');
             $table->foreign('series_category_id')
                   ->references('id')
                   ->on('series_categories');

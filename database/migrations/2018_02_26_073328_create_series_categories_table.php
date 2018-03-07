@@ -14,11 +14,10 @@ class CreateSeriesCategoriesTable extends Migration
     public function up()
     {
         Schema::create('series_categories', function (Blueprint $table) {
-          $table->uuid('id');
+          $table->increments('id');
           $table->string('name');
           $table->timestamps();
           $table->softDeletes();
-          $table->primary('id');
         });
     }
 

@@ -29,6 +29,8 @@
 
   <link rel="stylesheet" href="{{ asset('css/cms_styles.css') }}">
 
+  @yield('scripts')
+
 </head>
 
 <body>

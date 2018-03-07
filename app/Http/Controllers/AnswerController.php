@@ -80,7 +80,6 @@ class AnswerController extends Controller
      private function rules()
      {
        return [
-         'question_category_id' => 'required|integer',
          'youtube_id' => 'required|string', //The Video-ID
        ];
      }
@@ -93,7 +92,7 @@ class AnswerController extends Controller
      private function errorMessages()
      {
        return [
-         'question_category_id.required' => 'Please select atleast one category',
+         
        ];
      }
 

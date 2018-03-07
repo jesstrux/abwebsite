@@ -14,8 +14,8 @@ class CreateSeriesTable extends Migration
     public function up()
     {
         Schema::create('series', function (Blueprint $table) {
-          $table->uuid('id');
-          $table->uuid('series_category_id');
+          $table->increments('id');
+          $table->integer('series_category_id')->unsigned();
           $table->string('title');
           $table->string('air_time');
           $table->string('day');
@@ -23,7 +23,6 @@ class CreateSeriesTable extends Migration
           $table->string('channel');
           $table->timestamps();
           $table->softDeletes();
-          $table->primary('id');
           $table->foreign('series_category_id')
                 ->references('id')
                 ->on('series_categories');

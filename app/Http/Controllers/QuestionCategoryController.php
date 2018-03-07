@@ -136,4 +136,10 @@ class QuestionCategoryController extends Controller
         $categories = QuestionCategory::latest('updated_at')->get();
         return view($this->folder . '.table', compact('categories'));
     }
+
+    public function getQuestions(QuestionCategory $questionCategory)
+    {
+      $questions = $questionCategory->questions()->get();
+      return view($this->folder . '.questions', compact('questions'));
+    }
 }

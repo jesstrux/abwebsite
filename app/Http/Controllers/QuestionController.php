@@ -29,8 +29,11 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest('updated_at')->get();
-        return view($this->folder . '.index', compact('questions'));
+      $categories = QuestionCategory::latest('updated_at')
+                                    ->with('questions')
+                                    ->withCount('questions')
+                                    ->get();
+      return view($this->folder . '.index', compact('categories'));
     }
 
     /**
