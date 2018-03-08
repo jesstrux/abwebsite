@@ -1,22 +1,30 @@
 <table id="myTable" class="table table-hover">
   <thead>
     <th>No.</th>
-    <th>Name</th>
+    <th>Title</th>
+    <th>Series</th>
+    <th>Category</th>
+    <th>Date Aired</th>
+    <th>Youtube-ID</th>
     <th>Action</th>
   </thead>
   <tbody>
-    @foreach($categories as $category)
+    @foreach($episodes as $episode)
     <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
-      <td>{{$loop->iteration}}</td>
-      <td>{{$category->name}}</td>
+      <td>{{ $loop->iteration }}</td>
+      <td>{{ $episode->titleSnippet }}</td>
+      <td>{{ $episode->series->title }}</td>
+      <td>{{ $episode->seriesCategory->name }}</td>
+      <td>{{ $episode->date_aired }}</td>
+      <td>{{ $episode->youtube_id }}</td>
       <td>
         <div class="btn-group">
-          <a class="btn btn-warning" title="edit category"
-           href="{{route('series_categories.edit', ['seriesCategory' => $category->id])}}">
+          <a class="btn btn-warning" title="edit episode"
+           href="{{route('episodes.edit', ['episode' => $episode->id])}}">
             <span class="fa fa-pencil"></span>
           </a>
-          <button class="btn btn-danger" title="delete category"
-            onclick="showDeleteModal({{$category}})">
+          <button class="btn btn-danger" title="delete episode"
+            onclick="showDeleteModal({{$episode}})">
             <span class="fa fa-trash-o"></span>
           </button>
         </div>
@@ -25,6 +33,7 @@
     @endforeach
   </tbody>
 </table>
+
 <script>
 var model_id = null;
 
@@ -41,21 +50,25 @@ $(function ()
 function showDeleteModal(model)
 {
   showModal("delete_confirmation_modal");
-  $("#confirmation_text").text("Delete " + model.name);
+  // $("#confirmation_text").text("Delete " + model.title);
   model_id = model.id;
 }
 
-function deleteProduct()
+function deleteEpisode()
 {
   $.ajax({
     type: 'delete',
-    url: '/series_categories/' + model_id,
-    success: function() {
+    url: '/episodes/' + model_id,
+    success: function(table) {
       $(".my_loader").fadeOut(0);
       $(".btn-primary").prop("disabled", false);
       closeModal("delete_confirmation_modal");
 
-      window.location.href = '/series_categories/';
+      $("#episodesTable").html(table);
+      $("#success-alert").text("Episode Deleted Successfully");
+      $("#success-alert").fadeIn(0, function() {
+        $("#success-alert").fadeOut(1500);
+      });
     },
     error: function(error) {
       $(".my_loader").fadeOut(0);

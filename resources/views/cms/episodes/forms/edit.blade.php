@@ -6,9 +6,15 @@
   .nav-tabs > li > a {
     color: #555555;
   }
-  
+
+  .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+    background-color: #e6e6e6;
+    color: #676a6c;
+}
+
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover,
   .nav-tabs > li.active > a:focus {
+    background-color: #e6e6e6;
     color: #337ab7;
   }
 
@@ -23,8 +29,16 @@
 </style>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#editEpisode">Episode Details</a></li>
-  <li><a data-toggle="tab" href="#changePicture">Change Picture</a></li>
+  <li class="active">
+    <a data-toggle="tab" href="#editEpisode">
+      <span style="font-weight: bold;">Episode Details</span>
+    </a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#changePicture">
+      <span style="font-weight: bold;">Change Picture</span>
+    </a>
+  </li>
 </ul>
 
 <div class="tab-content">

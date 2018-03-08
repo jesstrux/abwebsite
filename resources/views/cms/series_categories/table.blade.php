@@ -25,8 +25,19 @@
     @endforeach
   </tbody>
 </table>
+
 <script>
 var model_id = null;
+
+$(function ()
+{
+
+  $("#myTable").DataTable({
+   iDisplayLength: 8,
+   bLengthChange: false
+ });
+
+});
 
 $(function ()
 {
@@ -45,17 +56,21 @@ function showDeleteModal(model)
   model_id = model.id;
 }
 
-function deleteProduct()
+function deleteSeriesCategory()
 {
   $.ajax({
     type: 'delete',
     url: '/series_categories/' + model_id,
-    success: function() {
+    success: function(table) {
       $(".my_loader").fadeOut(0);
       $(".btn-primary").prop("disabled", false);
       closeModal("delete_confirmation_modal");
 
-      window.location.href = '/series_categories/';
+      $("#seriesCategoriesTable").html(table);
+      $("#success-alert").text("Category Deleted Successfully");
+      $("#success-alert").fadeIn(0, function() {
+        $("#success-alert").fadeOut(1500);
+      });
     },
     error: function(error) {
       $(".my_loader").fadeOut(0);

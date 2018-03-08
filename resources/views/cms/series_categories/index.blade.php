@@ -7,7 +7,7 @@
   'title' => 'Confirm',
   'text' =>  'You are about to delete this product!',
   'action' => 'Confirm',
-  'function' => 'deleteProduct()',])
+  'function' => 'deleteSeriesCategory()',])
 
 @include('cms.alerts.success-alert')
 
@@ -64,7 +64,7 @@ function showDeleteModal(model)
   model_id = model.id;
 }
 
-function deleteProduct()
+function deleteSeriesCategory()
 {
   $.ajax({
     type: 'delete',

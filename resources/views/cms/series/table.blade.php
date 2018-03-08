@@ -12,7 +12,7 @@
     @foreach($series as $ser)
     <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
       <td>{{$loop->iteration}}</td>
-      <td>{{$ser->category()->first()->name}}</td>
+      <td>{{$ser->seriesCategory->name}}</td>
       <td>{{$ser->title}}</td>
       <td>{{$ser->day}}</td>
       <td>{{$ser->time}}</td>
@@ -33,8 +33,19 @@
     @endforeach
   </tbody>
 </table>
+
 <script>
 var model_id = null;
+
+$(function ()
+{
+
+  $("#myTable").DataTable({
+   iDisplayLength: 8,
+   bLengthChange: false
+ });
+
+});
 
 $(function ()
 {
@@ -63,7 +74,7 @@ function deleteSeries()
       $(".btn-primary").prop("disabled", false);
       closeModal("delete_confirmation_modal");
 
-      $("#seriesCategoriesTable").html(table);
+      $("#seriesTable").html(table);
       $("#success-alert").text("Category Deleted Successfully");
       $("#success-alert").fadeIn(0, function() {
         $("#success-alert").fadeOut(1500);

@@ -82,7 +82,7 @@ function deleteSeries()
       $(".btn-primary").prop("disabled", false);
       closeModal("delete_confirmation_modal");
 
-      $("#seriesCategoriesTable").html(table);
+      $("#seriesTable").html(table);
       $("#success-alert").text("Series Deleted Successfully");
       $("#success-alert").fadeIn(0, function() {
         $("#success-alert").fadeOut(1500);

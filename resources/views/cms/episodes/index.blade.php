@@ -22,7 +22,7 @@
      <div class="clearfix"></div>
   </div>
   <div class="panel-body">
-    <div id="seriesCategoriesTable" class="table-responsive">
+    <div id="episodesTable" class="table-responsive">
     <table id="myTable" class="table table-hover">
       <thead>
         <th>No.</th>
@@ -82,7 +82,7 @@ function deleteEpisode()
       $(".btn-primary").prop("disabled", false);
       closeModal("delete_confirmation_modal");
 
-      $("#seriesCategoriesTable").html(table);
+      $("#episodesTable").html(table);
       $("#success-alert").text("Episode Deleted Successfully");
       $("#success-alert").fadeIn(0, function() {
         $("#success-alert").fadeOut(1500);
