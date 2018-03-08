@@ -17,7 +17,7 @@ class Episode extends BaseModel
       'date_aired', 'series_id', 'series_category_id',
     ];
 
-    public function category()
+    public function seriesCategory()
     {
       return $this->belongsTo(SeriesCategory::class);
     }
@@ -25,6 +25,11 @@ class Episode extends BaseModel
     public function series()
     {
       return $this->belongsTo(Series::class);
+    }
+
+    public function getTitleSnippetAttribute()
+    {
+      return str_limit($this->title, 25);
     }
 
     public function getPictureAttribute()

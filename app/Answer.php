@@ -16,7 +16,7 @@ class Answer extends BaseModel
       'youtube_id',
     ];
 
-    public function categories()
+    public function questionCategories()
     {
       return $this->belongsToMany(QuestionCategory::class);
     }

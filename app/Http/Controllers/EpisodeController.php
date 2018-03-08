@@ -29,7 +29,7 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        $episodes = Episode::with(['series', 'category'])
+        $episodes = Episode::with(['series:id,title', 'seriesCategory:id,name'])
                            ->latest('updated_at')->get();
         return view($this->folder . '.index', compact('episodes'));
     }
@@ -140,7 +140,7 @@ class EpisodeController extends Controller
         $images = $episode->getMedia();
         $categories = SeriesCategory::pluck('name', 'id');
         $series = Series::pluck('title', 'id');
-        $selectedCategory = $episode->category()->first();
+        $selectedCategory = $episode->seriesCategory()->first();
         $selectedSeries = $episode->series()->first();
         return view($this->forms . '.edit',
             compact('episode', 'images', 'categories', 'series',

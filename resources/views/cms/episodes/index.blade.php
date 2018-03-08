@@ -27,8 +27,8 @@
       <thead>
         <th>No.</th>
         <th>Title</th>
-        {{--<th>Series</th>
-        <th>Category</th>--}}
+        <th>Series</th>
+        <th>Category</th>
         <th>Date Aired</th>
         <th>Youtube-ID</th>
         <th>Action</th>
@@ -36,12 +36,12 @@
       <tbody>
         @foreach($episodes as $episode)
         <tr class="{{($loop->index % 2 == 0) ? 'active' : ''}}">
-          <td>{{$loop->iteration}}</td>
-          <td>{{ str_limit($episode->title, 20) }}</td>
-          {{--<td>{{$episode->series->title}}</td>
-          <td>{{$episode->category->name}}</td>--}}
-          <td>{{$episode->date_aired}}</td>
-          <td>{{$episode->youtube_id}}</td>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $episode->titleSnippet }}</td>
+          <td>{{ $episode->series->title }}</td>
+          <td>{{ $episode->seriesCategory->name }}</td>
+          <td>{{ $episode->date_aired }}</td>
+          <td>{{ $episode->youtube_id }}</td>
           <td>
             <div class="btn-group">
               <a class="btn btn-warning" title="edit episode"

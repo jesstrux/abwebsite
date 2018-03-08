@@ -20,7 +20,7 @@ class Series extends BaseModel
       'day', 'description', 'channel',
     ];
 
-    public function category()
+    public function seriesCategory()
     {
       return $this->belongsTo(SeriesCategory::class);
     }

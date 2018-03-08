@@ -44,8 +44,8 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = Series::latest('updated_at')->get();
-        // $series = Series::first()->category()->first();
+        $series = Series::with('seriesCategory:id,name')
+                        ->latest('updated_at')->get();
         return view($this->folder . '.index', compact('series'));
     }
 
@@ -138,7 +138,7 @@ class SeriesController extends Controller
         $categories = SeriesCategory::pluck('name', 'id');
         $days = $this->getWeekDays();
         $selectedDay = $series->day;
-        $selectedCategory = $series->category()->first();
+        $selectedCategory = $series->seriesCategory()->first();
         return view($this->forms . '.edit',
             compact('series', 'days', 'selectedCategory',
                     'categories', 'selectedDay'));

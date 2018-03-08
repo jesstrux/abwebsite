@@ -17,7 +17,7 @@ class Question extends BaseModel
       'question_category_id', 'follower_id', 'question',
     ];
 
-    public function category()
+    public function questionCategory()
     {
       return $this->belongsTo(QuestionCategory::class);
     }
