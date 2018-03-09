@@ -16,6 +16,6 @@ require('./plugins/bootstrap-timepicker'); //fetch from plugin folder
 
 require('datatables.net');
 
-window.Typeahead = require('typeahead');
+require('./plugins/bootstrap-tagsinput');
 
-require('bootstrap-tagsinput');
+window.Typeahead = require('typeahead');
