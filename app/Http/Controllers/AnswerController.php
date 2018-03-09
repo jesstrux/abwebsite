@@ -82,6 +82,7 @@ class AnswerController extends Controller
        return [
          'youtube_id' => 'required|string', //The Video-ID
          'title' => 'required|string', //Answers with same title are okay
+         'question_category_id' => 'required',
        ];
      }
 
@@ -93,7 +94,8 @@ class AnswerController extends Controller
      private function errorMessages()
      {
        return [
-
+         'question_category_id.required' => 'Atleast one question-category '.
+                                            'is required',
        ];
      }
 
@@ -128,7 +130,7 @@ class AnswerController extends Controller
      */
     public function update(Request $request, Answer $answer)
     {
-      $this->validate($request, $this->rules($answer->id));
+      $this->validate($request, $this->rules());
       $answer->update($request->only(['youtube_id', 'title']));
       flash('Answer Updated Successfully')->success();
       return redirect($this->redirectTo);

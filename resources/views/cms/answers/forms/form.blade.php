@@ -96,14 +96,17 @@
 }
 </style>
 
-<div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
+<script>
 
-  <script>
-    var input = document.getElementById('question_category_id');
-    var tar = Typeahead(input, {
-      source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']
-    });
-  </script>
+  $("#question_category_id").tagsinput({
+      typeaheadjs: {
+        source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']
+      }
+  });
+</script>
+
+
+<div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
 
     <div class="col-md-offset-3 col-md-6">
 
