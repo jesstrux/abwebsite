@@ -1,15 +1,15 @@
-<div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
+<div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
 
     <div class="col-md-offset-3 col-md-6">
 
         {!!
-            Form::text('title', null, [
+            Form::textarea('title', null, [
 
                 'class' => 'form-control',
 
-                'required' => 'required',
-
                 'aria-describedby'=> 'titleHelpBlock',
+
+                'rows' => 3,
 
                 'placeholder' => 'Title',
 
@@ -32,7 +32,7 @@
 
             <p id="titleHelpBlock" class="help-block">
 
-                The Series Title
+                The Episode Title
 
             </p>
 

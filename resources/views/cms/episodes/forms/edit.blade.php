@@ -4,17 +4,24 @@
 
 <style>
   .nav-tabs > li > a {
-    color: #555555;
+    border-color: #ccc;
+    background-color: #e6e6e6;
+    border-bottom: none;
+    color: #666;
   }
 
   .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
-    background-color: #e6e6e6;
+    background-color: transparent;
+    border-color: #ccc;
+    border-bottom: none;
     color: #676a6c;
 }
 
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover,
   .nav-tabs > li.active > a:focus {
-    background-color: #e6e6e6;
+    background-color: transparent;
+    border-color: #ccc;
+    border-bottom: none;
     color: #337ab7;
   }
 

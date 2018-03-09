@@ -19,7 +19,7 @@ class CreateEpisodesTable extends Migration
             $table->integer('series_category_id')->unsigned();
             $table->string('image_url')->nullable();
             $table->string('youtube_url');
-            $table->string('title');
+            $table->text('title');
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();

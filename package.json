@@ -13,8 +13,11 @@
         "bootstrap-datepicker": "^1.7.1",
         "bootstrap-filestyle": "^1.2.1",
         "bootstrap-sass": "^3.3.7",
+        "bootstrap-tagsinput": "^0.7.1",
+        "datatables.net": "^1.10.16",
         "jquery": "^3.2",
-        "metismenu": "^2.7.4"
+        "metismenu": "^2.7.4",
+        "typeahead": "^0.2.2"
     },
     "devDependencies": {
         "cross-env": "^5.1",

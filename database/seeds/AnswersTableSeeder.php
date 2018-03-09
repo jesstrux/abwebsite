@@ -21,7 +21,12 @@ class AnswersTableSeeder extends Seeder
       collect($youtube_ids)
             ->each(function ($youtube_id)
               use($question_category_ids) {
-                $answer = Answer::create(compact('youtube_id'));
+                $answer = Answer::create([
+                  'youtube_id' => $youtube_id,
+                  'title' => 'Why do we make a big deal out of everything ' .
+                             'we do in the field of technology, why not ' .
+                             'just base it all on a whim?',
+                ]);
                 $answer->questionCategories()
                        ->sync(array_random($question_category_ids, array_random([2, 3])));
               });

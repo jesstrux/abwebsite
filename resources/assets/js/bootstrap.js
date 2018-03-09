@@ -4,7 +4,7 @@ try {
     require('bootstrap-sass');
 } catch (e) {}
 
-require('bootstrap-sass'); 
+require('bootstrap-sass');
 
 require('metismenu');
 
@@ -14,4 +14,8 @@ require('bootstrap-filestyle');
 
 require('./plugins/bootstrap-timepicker'); //fetch from plugin folder
 
-//require('./plugins/colorpicker');
+require('datatables.net');
+
+window.Typeahead = require('typeahead');
+
+require('bootstrap-tagsinput');

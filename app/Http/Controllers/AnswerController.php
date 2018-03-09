@@ -38,7 +38,7 @@ class AnswerController extends Controller
      */
     public function create()
     {
-        $categories = QuestionCategory::all();
+        $categories = QuestionCategory::pluck('name', 'id');
         return view($this->forms . '.create', compact('categories'));
     }
 
@@ -55,7 +55,7 @@ class AnswerController extends Controller
         $answer = null;
         try
         {
-          $answer = Answer::create($request->only('youtube_id'));
+          $answer = Answer::create($request->only(['youtube_id', 'title']));
           $answer->questionCategories()->sync($request->question_category_id);
           DB::commit();
         }
@@ -81,6 +81,7 @@ class AnswerController extends Controller
      {
        return [
          'youtube_id' => 'required|string', //The Video-ID
+         'title' => 'required|string', //Answers with same title are okay
        ];
      }
 
@@ -128,7 +129,7 @@ class AnswerController extends Controller
     public function update(Request $request, Answer $answer)
     {
       $this->validate($request, $this->rules($answer->id));
-      $answer->update($request->only('youtube_id'));
+      $answer->update($request->only(['youtube_id', 'title']));
       flash('Answer Updated Successfully')->success();
       return redirect($this->redirectTo);
     }
@@ -142,7 +143,7 @@ class AnswerController extends Controller
     public function destroy(Answer $answer)
     {
         $answer->delete();
-        flash('Answer Deleted Successfully')->success();
-        return redirect($this->redirectTo);
+        $answers = Answer::latest('updated_at')->get();
+        return view($this->folder . '.table', compact('answers'));
     }
 }

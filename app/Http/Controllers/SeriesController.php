@@ -169,7 +169,8 @@ class SeriesController extends Controller
     {
         $series->delete();
         // flash('Series Deleted Successfully')->success();
-        $series = Series::latest('updated_at')->get();
+        $series = Series::with('seriesCategory:id,name')
+                        ->latest('updated_at')->get();
         return view($this->folder . '.table', compact('series'));
     }
 }

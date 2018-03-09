@@ -68,7 +68,6 @@ var model_id = null;
 function showDeleteModal(model)
 {
   showModal("delete_confirmation_modal");
-  // $("#confirmation_text").text("Delete " + model.title);
   model_id = model.id;
 }
 

@@ -14,13 +14,9 @@
 
   <link href="{{asset('fav.png')}}" rel="shortcut icon" type="image">
 
-  <link
-      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-      rel="stylesheet">
+  <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
-  <!-- DataTable Css-->
-  <link rel="stylesheet" type="text/css"
-    href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
 
   {{--<link rel="stylesheet"
   	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--}}
@@ -36,10 +32,6 @@
   <script src="{{ asset('js/app.js') }}"></script>
 
   <script src="{{ asset('js/cms.js') }}"></script>
-
-  <!-- DataTable JQuery-->
-  <script type="text/javascript" charset="utf8"
-    src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
   <script>
     $(function ()
