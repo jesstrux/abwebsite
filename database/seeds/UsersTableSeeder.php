@@ -18,5 +18,12 @@ class UsersTableSeeder extends Seeder
           'username' => env('ADMIN_USERNAME'),
           'password' => bcrypt(env('ADMIN_PASSWORD')),
         ]);
+
+        User::create([
+          'name' => env('OTHER_ADMIN_NAME'),
+          'email' => env('OTHER_ADMIN_EMAIL'),
+          'username' => env('OTHER_ADMIN_USERNAME'),
+          'password' => bcrypt(env('OTHER_ADMIN_PASSWORD')),
+        ]);
     }
 }
