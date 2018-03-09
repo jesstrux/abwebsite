@@ -56,7 +56,7 @@ class AnswerController extends Controller
         try
         {
           $answer = Answer::create($request->only('youtube_id'));
-          $answer->categories()->sync($request->question_category_id);
+          $answer->questionCategories()->sync($request->question_category_id);
           DB::commit();
         }
         catch(\Throwable $e)
@@ -92,7 +92,7 @@ class AnswerController extends Controller
      private function errorMessages()
      {
        return [
-         
+
        ];
      }
 
