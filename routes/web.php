@@ -45,4 +45,7 @@ Route::middleware('auth')->prefix('/admin')->group(function() {
       'questions' => 'QuestionController',
       'answers' => 'AnswerController',
   ]);
+
+  Route::view('/reset_password', 'cms.auth.reset_password')->name('reset_password');
+
 });

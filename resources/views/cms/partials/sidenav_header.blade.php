@@ -66,7 +66,7 @@
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
 
-                    Sign out
+                    Log out
 
                     <form
 
@@ -90,7 +90,7 @@
 
             <li>
 
-                <a href="{{ url('/change_password') }}">
+                <a href="{{ route('reset_password') }}">
 
                   Change Password
 
