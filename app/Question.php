@@ -26,4 +26,9 @@ class Question extends BaseModel
     {
       return $this->belongsTo(Follower::class);
     }
+
+    public function getQuestionSnippetAttribute()
+    {
+      return str_limit($this->question, 160);
+    }
 }

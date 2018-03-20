@@ -6,6 +6,7 @@
 /* Style the buttons */
 .filter {
   border: none;
+  border-radius: 4px;
   outline: none;
   padding: 12px 16px;
   background-color: #1ab394;
@@ -29,14 +30,20 @@
     margin: 8px -16px;
 }
 
-/* Content */
-.content {
-    background-color: white;
-    height: 100%;
-    padding: 10px;
+.btn-default {
+  background-color: #e6e5e5;
 }
 
-/* Add padding BETWEEN each column (if you want) */
+/* Content */
+.content {
+  border-radius: 4px;
+  background-color: white;
+  height: 150px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+ /*Add padding BETWEEN each column (if you want) */
 .question-row,
 .question-row > .column {
     padding: 8px;
@@ -44,11 +51,17 @@
 
 /* Create three equal columns that floats next to each other */
 .column {
-    float: left;
-    width: 33.33%;
-    height: 200px;
-    overflow: hidden;
-    display: none; /* Hide columns by default */
+  float: left;
+  width: 33.33%;
+  /*height: 200px;*/
+  /*overflow: hidden;*/
+  display: none; /* Hide columns by default */
+}
+
+.controls {
+  border-radius: 4px;
+  display: block;
+  background-color: #fff;
 }
 
 /* Clear floats after question-rows */
@@ -84,7 +97,14 @@
       <div class="column {{$category->name}}">
         <div class="content">
           <h4 style="text-transform: capitalize;">{{$category->name}}</h4>
-          <p>{{$question->question}}</p>
+          <p>{{$question->questionSnippet}}</p>
+        </div>
+        <div class="controls">
+          <button type="button" class="btn btn-default pull-right"
+            style="margin: 0 5px 5px;">Archive</button>
+          <button type="button" class="btn btn-default pull-right"
+           style="margin-bottom: 5px;">View</button>
+          <div class="clearfix"></div>
         </div>
       </div>
     @endforeach

@@ -26,7 +26,7 @@ class QuestionsTableSeeder extends Seeder
                   Question::create([
                     'question_category_id' => $question_category_id,
                     'follower_id' => array_random($follower_ids),
-                    'question' => $faker->paragraph(3, true),
+                    'question' => $faker->paragraph(4, false),
                   ]);
                 }
         });
