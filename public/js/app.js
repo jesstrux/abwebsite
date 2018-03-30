@@ -46255,7 +46255,7 @@ var render = function() {
           attrs: { type: "button" },
           on: {
             click: function($event) {
-              _vm.$emit("view-question", _vm.question.question)
+              _vm.$emit("view-question", _vm.question)
             }
           }
         },
@@ -46367,7 +46367,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* The Modal (background) */\n.modal {\n    position: fixed; /* Stay in place */\n    z-index: 1; /* Sit on top */\n    left: 0;\n    top: 0;\n    width: 100%; /* Full width */\n    height: 100%; /* Full height */\n    overflow: auto; /* Enable scroll if needed */\n    background-color: rgb(0,0,0); /* Fallback color */\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n}\n\n/* Modal Content/Box */\n.modal-content {\n    background-color: #fefefe;\n    margin: 15% auto; /* 15% from the top and centered */\n    padding: 20px;\n    border: 1px solid #888;\n    width: 80%; /* Could be more or less, depending on screen size */\n}\n.modal-content > p {\n  text-align: justify;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* The Modal (background) */\n.modal {\n    position: fixed; /* Stay in place */\n    z-index: 1; /* Sit on top */\n    padding-top: 100px; /* Location of the box */\n    left: 0;\n    top: 0;\n    width: 100%; /* Full width */\n    height: 100%; /* Full height */\n    overflow: auto; /* Enable scroll if needed */\n    background-color: rgb(0,0,0); /* Fallback color */\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n}\n\n/* Modal Content/Box */\n.modal-content {\n    background-color: #fefefe;\n    margin: 15% auto; /* 15% from the top and centered */\n    padding: 20px;\n    border: 1px solid #888;\n    width: 80%; /* Could be more or less, depending on screen size */\n}\n.modal-header {\n    padding: 2px;\n    border: none;\n}\n.modal-content > p {\n  font-weight: 400;\n  font-size: 1.2em;\n  text-align: justify;\n}\n\n/* The Close Button */\n.close {\n    color: #aaaaaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n}\n.close:hover,\n.close:focus {\n    color: #000;\n    text-decoration: none;\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -46378,6 +46378,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -46426,9 +46430,26 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "modal-dialog modal-sm" }, [
+      _c("div", { staticClass: "modal-dialog" }, [
         _c("div", { staticClass: "modal-content" }, [
-          _c("p", [_vm._v(_vm._s(_vm.question))])
+          _c("div", { staticClass: "modal-header" }, [
+            _c(
+              "span",
+              {
+                staticClass: "close",
+                on: {
+                  click: function($event) {
+                    _vm.$emit("windowClicked")
+                  }
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _c("h4", [_vm._v(_vm._s(_vm.question.title))])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.question.question))])
         ])
       ])
     ]

@@ -5,7 +5,7 @@
     <div class="controls">
       <button type="button" class="btn btn-default"
         style="margin: 0 5px 0 0"
-        @click="$emit('view-question', question.question)">View</button>
+        @click="$emit('view-question', question)">View</button>
       <button type="button" class="btn btn-default">Archive</button>
     </div>
   </div>
