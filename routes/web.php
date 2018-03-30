@@ -25,7 +25,7 @@ Route::prefix('/admin')->group(function() {
 
 Route::middleware('auth')->prefix('/admin')->group(function() {
 
-  Route::get('/', 'CmsController@index')->name('admin.index');
+  Route::get('/', 'QuestionController@index')->name('admin.index');
 
   Route::view('/profile_picture', 'cms.users.profile_picture')->name('profile_picture.index');
 
