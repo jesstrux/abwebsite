@@ -31,4 +31,9 @@ class Question extends BaseModel
     {
       return str_limit($this->question, 160);
     }
+
+    public function getTitle()
+    {
+      return $this->questionCategory()->first()->name;
+    }
 }

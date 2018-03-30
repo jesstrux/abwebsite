@@ -33,7 +33,13 @@ class QuestionController extends Controller
                                     ->with('questions')
                                     ->withCount('questions')
                                     ->get();
-      return view($this->folder . '.index', compact('categories'));
+      $questions = Question::latest('updated_at')
+                           ->get()
+                           ->map(function ($question) {
+                             $question->title = $question->getTitle();
+                             return $question;
+                           });
+      return view($this->folder . '.index', compact('categories', 'questions'));
     }
 
     /**

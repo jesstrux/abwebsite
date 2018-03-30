@@ -29,6 +29,53 @@
 
 <body>
 
+  <div id="abella-cms">
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+
+            <div class="sidebar-collapse">
+
+                <ul class="nav metismenu" id="side-menu">
+
+                    @include('cms.partials.sidenav_header')
+
+                    @include('cms.partials.sidenav_content')
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+
+        <div id="page-wrapper" class="gray-bg">
+
+            @include('cms.partials.page_header')
+
+            <div class="row wrapper wrapper-content">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        @include('flash::message')
+
+                    </div>
+
+                </div>
+
+                @yield('content')
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
   <script src="{{ asset('js/app.js') }}"></script>
 
   <script src="{{ asset('js/cms.js') }}"></script>
@@ -44,49 +91,8 @@
 
     });
   </script>
-
-  <div id="wrapper">
-
-      <nav class="navbar-default navbar-static-side" role="navigation">
-
-          <div class="sidebar-collapse">
-
-              <ul class="nav metismenu" id="side-menu">
-
-                  @include('cms.partials.sidenav_header')
-
-                  @include('cms.partials.sidenav_content')
-
-              </ul>
-
-          </div>
-
-      </nav>
-
-
-      <div id="page-wrapper" class="gray-bg">
-
-          @include('cms.partials.page_header')
-
-          <div class="row wrapper wrapper-content">
-
-              <div class="row">
-
-                  <div class="col-md-12">
-
-                      @include('flash::message')
-
-                  </div>
-
-              </div>
-
-              @yield('content')
-
-          </div>
-
-      </div>
-
-  </div>
+  
+  @yield('scripts')
 
 </body>
 </html>
