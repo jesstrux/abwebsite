@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
+        "axios": "^0.18.0",
         "bootstrap-datepicker": "^1.7.1",
         "bootstrap-filestyle": "^1.2.1",
         "bootstrap-sass": "^3.3.7",
@@ -17,7 +18,8 @@
         "datatables.net": "^1.10.16",
         "jquery": "^3.2",
         "metismenu": "^2.7.4",
-        "typeahead": "^0.2.2"
+        "typeahead": "^0.2.2",
+        "vue": "^2.5.10"
     },
     "devDependencies": {
         "cross-env": "^5.1",

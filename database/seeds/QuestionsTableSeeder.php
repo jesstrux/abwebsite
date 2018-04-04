@@ -22,11 +22,11 @@ class QuestionsTableSeeder extends Seeder
         collect($question_category_ids)
               ->each(function ($question_category_id)
                 use($follower_ids, $faker) {
-                for($i = 0; $i <= 4; $i++) {
+                for($i = 0; $i <= 100; $i++) {
                   Question::create([
                     'question_category_id' => $question_category_id,
                     'follower_id' => array_random($follower_ids),
-                    'question' => $faker->paragraph(4, false),
+                    'question' => $faker->paragraph(60, false),
                   ]);
                 }
         });

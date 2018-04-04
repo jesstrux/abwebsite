@@ -78,7 +78,6 @@
 
 </li>
 
-
 <li class="{{ isActiveRoute('episodes.*') }}">
 
     <a href="{{ route('episodes.index') }}">
@@ -88,6 +87,22 @@
         <span class="nav-label">
 
             Episodes
+
+        </span>
+
+    </a>
+
+</li>
+
+<li class="{{ isActiveRoute('archived_questions') }}">
+
+    <a href="{{ route('archived_questions') }}">
+
+        <i class="fa fa-folder"></i>
+
+        <span class="nav-label">
+
+            Archived Questions
 
         </span>
 

@@ -29,17 +29,27 @@ class QuestionController extends Controller
      */
     public function index()
     {
-      $categories = QuestionCategory::latest('updated_at')
-                                    ->with('questions')
-                                    ->withCount('questions')
-                                    ->get();
-      $questions = Question::latest('updated_at')
-                           ->get()
-                           ->map(function ($question) {
-                             $question->title = $question->getTitle();
-                             return $question;
-                           });
+      $categories = $this->getQuestionCategories();
+      $questions = $this->getQuestions();
       return view($this->folder . '.index', compact('categories', 'questions'));
+    }
+
+    private function getQuestionCategories()
+    {
+      return QuestionCategory::latest('updated_at')
+                             ->with('questions')
+                             ->withCount('questions')
+                             ->get();
+    }
+
+    public function getQuestions()
+    {
+      return Question::latest('updated_at')
+                     ->get()
+                     ->map(function ($question) {
+                       $question->title = $question->getTitle();
+                       return $question;
+                     });
     }
 
     /**
@@ -121,7 +131,23 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         $question->delete();
-        flash('Question Deleted Successfully')->success();
-        return redirect($this->redirectTo);
+        return $this->getQuestions();
+    }
+
+    public function archived()
+    {
+      $questions = $this->getArchivedQuestions();
+      $categories = $this->getQuestionCategories();
+      return view($this->folder . '.index', compact('categories', 'questions'));
+    }
+
+    public function getArchivedQuestions()
+    {
+      return Question::onlyTrashed()
+                     ->latest('updated_at')
+                     ->get()->map(function ($question) {
+                         $question->title = $question->getTitle();
+                         return $question;
+                     });
     }
 }

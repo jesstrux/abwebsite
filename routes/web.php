@@ -37,6 +37,12 @@ Route::middleware('auth')->prefix('/admin')->group(function() {
 
   Route::get('/questions/{questionCategory}/questions', 'QuestionCategoryController@getQuestions')->name('questions.questions');
 
+  Route::get('/questions/archived', 'QuestionController@archived')->name('archived_questions');
+
+  Route::get('/all_questions', 'QuestionController@getQuestions')->name('all_questions');
+
+  Route::get('/archived_questions', 'QuestionController@getArchivedQuestions');
+
   Route::resources([
       'series_categories' => 'SeriesCategoryController',
       'series' => 'SeriesController',

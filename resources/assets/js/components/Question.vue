@@ -6,7 +6,13 @@
       <button type="button" class="btn btn-default"
         style="margin: 0 5px 0 0"
         @click="$emit('view-question', question)">View</button>
-      <button type="button" class="btn btn-default">Archive</button>
+      <button type="button" class="btn btn-default"
+        :disabled="loading" @click="archive()" v-if="!archived">
+        <transition>
+          <span v-if="!loading" key="normal">Archive</span>
+          <span v-else key="archive">Archiving</span>
+        </transition>
+      </button>
     </div>
   </div>
 </template>
@@ -14,9 +20,27 @@
 <script>
 export default {
   props: ['question'],
+  data: function () {
+    return {
+      loading: false,
+    }
+  },
   computed: {
     questionSnippet: function () {
       return (this.question).question.substring(0, 125) + " ...";
+    },
+    archived: function () {
+      return this.question.deleted_at != null;
+    }
+  },
+  methods: {
+    archive() {
+      this.loading = true;
+      this.$root.$emit('archive', this.question.id);
+      // this.$root.$on('archived', () => {
+      //     this.question.loading = false;
+      //     this.$root.$off('archived');
+      // });
     }
   }
 }
