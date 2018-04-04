@@ -9,7 +9,7 @@
     <question-modal
       :question="question"
       :display="display"
-      @windowClicked="onWindowClicked">
+      @closeModal="onCloseModal">
     </question-modal>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   data: function () {
     return {
       question: '',
-      display: 'none',
+      display: 'none'
     }
   },
   methods: {
@@ -28,7 +28,7 @@ export default {
       this.question = question;
       this.display = 'block';
     },
-    onWindowClicked: function () {
+    onCloseModal: function () {
       this.display = 'none';
     }
   }

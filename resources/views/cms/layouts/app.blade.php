@@ -29,6 +29,12 @@
 
 <body>
 
+  <script>
+        window.Laravel = {!! json_encode([
+            'base_url' => url('/')
+        ]) !!};
+    </script>
+
   <div id="abella-cms">
 
     <div id="wrapper">
@@ -91,7 +97,7 @@
 
     });
   </script>
-  
+
   @yield('scripts')
 
 </body>

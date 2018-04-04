@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <filters
   :filter="filter"
   :categories="{{ $categories }}"
@@ -13,6 +12,12 @@
  :questions="questions">
 </questions>
 
+<empty-state></empty-state>
+
+<questions-footer v-if="all_questions.length > 0"
+  :num-pages="numPages"
+  :cur-page="page">
+</questions-footer>
 
 @endsection
 
