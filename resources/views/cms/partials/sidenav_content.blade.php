@@ -94,6 +94,22 @@
 
 </li>
 
+<li class="{{ isActiveRoute('news_feeds.*') }}">
+
+    <a href="{{ route('news_feeds.index') }}">
+
+        <i class="fa fa-newspaper-o"></i>
+
+        <span class="nav-label">
+
+            NewsFeeds
+
+        </span>
+
+    </a>
+
+</li>
+
 <li class="{{ isActiveRoute('archived_questions') }}">
 
     <a href="{{ route('archived_questions') }}">

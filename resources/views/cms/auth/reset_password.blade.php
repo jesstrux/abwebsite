@@ -58,12 +58,9 @@
     </div>
   </div>
 </div>
-<script>
-  $(function() {
-    $(":password").keydown(function() {
-      $(".alert-danger").fadeOut(0);
-    });
-  });
-</script>
 
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/reset_password.js') }}"></script>
 @endsection

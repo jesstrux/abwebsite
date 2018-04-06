@@ -1,5 +1,9 @@
 @extends('cms.layouts.app')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/cms_answers.css') }}">
+@endsection
+
 @section('content')
 
 <div class="row">
@@ -76,4 +80,8 @@
 
 </div>
 
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/answers.js') }}"></script>
 @endsection

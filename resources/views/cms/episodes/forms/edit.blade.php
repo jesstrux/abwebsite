@@ -1,39 +1,11 @@
 @extends('cms.layouts.app')
 
+
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/cms_episodes.css') }}">
+@endsection
+
 @section('content')
-
-<style>
-  .nav-tabs > li > a {
-    border-color: #ccc;
-    background-color: #e6e6e6;
-    border-bottom: none;
-    color: #666;
-  }
-
-  .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
-    background-color: transparent;
-    border-color: #ccc;
-    border-bottom: none;
-    color: #676a6c;
-}
-
-  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover,
-  .nav-tabs > li.active > a:focus {
-    background-color: transparent;
-    border-color: #ccc;
-    border-bottom: none;
-    color: #337ab7;
-  }
-
-  .tab-content {
-    margin-top: 20px;
-    background-color: #fff;
-  }
-
-  #changePicture {
-    padding: 10px 0;
-  }
-</style>
 
 <ul class="nav nav-tabs">
   <li class="active">
@@ -64,4 +36,9 @@
 
 </div>
 
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/episode_picture.js') }}"></script>
+<script src="{{ asset('js/episodes.js') }}"></script>
 @endsection

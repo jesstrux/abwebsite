@@ -17,7 +17,7 @@ class SeriesCategoriesTableSeeder extends Seeder
       ]);
 
       SeriesCategory::create([
-        'name' => 'Feel Me',
+        'name' => 'Mentorship',
       ]);
     }
 }

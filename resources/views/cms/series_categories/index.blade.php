@@ -43,6 +43,21 @@
               <button class="btn btn-danger" title="delete category"
                 onclick="showDeleteModal({{$category}})">
                 <span class="fa fa-trash-o"></span>
+                <form
+
+                    id="delete{{$category->id}}"
+
+                    action="{{route('series_categories.destroy', ['seriesCategory' => $category->id])}}"
+
+                    method="POST"
+
+                    style="display: none;">
+
+                    {{ csrf_field() }}
+
+                    {{ method_field('DELETE') }}
+
+                </form>
               </button>
             </div>
           </td>
@@ -54,40 +69,8 @@
 </div>
 </div>
 
-<script>
-var model_id = null;
+@endsection
 
-function showDeleteModal(model)
-{
-  showModal("delete_confirmation_modal");
-  $("#confirmation_text").text("Delete " + model.name);
-  model_id = model.id;
-}
-
-function deleteSeriesCategory()
-{
-  $.ajax({
-    type: 'delete',
-    url: '/series_categories/' + model_id,
-    success: function(table) {
-      $(".my_loader").fadeOut(0);
-      $(".btn-primary").prop("disabled", false);
-      closeModal("delete_confirmation_modal");
-
-      $("#seriesCategoriesTable").html(table);
-      $("#success-alert").text("Category Deleted Successfully");
-      $("#success-alert").fadeIn(0, function() {
-        $("#success-alert").fadeOut(1500);
-      });
-    },
-    error: function(error) {
-      $(".my_loader").fadeOut(0);
-      $(".btn-primary").prop("disabled", false);
-      console.log(error);
-    }
-  });
-  $(".btn-primary").prop("disabled", true);
-  $(".my_loader").fadeIn(0);
-}
-</script>
+@section('scripts')
+<script src="{{ asset('js/series_categories.js') }}"></script>
 @endsection

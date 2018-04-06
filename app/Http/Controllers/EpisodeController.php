@@ -193,8 +193,10 @@ class EpisodeController extends Controller
     public function destroy(Episode $episode)
     {
         $episode->delete();
-        $episodes = Episode::with(['series:id,title', 'seriesCategory:id,name'])
-                           ->latest('updated_at')->get();
-        return view($this->folder . '.table', compact('episodes'));
+        flash('Episode Deleted Successfully')->success();
+        return redirect($this->redirectTo);
+        // $episodes = Episode::with(['series:id,title', 'seriesCategory:id,name'])
+        //                    ->latest('updated_at')->get();
+        // return view($this->folder . '.table', compact('episodes'));
     }
 }

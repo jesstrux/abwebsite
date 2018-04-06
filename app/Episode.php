@@ -5,6 +5,7 @@ namespace App;
 use App\BaseModel;
 use App\Series;
 use App\SeriesCategory;
+use Carbon\Carbon;
 
 class Episode extends BaseModel
 {
@@ -25,6 +26,11 @@ class Episode extends BaseModel
     public function series()
     {
       return $this->belongsTo(Series::class);
+    }
+
+    public function getDateAiredAttribute($value)
+    {
+      return Carbon::parse($value)->format("d M Y");
     }
 
     public function getTitleSnippetAttribute()

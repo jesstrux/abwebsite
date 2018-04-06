@@ -132,9 +132,10 @@ class QuestionCategoryController extends Controller
     public function destroy(QuestionCategory $questionCategory)
     {
         $questionCategory->delete();
-        // flash('Category Deleted Successfully')->success();
-        $categories = QuestionCategory::latest('updated_at')->get();
-        return view($this->folder . '.table', compact('categories'));
+        flash('Question-Category Deleted Successfully')->success();
+        return redirect($this->redirectTo);
+        // $categories = QuestionCategory::latest('updated_at')->get();
+        // return view($this->folder . '.table', compact('categories'));
     }
 
     public function getQuestions(QuestionCategory $questionCategory)

@@ -25,66 +25,66 @@
 
   <link rel="stylesheet" href="{{ asset('css/cms_styles.css') }}">
 
+  @yield('styles')
+
 </head>
 
 <body>
 
   <script>
-        window.Laravel = {!! json_encode([
-            'base_url' => url('/')
-        ]) !!};
-    </script>
+      window.Laravel = {!! json_encode([
+          'base_url' => url('/')
+      ]) !!};
+  </script>
 
-  <div id="abella-cms">
+  <div id="wrapper">
 
-    <div id="wrapper">
+      <nav class="navbar-default navbar-static-side" role="navigation">
 
-        <nav class="navbar-default navbar-static-side" role="navigation">
+          <div class="sidebar-collapse">
 
-            <div class="sidebar-collapse">
+              <ul class="nav metismenu" id="side-menu">
 
-                <ul class="nav metismenu" id="side-menu">
+                  @include('cms.partials.sidenav_header')
 
-                    @include('cms.partials.sidenav_header')
+                  @include('cms.partials.sidenav_content')
 
-                    @include('cms.partials.sidenav_content')
+              </ul>
 
-                </ul>
+          </div>
 
-            </div>
-
-        </nav>
+      </nav>
 
 
-        <div id="page-wrapper" class="gray-bg">
+      <div id="page-wrapper" class="gray-bg">
 
-            @include('cms.partials.page_header')
+          @include('cms.partials.page_header')
 
-            <div class="row wrapper wrapper-content">
+          <div class="row wrapper wrapper-content">
 
-                <div class="row">
+              <div class="row">
 
-                    <div class="col-md-12">
+                  <div class="col-md-12">
 
-                        @include('flash::message')
+                      @include('flash::message')
 
-                    </div>
+                  </div>
 
-                </div>
+              </div>
+
+              <div id="abella-cms">
 
                 @yield('content')
 
-            </div>
+              </div>
 
-        </div>
+          </div>
 
-    </div>
+      </div>
 
   </div>
 
   <script src="{{ asset('js/app.js') }}"></script>
-
-  <script src="{{ asset('js/cms.js') }}"></script>
 
   <script>
     $(function ()
@@ -97,6 +97,8 @@
 
     });
   </script>
+
+  <script src="{{ asset('js/cms.js') }}"></script>
 
   @yield('scripts')
 

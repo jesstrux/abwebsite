@@ -7,14 +7,15 @@
     <div class="col-md-12">
 
         {!!
-            Form::open([
-                'files'  => true,
+            Form::model($newsFeed, [
 
-                'method' => 'POST',
+                'files' => true,
+
+                'method' => 'PATCH',
 
                 'class'  => 'form-horizontal',
 
-                'route'  => 'episodes.store',
+                'route'  => ['news_feeds.update', $newsFeed],
             ])
         !!}
 
@@ -28,7 +29,7 @@
 
                         <a
                             class="btn btn-white"
-                            href="{{ route('episodes.index') }}"
+                            href="{{ route('news_feeds.index') }}"
                             title="cancel">
 
                             cancel
@@ -36,12 +37,12 @@
                         </a>
 
                         {!!
-                            Form::button('create', [
+                            Form::button("update", [
                                 'type' => 'submit',
 
                                 'class' => 'btn btn-primary',
 
-                                'title' => 'create',
+                                'title' => 'update',
                             ])
                         !!}
 
@@ -50,7 +51,9 @@
                     <h2>
 
                         <small>
-                          New Episode
+
+                             Update NewsFeed
+
                         </small>
 
                     </h2>
@@ -59,7 +62,7 @@
 
                 <div class="row m-t-lg m-b-lg">
 
-                    @include ('cms.episodes.forms.form', [
+                    @include ('cms.news_feeds.forms.form', [
 
 
                     ])
@@ -76,8 +79,5 @@
 
 </div>
 
-@endsection
 
-@section('scripts')
-<script src="{{ asset('js/episodes.js') }}"></script>
 @endsection

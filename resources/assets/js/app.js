@@ -23,6 +23,7 @@ Vue.component('questions-footer', require('./components/QuestionsFooter.vue'));
 Vue.component('empty-state', function(resolve) {
   resolve(require('./components/EmptyState.vue'));
 });
+Vue.component('question-categories', require('./components/QuestionCategories.vue'));
 
 window.app = new Vue({
     el: '#abella-cms',

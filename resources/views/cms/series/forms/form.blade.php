@@ -196,14 +196,6 @@
 
     </div>
 
-    <script type="text/javascript">
-        $('#air_time').timepicker({
-            template: false,
-            showInputs: false,
-            minuteStep: 1
-        });
-    </script>
-
 </div>
 
 <div class="form-group {{ $errors->has('channel') ? 'has-error' : '' }}">

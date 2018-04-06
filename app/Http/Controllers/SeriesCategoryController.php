@@ -131,9 +131,10 @@ class SeriesCategoryController extends Controller
     public function destroy(SeriesCategory $seriesCategory)
     {
         $seriesCategory->delete();
-        // flash('Category Deleted Successfully')->success();
-        $categories = SeriesCategory::latest('updated_at')->get();
-        return view($this->folder . '.table', compact('categories'));
+        flash('Series-Category Deleted Successfully')->success();
+        return redirect($this->redirectTo);
+        // $categories = SeriesCategory::latest('updated_at')->get();
+        // return view($this->folder . '.table', compact('categories'));
     }
 
     public function getSeries(SeriesCategory $seriesCategory)

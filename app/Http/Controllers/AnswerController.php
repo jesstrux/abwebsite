@@ -6,6 +6,7 @@ use App\Answer;
 use App\QuestionCategory;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class AnswerController extends Controller
 {
@@ -38,7 +39,7 @@ class AnswerController extends Controller
      */
     public function create()
     {
-        $categories = QuestionCategory::pluck('name', 'id');
+        $categories = QuestionCategory::all();
         return view($this->forms . '.create', compact('categories'));
     }
 
@@ -118,7 +119,8 @@ class AnswerController extends Controller
      */
     public function edit(Answer $answer)
     {
-      return view($this->forms . '.edit', compact('answer'));
+      $categories = QuestionCategory::all();
+      return view($this->forms . '.edit', compact('answer', 'categories'));
     }
 
     /**
@@ -145,7 +147,9 @@ class AnswerController extends Controller
     public function destroy(Answer $answer)
     {
         $answer->delete();
-        $answers = Answer::latest('updated_at')->get();
-        return view($this->folder . '.table', compact('answers'));
+        flash('Answer Deleted Successfully')->success();
+        return redirect($this->redirectTo);
+        // $answers = Answer::latest('updated_at')->get();
+        // return view($this->folder . '.table', compact('answers'));
     }
 }

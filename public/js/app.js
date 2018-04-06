@@ -11670,6 +11670,7 @@ Vue.component('questions-footer', __webpack_require__(76));
 Vue.component('empty-state', function (resolve) {
   resolve(__webpack_require__(81));
 });
+Vue.component('question-categories', __webpack_require__(86));
 
 window.app = new Vue({
   el: '#abella-cms',
@@ -48618,6 +48619,219 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-66b4ba8a", module.exports)
+  }
+}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(87)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/QuestionCategories.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7d5e1419", Component.options)
+  } else {
+    hotAPI.reload("data-v-7d5e1419", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(88);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("49603504", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7d5e1419\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./QuestionCategories.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7d5e1419\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./QuestionCategories.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.categories-container {\n  display: flex;\n  flex-direction: column;\n}\n.question-categories {\n  display: flex;\n}\n.categories-cluster {\n  display: flex;\n  flex-direction: column;\n  margin-right: auto;\n}\n.text-danger {\n  color: #a94442;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['categories', 'error'],
+  data: function data() {
+    return {
+      checkboxes: 3 //number of check-boxes per cluster
+    };
+  },
+  computed: {
+    numClusters: function numClusters() {
+      var mod = this.categories.length % this.checkboxes;
+      var clusters = Math.trunc(this.categories.length / this.checkboxes);
+      if (mod != 0) return clusters + 1;
+      return clusters;
+    }
+  },
+  methods: {
+    sliceCategories: function sliceCategories(cluster) {
+      var start = (cluster - 1) * this.checkboxes;
+      var end = start + this.checkboxes;
+      if (end > this.categories.length) end = this.categories.length;
+      return this.categories.slice(start, end);
+    }
+  }
+});
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { class: ["categories-container", { "has-error": _vm.error }] },
+    [
+      _c(
+        "div",
+        { staticClass: "question-categories" },
+        _vm._l(_vm.numClusters, function(n) {
+          return _c(
+            "div",
+            { staticClass: "categories-cluster" },
+            _vm._l(_vm.sliceCategories(n), function(category) {
+              return _c("div", { key: category.id, staticClass: "checkbox" }, [
+                _c("label", [
+                  _c("input", {
+                    attrs: { type: "checkbox", name: "question_category_id[]" },
+                    domProps: { value: category.id },
+                    on: {
+                      change: function($event) {
+                        _vm.error = false
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n            " + _vm._s(category.name) + "\n          "
+                  )
+                ])
+              ])
+            })
+          )
+        })
+      ),
+      _vm._v(" "),
+      _vm.error == false
+        ? _c("p", { key: "default", staticClass: "help-block" }, [
+            _vm._v("\n\n      The Question Categories Addressed\n\n  ")
+          ])
+        : _vm.error == true
+          ? _c("p", { key: "error", staticClass: "help-block" }, [
+              _vm._v("\n\n      Please select atleast one category\n\n  ")
+            ])
+          : _vm._e()
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7d5e1419", module.exports)
   }
 }
 

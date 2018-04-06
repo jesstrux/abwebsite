@@ -14,7 +14,7 @@
 
                 'class'  => 'form-horizontal',
 
-                'route'  => 'episodes.store',
+                'route'  => 'news_feeds.store',
             ])
         !!}
 
@@ -28,7 +28,7 @@
 
                         <a
                             class="btn btn-white"
-                            href="{{ route('episodes.index') }}"
+                            href="{{ route('news_feeds.index') }}"
                             title="cancel">
 
                             cancel
@@ -50,7 +50,7 @@
                     <h2>
 
                         <small>
-                          New Episode
+                          New NewsFeed
                         </small>
 
                     </h2>
@@ -59,7 +59,7 @@
 
                 <div class="row m-t-lg m-b-lg">
 
-                    @include ('cms.episodes.forms.form', [
+                    @include ('cms.news_feeds.forms.form', [
 
 
                     ])
@@ -76,8 +76,4 @@
 
 </div>
 
-@endsection
-
-@section('scripts')
-<script src="{{ asset('js/episodes.js') }}"></script>
 @endsection

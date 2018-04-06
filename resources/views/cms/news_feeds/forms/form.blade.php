@@ -1,17 +1,15 @@
-<div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
+<div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
 
     <div class="col-md-offset-3 col-md-6">
 
         {!!
-            Form::textarea('title', null, [
+            Form::text('title', null, [
 
                 'class' => 'form-control',
 
                 'required' => 'required',
 
                 'aria-describedby'=> 'titleHelpBlock',
-
-                'rows' => 3,
 
                 'placeholder' => 'Title',
 
@@ -34,7 +32,7 @@
 
             <p id="titleHelpBlock" class="help-block">
 
-                The Answer Title
+                The NewsFeed Title
 
             </p>
 
@@ -43,20 +41,6 @@
     </div>
 
 </div>
-
-<div class="form-group">
-
-    <div class="col-md-offset-3 col-md-6">
-
-        <question-categories
-          :categories="{{ $categories }}"
-          :error="{{ json_encode($errors->any() && $errors->has('question_category_id')) }}">
-        </question-categories>
-
-    </div>
-
-</div>
-
 <div class="form-group {{ $errors->has('youtube_id') ? 'has-error' : '' }}">
 
     <div class="col-md-offset-3 col-md-6">
@@ -68,9 +52,9 @@
 
                 'required' => 'required',
 
-                'aria-describedby'=> 'youtubeIdHelpBlock',
+                'aria-describedby'=> 'youtubeIDHelpBlock',
 
-                'placeholder' => 'Youtube ID',
+                'placeholder' => 'YouTube-ID',
 
             ])
         !!}
@@ -89,9 +73,9 @@
 
         @else
 
-            <p id="youtubeIdHelpBlock" class="help-block">
+            <p id="youtubeIDHelpBlock" class="help-block">
 
-                The Youtube-ID
+                The YouTube-ID
 
             </p>
 

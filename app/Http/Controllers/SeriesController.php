@@ -168,9 +168,10 @@ class SeriesController extends Controller
     public function destroy(Series $series)
     {
         $series->delete();
-        // flash('Series Deleted Successfully')->success();
-        $series = Series::with('seriesCategory:id,name')
-                        ->latest('updated_at')->get();
-        return view($this->folder . '.table', compact('series'));
+        flash('Series Deleted Successfully')->success();
+        return redirect($this->redirectTo);
+        // $series = Series::with('seriesCategory:id,name')
+        //                 ->latest('updated_at')->get();
+        // return view($this->folder . '.table', compact('series'));
     }
 }

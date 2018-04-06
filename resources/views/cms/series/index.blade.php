@@ -51,6 +51,21 @@
               <button class="btn btn-danger" title="delete series"
                 onclick="showDeleteModal({{$ser}})">
                 <span class="fa fa-trash-o"></span>
+                <form
+
+                    id="delete{{$ser->id}}"
+
+                    action="{{route('series.destroy', ['series' => $ser->id])}}"
+
+                    method="POST"
+
+                    style="display: none;">
+
+                    {{ csrf_field() }}
+
+                    {{ method_field('DELETE') }}
+
+                </form>
               </button>
             </div>
           </td>
@@ -62,40 +77,8 @@
 </div>
 </div>
 
-<script>
-var model_id = null;
+@endsection
 
-function showDeleteModal(model)
-{
-  showModal("delete_confirmation_modal");
-  $("#confirmation_text").text("Delete " + model.title);
-  model_id = model.id;
-}
-
-function deleteSeries()
-{
-  $.ajax({
-    type: 'delete',
-    url: '/series/' + model_id,
-    success: function(table) {
-      $(".my_loader").fadeOut(0);
-      $(".btn-primary").prop("disabled", false);
-      closeModal("delete_confirmation_modal");
-
-      $("#seriesTable").html(table);
-      $("#success-alert").text("Series Deleted Successfully");
-      $("#success-alert").fadeIn(0, function() {
-        $("#success-alert").fadeOut(1500);
-      });
-    },
-    error: function(error) {
-      $(".my_loader").fadeOut(0);
-      $(".btn-primary").prop("disabled", false);
-      console.log(error);
-    }
-  });
-  $(".btn-primary").prop("disabled", true);
-  $(".my_loader").fadeIn(0);
-}
-</script>
+@section('scripts')
+<script src="{{ asset('js/series.js') }}"></script>
 @endsection
