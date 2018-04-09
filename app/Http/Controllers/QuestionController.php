@@ -44,7 +44,8 @@ class QuestionController extends Controller
 
     public function getQuestions()
     {
-      return Question::latest('updated_at')
+      return Question::where('archived', false)
+                     ->latest('updated_at')
                      ->get()
                      ->map(function ($question) {
                        $question->title = $question->getTitle();
@@ -134,6 +135,15 @@ class QuestionController extends Controller
         return $this->getQuestions();
     }
 
+    //Archive the question
+    public function archive(Question $question)
+    {
+      $question->archived = true;
+      $question->save();
+      return $this->getQuestions();
+    }
+
+    //return archived questions view
     public function archived()
     {
       $questions = $this->getArchivedQuestions();
@@ -143,7 +153,7 @@ class QuestionController extends Controller
 
     public function getArchivedQuestions()
     {
-      return Question::onlyTrashed()
+      return Question::where('archived', true)
                      ->latest('updated_at')
                      ->get()->map(function ($question) {
                          $question->title = $question->getTitle();

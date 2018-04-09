@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\BaseModel;
 use App\Question;
 use App\Answer;
+use App\Events\QuestionCategoryDeleting;
 
 class QuestionCategory extends BaseModel
 {
@@ -15,6 +16,10 @@ class QuestionCategory extends BaseModel
 
     protected $fillable = [
       'name',
+    ];
+
+    protected $dispatchesEvents = [
+        'deleting' => QuestionCategoryDeleting::class,
     ];
 
     public function questions()

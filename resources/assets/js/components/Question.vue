@@ -6,14 +6,14 @@
       <button type="button" class="btn btn-default"
         style="margin: 0 5px 0 0"
         @click="$emit('view-question', question)">View</button>
-      <button type="button" class="btn btn-default"
-        :disabled="loading" @click="archive()" v-if="!archived">
-        <transition>
-          <span v-if="!loading" key="normal">Archive</span>
-          <span v-else key="archive">Archiving</span>
-        </transition>
+      <button type="button" class="btn btn-default" v-if="!question.archived"
+        @click="display = 'block'">
+        Archive
       </button>
     </div>
+    <confirm-archive :display="display"
+      :question-id="question.id"
+      @closeModal="display = 'none'"></confirm-archive>
   </div>
 </template>
 
@@ -22,31 +22,23 @@ export default {
   props: ['question'],
   data: function () {
     return {
-      loading: false,
+      display: 'none'
     }
   },
   computed: {
     questionSnippet: function () {
       return (this.question).question.substring(0, 125) + " ...";
-    },
-    archived: function () {
-      return this.question.deleted_at != null;
     }
   },
   methods: {
-    archive() {
-      this.loading = true;
+    onArchive() {
       this.$root.$emit('archive', this.question.id);
-      // this.$root.$on('archived', () => {
-      //     this.question.loading = false;
-      //     this.$root.$off('archived');
-      // });
     }
   }
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .column {
   height: 160px;
   overflow: hidden;

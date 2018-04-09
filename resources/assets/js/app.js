@@ -20,6 +20,7 @@ Vue.use(Toast);
 
 Vue.component('filters', require('./components/Filters.vue'));
 Vue.component('question', require('./components/Question.vue'));
+Vue.component('confirm-archive', require('./components/ConfirmArchive.vue'));
 Vue.component('questions', require('./components/Questions.vue'));
 Vue.component('question-modal', require('./components/QuestionModal.vue'));
 Vue.component('questions-footer', require('./components/QuestionsFooter.vue'));
@@ -66,7 +67,7 @@ window.app = new Vue({
     },
     created() {
       this.$on('archive', function(question_id) {
-          var url= window.Laravel.base_url + '/admin/questions/' + question_id;
+          var url= window.Laravel.base_url + '/admin/archive_questions/' + question_id;
           axios.delete(url).then((response)=>{
               var questions = response.data;
               this.setAllQuestions(questions);
