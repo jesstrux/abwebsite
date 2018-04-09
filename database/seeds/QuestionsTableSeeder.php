@@ -15,7 +15,7 @@ class QuestionsTableSeeder extends Seeder
     public function run()
     {
         $follower_ids = Follower::all()->modelKeys();
-        $question_category_ids = QuestionCategory::all()->modelKeys();
+        $question_category_ids = [1,2,4,6,7];
 
         $faker = Faker\Factory::create();
 

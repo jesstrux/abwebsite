@@ -11677,6 +11677,7 @@ window.app = new Vue({
   data: {
     filter: 0,
     all_questions: [],
+    questions: [],
     max: 9,
     buffer: 0, //buffered questions
     page: 1, //the current page
@@ -11690,35 +11691,31 @@ window.app = new Vue({
       console.log("end: " + this.end);
       return this.start - 1;
     },
-    questions: function questions() {
-      var _this = this;
-
-      if (this.filter == 0) return this.all_questions.slice(this.startIndex, this.end);else return this.all_questions.filter(function (question) {
-        return question.question_category_id == _this.filter;
-      }).slice(this.startIndex, this.end);
-    },
     filteredQuestions: function filteredQuestions() {
-      var _this2 = this;
+      var _this = this;
 
       if (this.filter == 0) {
         return this.all_questions;
       } else {
         return this.all_questions.filter(function (question) {
-          return question.question_category_id == _this2.filter;
+          return question.question_category_id == _this.filter;
         });
       }
     }
   },
+  watch: {
+    end: function end() {
+      this.setQuestions();
+    }
+  },
   created: function created() {
     this.$on('archive', function (question_id) {
-      var _this3 = this;
+      var _this2 = this;
 
       var url = window.Laravel.base_url + '/admin/questions/' + question_id;
       axios.delete(url).then(function (response) {
         var questions = response.data;
-        _this3.setAllQuestions(questions);
-        _this3.setNumPages();
-        // this.$emit('archived');
+        _this2.setAllQuestions(questions);
       }).catch(function (error) {
         console.log(error.response.data);
       });
@@ -11727,7 +11724,7 @@ window.app = new Vue({
       console.log("end: " + this.end);
       this.page = page;
       this.setStart();
-      this.buffer = this.filteredQuestions.length - (this.start - 1);
+      this.setBuffer();
       this.setEnd();
       console.log("page: " + page);
       console.log("buffer: " + this.buffer);
@@ -11736,6 +11733,8 @@ window.app = new Vue({
 
   methods: {
     setStart: function setStart() {
+      if (this.page > this.numPages) this.page = this.page - 1;
+
       if (this.page == 1) this.start = this.page;else this.start = (this.page - 1) * this.max + 1;
     },
     setEnd: function setEnd() {
@@ -11743,16 +11742,27 @@ window.app = new Vue({
     },
     setAllQuestions: function setAllQuestions(data) {
       this.all_questions = data;
-      this.setBuffer();
       this.setNumPages();
+      this.setStart();
+      this.setBuffer();
+      this.setEnd();
+      this.setQuestions();
+    },
+    setQuestions: function setQuestions() {
+      var _this3 = this;
+
+      if (this.filter == 0) this.questions = this.all_questions.slice(this.startIndex, this.end);else this.questions = this.all_questions.filter(function (question) {
+        return question.question_category_id == _this3.filter;
+      }).slice(this.startIndex, this.end);
     },
     onFilterClicked: function onFilterClicked(filter) {
       this.filter = filter;
-      this.setBuffer();
       this.setNumPages();
       this.page = 1;
       this.setStart();
+      this.setBuffer();
       this.setEnd();
+      this.setQuestions();
     },
     setNumPages: function setNumPages() {
       var mod = this.filteredQuestions.length % this.max;
@@ -11761,7 +11771,7 @@ window.app = new Vue({
       this.numPages = num;
     },
     setBuffer: function setBuffer() {
-      this.buffer = this.filteredQuestions.length;
+      this.buffer = this.filteredQuestions.length - (this.start - 1);
     }
   }
 });
@@ -48582,40 +48592,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['filter'],
+  props: ['questions'],
   data: function data() {
     return {
-      numQuestions: -1,
-      questions: []
+      numQuestions: -1
     };
-  },
-  created: function created() {
-    var _this = this;
-
-    var currentUrl = window.location.pathname;
-    var url = window.Laravel.base_url + '/admin/archived_questions';
-    if (currentUrl.indexOf('archived') == -1) url = window.Laravel.base_url + '/admin/all_questions';
-    axios.get(url).then(function (response) {
-
-      _this.questions = response.data;
-
-      _this.numQuestions = response.data.length;
-    }).catch(function (error) {
-      console.log(error.response.data);
-    });
   },
 
   watch: {
-    filter: function filter() {
-      var _this2 = this;
-
-      if (this.filter != 0) {
-        this.numQuestions = this.questions.filter(function (question) {
-          return question.question_category_id == _this2.filter;
-        }).length;
-      } else {
-        this.numQuestions = this.questions.length;
-      }
+    questions: function questions() {
+      this.numQuestions = this.questions.length;
     }
   }
 });

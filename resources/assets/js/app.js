@@ -30,6 +30,7 @@ window.app = new Vue({
     data: {
       filter: 0,
       all_questions: [],
+      questions: [],
       max: 9,
       buffer: 0, //buffered questions
       page: 1, //the current page
@@ -43,15 +44,6 @@ window.app = new Vue({
         console.log("end: " + this.end);
         return this.start - 1;
       },
-      questions: function () {
-
-        if(this.filter == 0)
-            return this.all_questions.slice(this.startIndex, this.end);
-        else
-            return this.all_questions
-                       .filter(question => question.question_category_id == this.filter)
-                       .slice(this.startIndex, this.end);
-      },
       filteredQuestions: function () {
 
         if(this.filter == 0) {
@@ -64,14 +56,17 @@ window.app = new Vue({
 
       }
     },
+    watch: {
+      end: function () {
+        this.setQuestions();
+      }
+    },
     created() {
       this.$on('archive', function(question_id) {
           var url= window.Laravel.base_url + '/admin/questions/' + question_id;
           axios.delete(url).then((response)=>{
               var questions = response.data;
               this.setAllQuestions(questions);
-              this.setNumPages();
-              // this.$emit('archived');
           }).catch((error)=>{
                   console.log(error.response.data)
           });
@@ -80,7 +75,7 @@ window.app = new Vue({
         console.log("end: "+ this.end);
         this.page = page;
         this.setStart();
-        this.buffer = this.filteredQuestions.length - (this.start - 1);
+        this.setBuffer();
         this.setEnd();
         console.log("page: " + page);
         console.log("buffer: " + this.buffer);
@@ -88,6 +83,9 @@ window.app = new Vue({
     },
     methods: {
       setStart: function() {
+          if(this.page > this.numPages)
+             this.page = this.page - 1;
+
           if(this.page == 1)
             this.start = this.page;
           else
@@ -101,16 +99,29 @@ window.app = new Vue({
       },
       setAllQuestions: function(data) {
         this.all_questions = data;
-        this.setBuffer();
         this.setNumPages();
+        this.setStart();
+        this.setBuffer();
+        this.setEnd();
+        this.setQuestions();
+      },
+      setQuestions: function() {
+        if(this.filter == 0)
+          this.questions = this.all_questions.slice(this.startIndex, this.end);
+        else
+          this.questions =
+            this.all_questions.filter(question => question.question_category_id == this.filter)
+                              .slice(this.startIndex, this.end);
+
       },
       onFilterClicked: function(filter) {
         this.filter = filter;
-        this.setBuffer();
         this.setNumPages();
         this.page = 1;
         this.setStart();
+        this.setBuffer();
         this.setEnd();
+        this.setQuestions();
       },
       setNumPages: function() {
         var mod = this.filteredQuestions.length % this.max;
@@ -120,7 +131,7 @@ window.app = new Vue({
         this.numPages = num;
       },
       setBuffer: function() {
-        this.buffer = this.filteredQuestions.length;
+        this.buffer = this.filteredQuestions.length - (this.start - 1);
       }
     }
 });
