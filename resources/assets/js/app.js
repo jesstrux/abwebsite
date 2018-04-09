@@ -81,7 +81,7 @@ window.app = new Vue({
                 transition: 'slide-up'
               });
           }).catch((error)=>{
-                  console.log(error.response.data)
+                console.log(error.response.data);
           });
       });
       this.$on('changePage', function(page) {

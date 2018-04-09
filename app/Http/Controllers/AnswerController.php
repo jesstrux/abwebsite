@@ -40,7 +40,7 @@ class AnswerController extends Controller
     public function create()
     {
         $categories = QuestionCategory::all();
-        $selectedCategories = null;
+        $selectedCategories = collect([]);
         return view($this->forms . '.create', compact('categories',
                                                       'selectedCategories'));
     }

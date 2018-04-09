@@ -1,13 +1,5 @@
 var model_id = null;
 
-$(function() {
-  $("#question_category_id").tagsinput({
-      typeaheadjs: {
-        source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']
-      }
-  });
-});
-
 function showDeleteModal(model)
 {
   showModal("delete_confirmation_modal");
