@@ -15,6 +15,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Toast from 'vue-easy-toast';
+Vue.use(Toast);
+
 Vue.component('filters', require('./components/Filters.vue'));
 Vue.component('question', require('./components/Question.vue'));
 Vue.component('questions', require('./components/Questions.vue'));
@@ -67,6 +70,15 @@ window.app = new Vue({
           axios.delete(url).then((response)=>{
               var questions = response.data;
               this.setAllQuestions(questions);
+              Vue.toast('<strong>Archived Successfully!</strong>', {
+                id: 'my-toast',
+                className: ['et-warn'],
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+                duration: 3000,
+                mode: 'override',
+                transition: 'slide-up'
+              });
           }).catch((error)=>{
                   console.log(error.response.data)
           });

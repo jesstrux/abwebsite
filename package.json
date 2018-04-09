@@ -19,7 +19,8 @@
         "jquery": "^3.2",
         "metismenu": "^2.7.4",
         "typeahead": "^0.2.2",
-        "vue": "^2.5.10"
+        "vue": "^2.5.10",
+        "vue-easy-toast": "^1.0.5"
     },
     "devDependencies": {
         "cross-env": "^5.1",
