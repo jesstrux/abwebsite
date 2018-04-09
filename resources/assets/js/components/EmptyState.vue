@@ -6,9 +6,11 @@
 
 <script>
 export default {
-  data: function () {
+  props: ['filter'],
+  data() {
     return {
-      numQuestions: -1
+      numQuestions: -1,
+      questions: []
     }
   },
   created() {
@@ -17,10 +19,25 @@ export default {
     if(currentUrl.indexOf('archived') == -1)
       url= window.Laravel.base_url + '/admin/all_questions';
     axios.get(url).then((response)=>{
-        this.numQuestions = response.data.length;
+
+     this.questions = response.data;
+
+     this.numQuestions = response.data.length;
+
     }).catch((error)=>{
         console.log(error.response.data)
     });
+  },
+  watch: {
+    filter: function () {
+      if(this.filter != 0) {
+        this.numQuestions =
+           this.questions.filter(question => question.question_category_id == this.filter).length;
+      }
+      else {
+        this.numQuestions = this.questions.length;
+      }
+    }
   }
 }
 </script>

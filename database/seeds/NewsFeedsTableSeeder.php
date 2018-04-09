@@ -13,10 +13,14 @@ class NewsFeedsTableSeeder extends Seeder
     public function run()
     {
       $faker = Faker\Factory::create();
+      $youtube_ids = [
+        '_pan5xdHb54', 'MgHlWr_13kY', 'vNcxEAe09kA',
+        'rHStL6-XHYs', '3HsLli1RmHI',
+      ];
       for($i = 0; $i <= 15; $i++) {
         NewsFeed::create([
           'title' => $faker->sentence(5, false),
-          'youtube_id' => str_random(10),
+          'youtube_id' => array_random($youtube_ids),
         ]);
       }
     }

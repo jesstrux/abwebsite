@@ -70,6 +70,7 @@ window.app = new Vue({
           axios.delete(url).then((response)=>{
               var questions = response.data;
               this.setAllQuestions(questions);
+              this.setNumPages();
               // this.$emit('archived');
           }).catch((error)=>{
                   console.log(error.response.data)

@@ -18,7 +18,7 @@ class Answer extends BaseModel
 
     public function questionCategories()
     {
-      return $this->belongsToMany(QuestionCategory::class);
+      return $this->belongsToMany(QuestionCategory::class)->withTimestamps();
     }
 
     public function getCategoriesAttribute()

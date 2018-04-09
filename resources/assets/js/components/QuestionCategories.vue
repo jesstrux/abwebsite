@@ -5,7 +5,9 @@
           <div class="checkbox" v-for="category in sliceCategories(n)" :key="category.id">
             <label>
               <input type="checkbox" name="question_category_id[]"
-                :value="category.id" @change="error = false">
+                :value="category.id"
+                @change="onCheckboxChange(category.id, $event)"
+                :checked="selectedCategories.indexOf(category.id) != -1">
               {{ category.name }}
             </label>
          </div>
@@ -26,7 +28,7 @@
 
 <script>
 export default {
-  props: ['categories', 'error'],
+  props: ['categories', 'selectedCategories', 'error'],
   data: function () {
     return {
       checkboxes: 3, //number of check-boxes per cluster
@@ -48,6 +50,15 @@ export default {
       if(end > this.categories.length)
         end = this.categories.length;
       return this.categories.slice(start, end);
+    },
+    onCheckboxChange(id, event) {
+      if(event.target.is(':checked')) {
+        this.error = false;
+        this.selectedCategories.push(id);
+      }
+      else {
+        this.selectedCategories.splice(this.selectedCategories.indexOf(id), 1);
+      }
     }
   }
 }

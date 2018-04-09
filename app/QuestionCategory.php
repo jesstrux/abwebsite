@@ -24,6 +24,6 @@ class QuestionCategory extends BaseModel
 
     public function answers()
     {
-      return $this->belongsToMany(Answer::class);
+      return $this->belongsToMany(Answer::class)->withTimestamps();
     }
 }

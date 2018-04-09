@@ -40,7 +40,9 @@ class AnswerController extends Controller
     public function create()
     {
         $categories = QuestionCategory::all();
-        return view($this->forms . '.create', compact('categories'));
+        $selectedCategories = null;
+        return view($this->forms . '.create', compact('categories',
+                                                      'selectedCategories'));
     }
 
     /**
@@ -120,7 +122,9 @@ class AnswerController extends Controller
     public function edit(Answer $answer)
     {
       $categories = QuestionCategory::all();
-      return view($this->forms . '.edit', compact('answer', 'categories'));
+      $selectedCategories = $answer->questionCategories()->get()->pluck('id');
+      return view($this->forms . '.edit', compact('answer', 'categories',
+                                                  'selectedCategories'));
     }
 
     /**
@@ -133,9 +137,26 @@ class AnswerController extends Controller
     public function update(Request $request, Answer $answer)
     {
       $this->validate($request, $this->rules());
-      $answer->update($request->only(['youtube_id', 'title']));
-      flash('Answer Updated Successfully')->success();
-      return redirect($this->redirectTo);
+      DB::beginTransaction();
+      try
+      {
+        Answer::where('id', $answer->id)
+              ->update($request->only(['youtube_id', 'title']));
+        $answer->questionCategories()->sync($request->question_category_id);
+
+        DB::commit();
+
+        flash('Answer Updated Successfully')->success();
+        return redirect($this->redirectTo);
+      }
+      catch(\Throwable $e)
+      {
+        DB::rollBack();
+
+        flash('Answer couldn\'t be updated')->error()->important();
+        return back();
+      }
+
     }
 
     /**

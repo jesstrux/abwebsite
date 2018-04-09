@@ -18,6 +18,12 @@ class CreateAnswerQuestionCategory extends Migration
             $table->integer('answer_id')->unsigned();
             $table->integer('question_category_id')->unsigned();
             $table->timestamps();
+            $table->foreign('answer_id')
+                  ->references('id')
+                  ->on('answers');
+            $table->foreign('question_category_id')
+                  ->references('id')
+                  ->on('question_categories');
         });
     }
 

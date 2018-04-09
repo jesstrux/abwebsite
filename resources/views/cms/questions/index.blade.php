@@ -12,9 +12,9 @@
  :questions="questions">
 </questions>
 
-<empty-state></empty-state>
+<empty-state :filter="filter"></empty-state>
 
-<questions-footer v-if="all_questions.length > 0"
+<questions-footer v-if="questions.length > 0"
   :num-pages="numPages"
   :cur-page="page">
 </questions-footer>

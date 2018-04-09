@@ -11717,6 +11717,7 @@ window.app = new Vue({
       axios.delete(url).then(function (response) {
         var questions = response.data;
         _this3.setAllQuestions(questions);
+        _this3.setNumPages();
         // this.$emit('archived');
       }).catch(function (error) {
         console.log(error.response.data);
@@ -48581,9 +48582,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['filter'],
   data: function data() {
     return {
-      numQuestions: -1
+      numQuestions: -1,
+      questions: []
     };
   },
   created: function created() {
@@ -48593,10 +48596,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var url = window.Laravel.base_url + '/admin/archived_questions';
     if (currentUrl.indexOf('archived') == -1) url = window.Laravel.base_url + '/admin/all_questions';
     axios.get(url).then(function (response) {
+
+      _this.questions = response.data;
+
       _this.numQuestions = response.data.length;
     }).catch(function (error) {
       console.log(error.response.data);
     });
+  },
+
+  watch: {
+    filter: function filter() {
+      var _this2 = this;
+
+      if (this.filter != 0) {
+        this.numQuestions = this.questions.filter(function (question) {
+          return question.question_category_id == _this2.filter;
+        }).length;
+      } else {
+        this.numQuestions = this.questions.length;
+      }
+    }
   }
 });
 
@@ -48746,9 +48766,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['categories', 'error'],
+  props: ['categories', 'selectedCategories', 'error'],
   data: function data() {
     return {
       checkboxes: 3 //number of check-boxes per cluster
@@ -48768,6 +48790,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var end = start + this.checkboxes;
       if (end > this.categories.length) end = this.categories.length;
       return this.categories.slice(start, end);
+    },
+    onCheckboxChange: function onCheckboxChange(id, event) {
+      if (event.target.is(':checked')) {
+        this.error = false;
+        this.selectedCategories.push(id);
+      } else {
+        this.selectedCategories.splice(this.selectedCategories.indexOf(id), 1);
+      }
     }
   }
 });
@@ -48796,10 +48826,13 @@ var render = function() {
                 _c("label", [
                   _c("input", {
                     attrs: { type: "checkbox", name: "question_category_id[]" },
-                    domProps: { value: category.id },
+                    domProps: {
+                      value: category.id,
+                      checked: _vm.selectedCategories.indexOf(category.id) != -1
+                    },
                     on: {
                       change: function($event) {
-                        _vm.error = false
+                        _vm.onCheckboxChange(category.id, $event)
                       }
                     }
                   }),

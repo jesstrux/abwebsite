@@ -1,3 +1,17 @@
+<div class="form-group">
+
+    <div class="col-md-offset-3 col-md-6">
+
+        <question-categories
+          :categories="{{ $categories }}"
+          :selected-categories="{{ $selectedCategories }}"
+          :error="{{ json_encode($errors->any() && $errors->has('question_category_id')) }}">
+        </question-categories>
+
+    </div>
+
+</div>
+
 <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
 
     <div class="col-md-offset-3 col-md-6">
@@ -39,19 +53,6 @@
             </p>
 
         @endif
-
-    </div>
-
-</div>
-
-<div class="form-group">
-
-    <div class="col-md-offset-3 col-md-6">
-
-        <question-categories
-          :categories="{{ $categories }}"
-          :error="{{ json_encode($errors->any() && $errors->has('question_category_id')) }}">
-        </question-categories>
 
     </div>
 
