@@ -11724,9 +11724,9 @@ window.app = new Vue({
       axios.delete(url).then(function (response) {
         var questions = response.data;
         _this2.setAllQuestions(questions);
-        Vue.toast('<strong>Archived Successfully!</strong>', {
+        Vue.toast('Archived Successfully!', {
           id: 'my-toast',
-          className: ['et-warn'],
+          className: 'et-success',
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000,
@@ -47990,7 +47990,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* The Modal (background) */\n.modal {\n    position: fixed; /* Stay in place */\n    z-index: 1; /* Sit on top */\n    padding-top: 0px; /* Location of the box */\n    left: 0;\n    top: 0;\n    width: 100%; /* Full width */\n    height: 100%; /* Full height */\n    overflow: auto; /* Enable scroll if needed */\n    background-color: rgb(0,0,0); /* Fallback color */\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n}\n.modal-dialog {\n  position: fixed;\n  left: 0;\n  right: 0;\n}\n\n/* Modal Content/Box */\n.modal-content {\n    background-color: #fefefe;\n    margin: 15% auto; /* 15% from the top and centered */\n    padding: 20px;\n    border: 1px solid #888;\n    width: 80%; /* Could be more or less, depending on screen size */\n}\n.modal-body {\n  max-height: 500px;\n  overflow: auto;\n}\n.modal-header {\n    padding: 2px;\n    border: none;\n}\n.modal-body > p {\n  font-weight: 400;\n  font-size: 1.2em;\n  text-align: justify;\n}\n\n/* The Close Button */\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n}\n.close:hover,\n.close:focus {\n    color: #000;\n    text-decoration: none;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* The Modal (background) */\n.modal {\n    position: fixed; /* Stay in place */\n    z-index: 1; /* Sit on top */\n    left: 0;\n    top: 0;\n    width: 100%; /* Full width */\n    height: 100%; /* Full height */\n    overflow: auto; /* Enable scroll if needed */\n    background-color: rgb(0,0,0); /* Fallback color */\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n}\n.modal-dialog {\n  position: fixed;\n  left: 0;\n  right: 0;\n}\n\n/* Modal Content/Box */\n.modal-content {\n    background-color: #fefefe;\n    margin: auto; /* 15% from the top and centered */\n    padding: 20px;\n    border: 1px solid #888;\n    width: 80%; /* Could be more or less, depending on screen size */\n}\n.modal-body {\n  max-height: 500px;\n  overflow: auto;\n}\n.modal-header {\n    padding: 2px;\n    border: none;\n}\n.modal-body > p {\n  font-weight: 400;\n  font-size: 1.2em;\n  text-align: justify;\n}\n\n/* The Close Button */\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n}\n.close:hover,\n.close:focus {\n    color: #000;\n    text-decoration: none;\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 

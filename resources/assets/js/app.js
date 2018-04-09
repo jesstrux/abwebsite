@@ -71,9 +71,9 @@ window.app = new Vue({
           axios.delete(url).then((response)=>{
               var questions = response.data;
               this.setAllQuestions(questions);
-              Vue.toast('<strong>Archived Successfully!</strong>', {
+              Vue.toast('Archived Successfully!', {
                 id: 'my-toast',
-                className: ['et-warn'],
+                className: 'et-success',
                 horizontalPosition: 'center',
                 verticalPosition: 'top',
                 duration: 3000,
